@@ -1,0 +1,1182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F27EF7C1-6DED-449F-AC8B-C354DFC59C19}</ProjectGuid>
+    <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DemoConfirmation</RootNamespace>
+    <AssemblyName>DemoConfirmation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <Use64BitIISExpress />
+    <IISExpressSSLPort>44379</IISExpressSSLPort>
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+    <UseGlobalApplicationHostFile />
+    <NuGetPackageImportStamp>
+    </NuGetPackageImportStamp>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BookingData, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\BookingData.dll</HintPath>
+    </Reference>
+    <Reference Include="FlightJourneyModels, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>bin\FlightJourneyModels.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+    </Reference>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\Antlr.3.5.0.2\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\ConfirmationController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\DateTimeConvert.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModel\RequestViewModel.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\bootstrap-theme.css" />
+    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap.css" />
+    <Content Include="Content\bootstrap.min.css" />
+    <Content Include="DemoTextFiles\TempBookingDataFile.txt" />
+    <Content Include="favicon.ico" />
+    <Content Include="FJHTML\aboutus.html" />
+    <Content Include="FJHTML\build\caleran.min.js" />
+    <Content Include="FJHTML\build\css\caleran.min.css" />
+    <Content Include="FJHTML\build\js\caleran.min.js" />
+    <Content Include="FJHTML\build\js\moment.min.js" />
+    <Content Include="FJHTML\confirmation.html" />
+    <Content Include="FJHTML\contactus.html" />
+    <Content Include="FJHTML\css\all.min.css" />
+    <Content Include="FJHTML\css\angucomplete-alt.css" />
+    <Content Include="FJHTML\css\animate.css" />
+    <Content Include="FJHTML\css\bootstrap-select.css" />
+    <Content Include="FJHTML\css\circle.css" />
+    <Content Include="FJHTML\css\device-friendly-rwd.css" />
+    <Content Include="FJHTML\css\device-friendly-style.css" />
+    <Content Include="FJHTML\css\fj-bootstrap.min.css" />
+    <Content Include="FJHTML\css\fj-srchstyle-multicity.css" />
+    <Content Include="FJHTML\css\fj-srchStyle.css" />
+    <Content Include="FJHTML\css\fjh-resultstyle.css" />
+    <Content Include="FJHTML\css\flags.css" />
+    <Content Include="FJHTML\css\flags.png" />
+    <Content Include="FJHTML\css\font-awesome.min.css" />
+    <Content Include="FJHTML\css\freshslider.min.css" />
+    <Content Include="FJHTML\css\jquery-popover-0.0.3.css" />
+    <Content Include="FJHTML\css\lightpick.css" />
+    <Content Include="FJHTML\css\loadingProcess.css" />
+    <Content Include="FJHTML\css\main-style.css" />
+    <Content Include="FJHTML\css\normalize.css" />
+    <Content Include="FJHTML\css\psd-style.css" />
+    <Content Include="FJHTML\css\resultStyle.css" />
+    <Content Include="FJHTML\css\rzslider.min.css" />
+    <Content Include="FJHTML\css\tm-style-first.css" />
+    <Content Include="FJHTML\css\tw-currency-select.css" />
+    <Content Include="FJHTML\e-ticket.html" />
+    <Content Include="FJHTML\email-confirmation-2.html" />
+    <Content Include="FJHTML\email-confirmation-final.html" />
+    <Content Include="FJHTML\email-confirmation.html" />
+    <Content Include="FJHTML\flight-results.html" />
+    <Content Include="FJHTML\flights.html" />
+    <Content Include="FJHTML\fonts\abel-v10-latin-regular.svg" />
+    <Content Include="FJHTML\fonts\fontawesome-webfont.svg" />
+    <Content Include="FJHTML\images\24hr-icon.png" />
+    <Content Include="FJHTML\images\add-user.png" />
+    <Content Include="FJHTML\images\airline-logos\0B.gif" />
+    <Content Include="FJHTML\images\airline-logos\2A.gif" />
+    <Content Include="FJHTML\images\airline-logos\2B.gif" />
+    <Content Include="FJHTML\images\airline-logos\2G.gif" />
+    <Content Include="FJHTML\images\airline-logos\2I.gif" />
+    <Content Include="FJHTML\images\airline-logos\2J.gif" />
+    <Content Include="FJHTML\images\airline-logos\2L.gif" />
+    <Content Include="FJHTML\images\airline-logos\2P.gif" />
+    <Content Include="FJHTML\images\airline-logos\2T.gif" />
+    <Content Include="FJHTML\images\airline-logos\3E.gif" />
+    <Content Include="FJHTML\images\airline-logos\3H.gif" />
+    <Content Include="FJHTML\images\airline-logos\3K.gif" />
+    <Content Include="FJHTML\images\airline-logos\3L.gif" />
+    <Content Include="FJHTML\images\airline-logos\3M.gif" />
+    <Content Include="FJHTML\images\airline-logos\3O.gif" />
+    <Content Include="FJHTML\images\airline-logos\3P.gif" />
+    <Content Include="FJHTML\images\airline-logos\3S.gif" />
+    <Content Include="FJHTML\images\airline-logos\3U.gif" />
+    <Content Include="FJHTML\images\airline-logos\3Y.gif" />
+    <Content Include="FJHTML\images\airline-logos\4A.gif" />
+    <Content Include="FJHTML\images\airline-logos\4B.gif" />
+    <Content Include="FJHTML\images\airline-logos\4D.gif" />
+    <Content Include="FJHTML\images\airline-logos\4H.gif" />
+    <Content Include="FJHTML\images\airline-logos\4J.gif" />
+    <Content Include="FJHTML\images\airline-logos\4L.gif" />
+    <Content Include="FJHTML\images\airline-logos\4M.gif" />
+    <Content Include="FJHTML\images\airline-logos\4N.gif" />
+    <Content Include="FJHTML\images\airline-logos\4O.gif" />
+    <Content Include="FJHTML\images\airline-logos\4P.gif" />
+    <Content Include="FJHTML\images\airline-logos\4Q.gif" />
+    <Content Include="FJHTML\images\airline-logos\4T.gif" />
+    <Content Include="FJHTML\images\airline-logos\4U.gif" />
+    <Content Include="FJHTML\images\airline-logos\4Z.gif" />
+    <Content Include="FJHTML\images\airline-logos\5C.gif" />
+    <Content Include="FJHTML\images\airline-logos\5D.gif" />
+    <Content Include="FJHTML\images\airline-logos\5F.gif" />
+    <Content Include="FJHTML\images\airline-logos\5H.gif" />
+    <Content Include="FJHTML\images\airline-logos\5J.gif" />
+    <Content Include="FJHTML\images\airline-logos\5K.gif" />
+    <Content Include="FJHTML\images\airline-logos\5P.gif" />
+    <Content Include="FJHTML\images\airline-logos\5T.gif" />
+    <Content Include="FJHTML\images\airline-logos\5W.gif" />
+    <Content Include="FJHTML\images\airline-logos\5Z.gif" />
+    <Content Include="FJHTML\images\airline-logos\6A.gif" />
+    <Content Include="FJHTML\images\airline-logos\6D.gif" />
+    <Content Include="FJHTML\images\airline-logos\6E.gif" />
+    <Content Include="FJHTML\images\airline-logos\6H.gif" />
+    <Content Include="FJHTML\images\airline-logos\6R.gif" />
+    <Content Include="FJHTML\images\airline-logos\6Y.gif" />
+    <Content Include="FJHTML\images\airline-logos\7C.gif" />
+    <Content Include="FJHTML\images\airline-logos\7G.gif" />
+    <Content Include="FJHTML\images\airline-logos\7H.gif" />
+    <Content Include="FJHTML\images\airline-logos\7I.gif" />
+    <Content Include="FJHTML\images\airline-logos\7P.gif" />
+    <Content Include="FJHTML\images\airline-logos\7R.gif" />
+    <Content Include="FJHTML\images\airline-logos\7W.gif" />
+    <Content Include="FJHTML\images\airline-logos\8A.gif" />
+    <Content Include="FJHTML\images\airline-logos\8I.gif" />
+    <Content Include="FJHTML\images\airline-logos\8J.gif" />
+    <Content Include="FJHTML\images\airline-logos\8L.gif" />
+    <Content Include="FJHTML\images\airline-logos\8M.gif" />
+    <Content Include="FJHTML\images\airline-logos\8Q.gif" />
+    <Content Include="FJHTML\images\airline-logos\8U.gif" />
+    <Content Include="FJHTML\images\airline-logos\8Z.gif" />
+    <Content Include="FJHTML\images\airline-logos\9B.gif" />
+    <Content Include="FJHTML\images\airline-logos\9C.gif" />
+    <Content Include="FJHTML\images\airline-logos\9D.gif" />
+    <Content Include="FJHTML\images\airline-logos\9F.gif" />
+    <Content Include="FJHTML\images\airline-logos\9H.gif" />
+    <Content Include="FJHTML\images\airline-logos\9R.gif" />
+    <Content Include="FJHTML\images\airline-logos\9U.gif" />
+    <Content Include="FJHTML\images\airline-logos\9V.gif" />
+    <Content Include="FJHTML\images\airline-logos\9W.gif" />
+    <Content Include="FJHTML\images\airline-logos\9X.gif" />
+    <Content Include="FJHTML\images\airline-logos\A3.gif" />
+    <Content Include="FJHTML\images\airline-logos\A5.gif" />
+    <Content Include="FJHTML\images\airline-logos\A7.gif" />
+    <Content Include="FJHTML\images\airline-logos\AA.gif" />
+    <Content Include="FJHTML\images\airline-logos\AB.gif" />
+    <Content Include="FJHTML\images\airline-logos\AC.gif" />
+    <Content Include="FJHTML\images\airline-logos\AD.gif" />
+    <Content Include="FJHTML\images\airline-logos\AF.gif" />
+    <Content Include="FJHTML\images\airline-logos\AI.gif" />
+    <Content Include="FJHTML\images\airline-logos\airindia2.jpg" />
+    <Content Include="FJHTML\images\airline-logos\AJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\AK.gif" />
+    <Content Include="FJHTML\images\airline-logos\AM.gif" />
+    <Content Include="FJHTML\images\airline-logos\american-airlines.jpg" />
+    <Content Include="FJHTML\images\airline-logos\AR.gif" />
+    <Content Include="FJHTML\images\airline-logos\AS.gif" />
+    <Content Include="FJHTML\images\airline-logos\AT.gif" />
+    <Content Include="FJHTML\images\airline-logos\AV.gif" />
+    <Content Include="FJHTML\images\airline-logos\AY.gif" />
+    <Content Include="FJHTML\images\airline-logos\AZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\B0.gif" />
+    <Content Include="FJHTML\images\airline-logos\B2.gif" />
+    <Content Include="FJHTML\images\airline-logos\B6.gif" />
+    <Content Include="FJHTML\images\airline-logos\B7.gif" />
+    <Content Include="FJHTML\images\airline-logos\B8.gif" />
+    <Content Include="FJHTML\images\airline-logos\BA.gif" />
+    <Content Include="FJHTML\images\airline-logos\BB.gif" />
+    <Content Include="FJHTML\images\airline-logos\BC.gif" />
+    <Content Include="FJHTML\images\airline-logos\BD.gif" />
+    <Content Include="FJHTML\images\airline-logos\BE.gif" />
+    <Content Include="FJHTML\images\airline-logos\BG.gif" />
+    <Content Include="FJHTML\images\airline-logos\BH.gif" />
+    <Content Include="FJHTML\images\airline-logos\BI.gif" />
+    <Content Include="FJHTML\images\airline-logos\BK.gif" />
+    <Content Include="FJHTML\images\airline-logos\BL.gif" />
+    <Content Include="FJHTML\images\airline-logos\BM.gif" />
+    <Content Include="FJHTML\images\airline-logos\BR.gif" />
+    <Content Include="FJHTML\images\airline-logos\BT.gif" />
+    <Content Include="FJHTML\images\airline-logos\BV.gif" />
+    <Content Include="FJHTML\images\airline-logos\BV.png" />
+    <Content Include="FJHTML\images\airline-logos\BW.gif" />
+    <Content Include="FJHTML\images\airline-logos\BY.gif" />
+    <Content Include="FJHTML\images\airline-logos\C0.gif" />
+    <Content Include="FJHTML\images\airline-logos\C4.gif" />
+    <Content Include="FJHTML\images\airline-logos\C6.gif" />
+    <Content Include="FJHTML\images\airline-logos\CA.gif" />
+    <Content Include="FJHTML\images\airline-logos\CD.gif" />
+    <Content Include="FJHTML\images\airline-logos\CE.gif" />
+    <Content Include="FJHTML\images\airline-logos\CI.gif" />
+    <Content Include="FJHTML\images\airline-logos\CM.gif" />
+    <Content Include="FJHTML\images\airline-logos\CO.gif" />
+    <Content Include="FJHTML\images\airline-logos\CQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\CT.gif" />
+    <Content Include="FJHTML\images\airline-logos\CX.gif" />
+    <Content Include="FJHTML\images\airline-logos\CX.png" />
+    <Content Include="FJHTML\images\airline-logos\CY.gif" />
+    <Content Include="FJHTML\images\airline-logos\CZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\D5.gif" />
+    <Content Include="FJHTML\images\airline-logos\D7.gif" />
+    <Content Include="FJHTML\images\airline-logos\D8.gif" />
+    <Content Include="FJHTML\images\airline-logos\DA.gif" />
+    <Content Include="FJHTML\images\airline-logos\DD.gif" />
+    <Content Include="FJHTML\images\airline-logos\DE.gif" />
+    <Content Include="FJHTML\images\airline-logos\Default-flight-icon.gif" />
+    <Content Include="FJHTML\images\airline-logos\DG.gif" />
+    <Content Include="FJHTML\images\airline-logos\DH.gif" />
+    <Content Include="FJHTML\images\airline-logos\DI.gif" />
+    <Content Include="FJHTML\images\airline-logos\DJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\DL.gif" />
+    <Content Include="FJHTML\images\airline-logos\DL.png" />
+    <Content Include="FJHTML\images\airline-logos\DN.gif" />
+    <Content Include="FJHTML\images\airline-logos\DP.gif" />
+    <Content Include="FJHTML\images\airline-logos\DR.gif" />
+    <Content Include="FJHTML\images\airline-logos\DS.gif" />
+    <Content Include="FJHTML\images\airline-logos\DT.gif" />
+    <Content Include="FJHTML\images\airline-logos\DY.gif" />
+    <Content Include="FJHTML\images\airline-logos\E4.gif" />
+    <Content Include="FJHTML\images\airline-logos\E5.gif" />
+    <Content Include="FJHTML\images\airline-logos\EB.gif" />
+    <Content Include="FJHTML\images\airline-logos\EF.gif" />
+    <Content Include="FJHTML\images\airline-logos\EI.gif" />
+    <Content Include="FJHTML\images\airline-logos\EK.gif" />
+    <Content Include="FJHTML\images\airline-logos\EL.gif" />
+    <Content Include="FJHTML\images\airline-logos\EO.gif" />
+    <Content Include="FJHTML\images\airline-logos\EP.gif" />
+    <Content Include="FJHTML\images\airline-logos\EQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\ET.gif" />
+    <Content Include="FJHTML\images\airline-logos\EW.gif" />
+    <Content Include="FJHTML\images\airline-logos\EY.gif" />
+    <Content Include="FJHTML\images\airline-logos\F5.gif" />
+    <Content Include="FJHTML\images\airline-logos\F7.gif" />
+    <Content Include="FJHTML\images\airline-logos\F9.gif" />
+    <Content Include="FJHTML\images\airline-logos\FA.gif" />
+    <Content Include="FJHTML\images\airline-logos\FD.gif" />
+    <Content Include="FJHTML\images\airline-logos\FF.gif" />
+    <Content Include="FJHTML\images\airline-logos\FG.gif" />
+    <Content Include="FJHTML\images\airline-logos\FI.gif" />
+    <Content Include="FJHTML\images\airline-logos\FJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\FL.gif" />
+    <Content Include="FJHTML\images\airline-logos\FM.gif" />
+    <Content Include="FJHTML\images\airline-logos\FN.gif" />
+    <Content Include="FJHTML\images\airline-logos\FR.gif" />
+    <Content Include="FJHTML\images\airline-logos\FS.gif" />
+    <Content Include="FJHTML\images\airline-logos\FT.gif" />
+    <Content Include="FJHTML\images\airline-logos\FV.gif" />
+    <Content Include="FJHTML\images\airline-logos\FZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\G3.gif" />
+    <Content Include="FJHTML\images\airline-logos\G4.gif" />
+    <Content Include="FJHTML\images\airline-logos\G8.gif" />
+    <Content Include="FJHTML\images\airline-logos\G9.gif" />
+    <Content Include="FJHTML\images\airline-logos\GA.gif" />
+    <Content Include="FJHTML\images\airline-logos\GF.gif" />
+    <Content Include="FJHTML\images\airline-logos\GI.gif" />
+    <Content Include="FJHTML\images\airline-logos\GK.gif" />
+    <Content Include="FJHTML\images\airline-logos\GO.gif" />
+    <Content Include="FJHTML\images\airline-logos\GQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\GV.gif" />
+    <Content Include="FJHTML\images\airline-logos\GX.gif" />
+    <Content Include="FJHTML\images\airline-logos\H1.gif" />
+    <Content Include="FJHTML\images\airline-logos\H2.gif" />
+    <Content Include="FJHTML\images\airline-logos\H9.gif" />
+    <Content Include="FJHTML\images\airline-logos\HA.gif" />
+    <Content Include="FJHTML\images\airline-logos\HC.gif" />
+    <Content Include="FJHTML\images\airline-logos\HD.gif" />
+    <Content Include="FJHTML\images\airline-logos\HF.gif" />
+    <Content Include="FJHTML\images\airline-logos\HG.gif" />
+    <Content Include="FJHTML\images\airline-logos\HM.gif" />
+    <Content Include="FJHTML\images\airline-logos\HO.gif" />
+    <Content Include="FJHTML\images\airline-logos\HQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\HR.gif" />
+    <Content Include="FJHTML\images\airline-logos\HU.gif" />
+    <Content Include="FJHTML\images\airline-logos\HV.gif" />
+    <Content Include="FJHTML\images\airline-logos\HX.gif" />
+    <Content Include="FJHTML\images\airline-logos\HY.gif" />
+    <Content Include="FJHTML\images\airline-logos\I2.gif" />
+    <Content Include="FJHTML\images\airline-logos\I5.gif" />
+    <Content Include="FJHTML\images\airline-logos\I7.gif" />
+    <Content Include="FJHTML\images\airline-logos\I8.gif" />
+    <Content Include="FJHTML\images\airline-logos\IB.gif" />
+    <Content Include="FJHTML\images\airline-logos\IC.gif" />
+    <Content Include="FJHTML\images\airline-logos\ID.gif" />
+    <Content Include="FJHTML\images\airline-logos\IF.gif" />
+    <Content Include="FJHTML\images\airline-logos\IG.gif" />
+    <Content Include="FJHTML\images\airline-logos\IJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\indigo-2x.png" />
+    <Content Include="FJHTML\images\airline-logos\IR.gif" />
+    <Content Include="FJHTML\images\airline-logos\IT.gif" />
+    <Content Include="FJHTML\images\airline-logos\IV.gif" />
+    <Content Include="FJHTML\images\airline-logos\IW.gif" />
+    <Content Include="FJHTML\images\airline-logos\IX.gif" />
+    <Content Include="FJHTML\images\airline-logos\IY.gif" />
+    <Content Include="FJHTML\images\airline-logos\IZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\J0.gif" />
+    <Content Include="FJHTML\images\airline-logos\J2.gif" />
+    <Content Include="FJHTML\images\airline-logos\J5.gif" />
+    <Content Include="FJHTML\images\airline-logos\J7.gif" />
+    <Content Include="FJHTML\images\airline-logos\J9.gif" />
+    <Content Include="FJHTML\images\airline-logos\JD.gif" />
+    <Content Include="FJHTML\images\airline-logos\JE.gif" />
+    <Content Include="FJHTML\images\airline-logos\JJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\JK.gif" />
+    <Content Include="FJHTML\images\airline-logos\JL.gif" />
+    <Content Include="FJHTML\images\airline-logos\JM.gif" />
+    <Content Include="FJHTML\images\airline-logos\JN.gif" />
+    <Content Include="FJHTML\images\airline-logos\JP.gif" />
+    <Content Include="FJHTML\images\airline-logos\JQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\JR.gif" />
+    <Content Include="FJHTML\images\airline-logos\JT.gif" />
+    <Content Include="FJHTML\images\airline-logos\JU.gif" />
+    <Content Include="FJHTML\images\airline-logos\JW.gif" />
+    <Content Include="FJHTML\images\airline-logos\JX.gif" />
+    <Content Include="FJHTML\images\airline-logos\JY.gif" />
+    <Content Include="FJHTML\images\airline-logos\K2.gif" />
+    <Content Include="FJHTML\images\airline-logos\KA.gif" />
+    <Content Include="FJHTML\images\airline-logos\KC.gif" />
+    <Content Include="FJHTML\images\airline-logos\KD.gif" />
+    <Content Include="FJHTML\images\airline-logos\KE.gif" />
+    <Content Include="FJHTML\images\airline-logos\KF.gif" />
+    <Content Include="FJHTML\images\airline-logos\KI.gif" />
+    <Content Include="FJHTML\images\airline-logos\KK.gif" />
+    <Content Include="FJHTML\images\airline-logos\KL.gif" />
+    <Content Include="FJHTML\images\airline-logos\KM.gif" />
+    <Content Include="FJHTML\images\airline-logos\KN.gif" />
+    <Content Include="FJHTML\images\airline-logos\KP.gif" />
+    <Content Include="FJHTML\images\airline-logos\KQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\KR.gif" />
+    <Content Include="FJHTML\images\airline-logos\KS.gif" />
+    <Content Include="FJHTML\images\airline-logos\KU.gif" />
+    <Content Include="FJHTML\images\airline-logos\KY.gif" />
+    <Content Include="FJHTML\images\airline-logos\L8.gif" />
+    <Content Include="FJHTML\images\airline-logos\L9.gif" />
+    <Content Include="FJHTML\images\airline-logos\LA.gif" />
+    <Content Include="FJHTML\images\airline-logos\LB.gif" />
+    <Content Include="FJHTML\images\airline-logos\LC.gif" />
+    <Content Include="FJHTML\images\airline-logos\LE.gif" />
+    <Content Include="FJHTML\images\airline-logos\LF.gif" />
+    <Content Include="FJHTML\images\airline-logos\LG.gif" />
+    <Content Include="FJHTML\images\airline-logos\LH.gif" />
+    <Content Include="FJHTML\images\airline-logos\LJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\LK.gif" />
+    <Content Include="FJHTML\images\airline-logos\LL.gif" />
+    <Content Include="FJHTML\images\airline-logos\LM.gif" />
+    <Content Include="FJHTML\images\airline-logos\LN.gif" />
+    <Content Include="FJHTML\images\airline-logos\LO.gif" />
+    <Content Include="FJHTML\images\airline-logos\LQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\LR.gif" />
+    <Content Include="FJHTML\images\airline-logos\LS.gif" />
+    <Content Include="FJHTML\images\airline-logos\LT.gif" />
+    <Content Include="FJHTML\images\airline-logos\LU.gif" />
+    <Content Include="FJHTML\images\airline-logos\lufthansa.jpg" />
+    <Content Include="FJHTML\images\airline-logos\LV.gif" />
+    <Content Include="FJHTML\images\airline-logos\LW.gif" />
+    <Content Include="FJHTML\images\airline-logos\LX.gif" />
+    <Content Include="FJHTML\images\airline-logos\LY.gif" />
+    <Content Include="FJHTML\images\airline-logos\LZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\M0.gif" />
+    <Content Include="FJHTML\images\airline-logos\M2.gif" />
+    <Content Include="FJHTML\images\airline-logos\M3.gif" />
+    <Content Include="FJHTML\images\airline-logos\M4.gif" />
+    <Content Include="FJHTML\images\airline-logos\M6.gif" />
+    <Content Include="FJHTML\images\airline-logos\M7.gif" />
+    <Content Include="FJHTML\images\airline-logos\M8.gif" />
+    <Content Include="FJHTML\images\airline-logos\M9.gif" />
+    <Content Include="FJHTML\images\airline-logos\MB.gif" />
+    <Content Include="FJHTML\images\airline-logos\MD.gif" />
+    <Content Include="FJHTML\images\airline-logos\ME.gif" />
+    <Content Include="FJHTML\images\airline-logos\MF.gif" />
+    <Content Include="FJHTML\images\airline-logos\MH.gif" />
+    <Content Include="FJHTML\images\airline-logos\MI.gif" />
+    <Content Include="FJHTML\images\airline-logos\MJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\MK.gif" />
+    <Content Include="FJHTML\images\airline-logos\ML.gif" />
+    <Content Include="FJHTML\images\airline-logos\MM.gif" />
+    <Content Include="FJHTML\images\airline-logos\MN.gif" />
+    <Content Include="FJHTML\images\airline-logos\MO.gif" />
+    <Content Include="FJHTML\images\airline-logos\MQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\MR.gif" />
+    <Content Include="FJHTML\images\airline-logos\MS.gif" />
+    <Content Include="FJHTML\images\airline-logos\MT.gif" />
+    <Content Include="FJHTML\images\airline-logos\MU.gif" />
+    <Content Include="FJHTML\images\airline-logos\MV.gif" />
+    <Content Include="FJHTML\images\airline-logos\MW.gif" />
+    <Content Include="FJHTML\images\airline-logos\MZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\N3.gif" />
+    <Content Include="FJHTML\images\airline-logos\N4.gif" />
+    <Content Include="FJHTML\images\airline-logos\N5.gif" />
+    <Content Include="FJHTML\images\airline-logos\N6.gif" />
+    <Content Include="FJHTML\images\airline-logos\N7.gif" />
+    <Content Include="FJHTML\images\airline-logos\N8.gif" />
+    <Content Include="FJHTML\images\airline-logos\N9.gif" />
+    <Content Include="FJHTML\images\airline-logos\NB.gif" />
+    <Content Include="FJHTML\images\airline-logos\NC.gif" />
+    <Content Include="FJHTML\images\airline-logos\ND.gif" />
+    <Content Include="FJHTML\images\airline-logos\NE.gif" />
+    <Content Include="FJHTML\images\airline-logos\NG.gif" />
+    <Content Include="FJHTML\images\airline-logos\NH.gif" />
+    <Content Include="FJHTML\images\airline-logos\NJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\NK.gif" />
+    <Content Include="FJHTML\images\airline-logos\NL.gif" />
+    <Content Include="FJHTML\images\airline-logos\NM.gif" />
+    <Content Include="FJHTML\images\airline-logos\NN.gif" />
+    <Content Include="FJHTML\images\airline-logos\NO.gif" />
+    <Content Include="FJHTML\images\airline-logos\NP.gif" />
+    <Content Include="FJHTML\images\airline-logos\NQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\NS.gif" />
+    <Content Include="FJHTML\images\airline-logos\NU.gif" />
+    <Content Include="FJHTML\images\airline-logos\NV.gif" />
+    <Content Include="FJHTML\images\airline-logos\NW.gif" />
+    <Content Include="FJHTML\images\airline-logos\NX.gif" />
+    <Content Include="FJHTML\images\airline-logos\NY.gif" />
+    <Content Include="FJHTML\images\airline-logos\NZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\O2.gif" />
+    <Content Include="FJHTML\images\airline-logos\O3.gif" />
+    <Content Include="FJHTML\images\airline-logos\O4.gif" />
+    <Content Include="FJHTML\images\airline-logos\O7.gif" />
+    <Content Include="FJHTML\images\airline-logos\O8.gif" />
+    <Content Include="FJHTML\images\airline-logos\OA.gif" />
+    <Content Include="FJHTML\images\airline-logos\OB.gif" />
+    <Content Include="FJHTML\images\airline-logos\OC.gif" />
+    <Content Include="FJHTML\images\airline-logos\OD.gif" />
+    <Content Include="FJHTML\images\airline-logos\OE.gif" />
+    <Content Include="FJHTML\images\airline-logos\OF.gif" />
+    <Content Include="FJHTML\images\airline-logos\OG.gif" />
+    <Content Include="FJHTML\images\airline-logos\OH.gif" />
+    <Content Include="FJHTML\images\airline-logos\OI.gif" />
+    <Content Include="FJHTML\images\airline-logos\OJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\OK.gif" />
+    <Content Include="FJHTML\images\airline-logos\OL.gif" />
+    <Content Include="FJHTML\images\airline-logos\OM.gif" />
+    <Content Include="FJHTML\images\airline-logos\OO.gif" />
+    <Content Include="FJHTML\images\airline-logos\OP.gif" />
+    <Content Include="FJHTML\images\airline-logos\OQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\OR.gif" />
+    <Content Include="FJHTML\images\airline-logos\OS.gif" />
+    <Content Include="FJHTML\images\airline-logos\OT.gif" />
+    <Content Include="FJHTML\images\airline-logos\OU.gif" />
+    <Content Include="FJHTML\images\airline-logos\OX.gif" />
+    <Content Include="FJHTML\images\airline-logos\OY.gif" />
+    <Content Include="FJHTML\images\airline-logos\OZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\P0.gif" />
+    <Content Include="FJHTML\images\airline-logos\P2.gif" />
+    <Content Include="FJHTML\images\airline-logos\P3.gif" />
+    <Content Include="FJHTML\images\airline-logos\P4.gif" />
+    <Content Include="FJHTML\images\airline-logos\P5.gif" />
+    <Content Include="FJHTML\images\airline-logos\P6.gif" />
+    <Content Include="FJHTML\images\airline-logos\P8.gif" />
+    <Content Include="FJHTML\images\airline-logos\P9.gif" />
+    <Content Include="FJHTML\images\airline-logos\PA.gif" />
+    <Content Include="FJHTML\images\airline-logos\PC.gif" />
+    <Content Include="FJHTML\images\airline-logos\PD.gif" />
+    <Content Include="FJHTML\images\airline-logos\PE.gif" />
+    <Content Include="FJHTML\images\airline-logos\PG.gif" />
+    <Content Include="FJHTML\images\airline-logos\PJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\PK.gif" />
+    <Content Include="FJHTML\images\airline-logos\PL.gif" />
+    <Content Include="FJHTML\images\airline-logos\PM.gif" />
+    <Content Include="FJHTML\images\airline-logos\PN.gif" />
+    <Content Include="FJHTML\images\airline-logos\PO.gif" />
+    <Content Include="FJHTML\images\airline-logos\PP.gif" />
+    <Content Include="FJHTML\images\airline-logos\PQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\PR.gif" />
+    <Content Include="FJHTML\images\airline-logos\PS.gif" />
+    <Content Include="FJHTML\images\airline-logos\PT.gif" />
+    <Content Include="FJHTML\images\airline-logos\PV.gif" />
+    <Content Include="FJHTML\images\airline-logos\PW.gif" />
+    <Content Include="FJHTML\images\airline-logos\PX.gif" />
+    <Content Include="FJHTML\images\airline-logos\PY.gif" />
+    <Content Include="FJHTML\images\airline-logos\PZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\Q2.gif" />
+    <Content Include="FJHTML\images\airline-logos\Q6.gif" />
+    <Content Include="FJHTML\images\airline-logos\Q7.gif" />
+    <Content Include="FJHTML\images\airline-logos\Q8.gif" />
+    <Content Include="FJHTML\images\airline-logos\Q9.gif" />
+    <Content Include="FJHTML\images\airline-logos\QA.gif" />
+    <Content Include="FJHTML\images\airline-logos\QB.gif" />
+    <Content Include="FJHTML\images\airline-logos\QC.gif" />
+    <Content Include="FJHTML\images\airline-logos\QD.gif" />
+    <Content Include="FJHTML\images\airline-logos\QF.gif" />
+    <Content Include="FJHTML\images\airline-logos\QG.gif" />
+    <Content Include="FJHTML\images\airline-logos\QH.gif" />
+    <Content Include="FJHTML\images\airline-logos\QI.gif" />
+    <Content Include="FJHTML\images\airline-logos\QK.gif" />
+    <Content Include="FJHTML\images\airline-logos\QL.gif" />
+    <Content Include="FJHTML\images\airline-logos\QN.gif" />
+    <Content Include="FJHTML\images\airline-logos\QO.gif" />
+    <Content Include="FJHTML\images\airline-logos\QQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\QR.gif" />
+    <Content Include="FJHTML\images\airline-logos\QS.gif" />
+    <Content Include="FJHTML\images\airline-logos\QT.gif" />
+    <Content Include="FJHTML\images\airline-logos\QU.gif" />
+    <Content Include="FJHTML\images\airline-logos\QW.gif" />
+    <Content Include="FJHTML\images\airline-logos\QX.gif" />
+    <Content Include="FJHTML\images\airline-logos\QZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\R2.gif" />
+    <Content Include="FJHTML\images\airline-logos\R3.gif" />
+    <Content Include="FJHTML\images\airline-logos\R5.gif" />
+    <Content Include="FJHTML\images\airline-logos\R7.gif" />
+    <Content Include="FJHTML\images\airline-logos\RA.gif" />
+    <Content Include="FJHTML\images\airline-logos\RB.gif" />
+    <Content Include="FJHTML\images\airline-logos\RC.gif" />
+    <Content Include="FJHTML\images\airline-logos\RD.gif" />
+    <Content Include="FJHTML\images\airline-logos\RE.gif" />
+    <Content Include="FJHTML\images\airline-logos\RI.gif" />
+    <Content Include="FJHTML\images\airline-logos\RJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\RL.gif" />
+    <Content Include="FJHTML\images\airline-logos\RM.gif" />
+    <Content Include="FJHTML\images\airline-logos\RN.gif" />
+    <Content Include="FJHTML\images\airline-logos\RO.gif" />
+    <Content Include="FJHTML\images\airline-logos\RP.gif" />
+    <Content Include="FJHTML\images\airline-logos\RQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\RS.gif" />
+    <Content Include="FJHTML\images\airline-logos\RV.gif" />
+    <Content Include="FJHTML\images\airline-logos\RX.gif" />
+    <Content Include="FJHTML\images\airline-logos\RY.gif" />
+    <Content Include="FJHTML\images\airline-logos\RZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\S2.gif" />
+    <Content Include="FJHTML\images\airline-logos\S3.gif" />
+    <Content Include="FJHTML\images\airline-logos\S4.gif" />
+    <Content Include="FJHTML\images\airline-logos\S6.gif" />
+    <Content Include="FJHTML\images\airline-logos\S7.gif" />
+    <Content Include="FJHTML\images\airline-logos\S8.gif" />
+    <Content Include="FJHTML\images\airline-logos\S9.gif" />
+    <Content Include="FJHTML\images\airline-logos\SA.gif" />
+    <Content Include="FJHTML\images\airline-logos\SB.gif" />
+    <Content Include="FJHTML\images\airline-logos\SC.gif" />
+    <Content Include="FJHTML\images\airline-logos\SD.gif" />
+    <Content Include="FJHTML\images\airline-logos\SE.gif" />
+    <Content Include="FJHTML\images\airline-logos\SF.gif" />
+    <Content Include="FJHTML\images\airline-logos\SG.gif" />
+    <Content Include="FJHTML\images\airline-logos\SH.gif" />
+    <Content Include="FJHTML\images\airline-logos\SI.gif" />
+    <Content Include="FJHTML\images\airline-logos\SJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\SK.gif" />
+    <Content Include="FJHTML\images\airline-logos\SL.gif" />
+    <Content Include="FJHTML\images\airline-logos\SN.gif" />
+    <Content Include="FJHTML\images\airline-logos\SO.gif" />
+    <Content Include="FJHTML\images\airline-logos\SQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\SS.gif" />
+    <Content Include="FJHTML\images\airline-logos\ST.gif" />
+    <Content Include="FJHTML\images\airline-logos\SU.gif" />
+    <Content Include="FJHTML\images\airline-logos\SV.gif" />
+    <Content Include="FJHTML\images\airline-logos\SX.gif" />
+    <Content Include="FJHTML\images\airline-logos\SY.gif" />
+    <Content Include="FJHTML\images\airline-logos\SZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\T5.gif" />
+    <Content Include="FJHTML\images\airline-logos\T6.gif" />
+    <Content Include="FJHTML\images\airline-logos\TB.gif" />
+    <Content Include="FJHTML\images\airline-logos\TD.gif" />
+    <Content Include="FJHTML\images\airline-logos\TF.gif" />
+    <Content Include="FJHTML\images\airline-logos\TG.gif" />
+    <Content Include="FJHTML\images\airline-logos\TH.gif" />
+    <Content Include="FJHTML\images\airline-logos\TI.gif" />
+    <Content Include="FJHTML\images\airline-logos\TJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\TK.gif" />
+    <Content Include="FJHTML\images\airline-logos\TM.gif" />
+    <Content Include="FJHTML\images\airline-logos\TN.gif" />
+    <Content Include="FJHTML\images\airline-logos\TO.gif" />
+    <Content Include="FJHTML\images\airline-logos\TP.gif" />
+    <Content Include="FJHTML\images\airline-logos\TQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\TR.gif" />
+    <Content Include="FJHTML\images\airline-logos\TT.gif" />
+    <Content Include="FJHTML\images\airline-logos\TV.gif" />
+    <Content Include="FJHTML\images\airline-logos\TW.gif" />
+    <Content Include="FJHTML\images\airline-logos\TY.gif" />
+    <Content Include="FJHTML\images\airline-logos\TZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\U2.gif" />
+    <Content Include="FJHTML\images\airline-logos\U4.gif" />
+    <Content Include="FJHTML\images\airline-logos\U5.gif" />
+    <Content Include="FJHTML\images\airline-logos\U6.gif" />
+    <Content Include="FJHTML\images\airline-logos\U8.gif" />
+    <Content Include="FJHTML\images\airline-logos\U9.gif" />
+    <Content Include="FJHTML\images\airline-logos\UA.gif" />
+    <Content Include="FJHTML\images\airline-logos\UB.gif" />
+    <Content Include="FJHTML\images\airline-logos\UC.gif" />
+    <Content Include="FJHTML\images\airline-logos\UD.gif" />
+    <Content Include="FJHTML\images\airline-logos\UE.gif" />
+    <Content Include="FJHTML\images\airline-logos\UF.gif" />
+    <Content Include="FJHTML\images\airline-logos\UG.gif" />
+    <Content Include="FJHTML\images\airline-logos\UH.gif" />
+    <Content Include="FJHTML\images\airline-logos\UI.gif" />
+    <Content Include="FJHTML\images\airline-logos\UJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\UK.gif" />
+    <Content Include="FJHTML\images\airline-logos\UL.gif" />
+    <Content Include="FJHTML\images\airline-logos\UM.gif" />
+    <Content Include="FJHTML\images\airline-logos\UO.gif" />
+    <Content Include="FJHTML\images\airline-logos\UQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\US.gif" />
+    <Content Include="FJHTML\images\airline-logos\UT.gif" />
+    <Content Include="FJHTML\images\airline-logos\UU.gif" />
+    <Content Include="FJHTML\images\airline-logos\UW.gif" />
+    <Content Include="FJHTML\images\airline-logos\UX.gif" />
+    <Content Include="FJHTML\images\airline-logos\UY.gif" />
+    <Content Include="FJHTML\images\airline-logos\UZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\V2.gif" />
+    <Content Include="FJHTML\images\airline-logos\V3.gif" />
+    <Content Include="FJHTML\images\airline-logos\V4.gif" />
+    <Content Include="FJHTML\images\airline-logos\V5.gif" />
+    <Content Include="FJHTML\images\airline-logos\V6.gif" />
+    <Content Include="FJHTML\images\airline-logos\V7.gif" />
+    <Content Include="FJHTML\images\airline-logos\V9.gif" />
+    <Content Include="FJHTML\images\airline-logos\VA.gif" />
+    <Content Include="FJHTML\images\airline-logos\VB.gif" />
+    <Content Include="FJHTML\images\airline-logos\VE.gif" />
+    <Content Include="FJHTML\images\airline-logos\VF.gif" />
+    <Content Include="FJHTML\images\airline-logos\VI.gif" />
+    <Content Include="FJHTML\images\airline-logos\VJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\VL.gif" />
+    <Content Include="FJHTML\images\airline-logos\VM.gif" />
+    <Content Include="FJHTML\images\airline-logos\VN.gif" />
+    <Content Include="FJHTML\images\airline-logos\VO.gif" />
+    <Content Include="FJHTML\images\airline-logos\VP.gif" />
+    <Content Include="FJHTML\images\airline-logos\VQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\VS.gif" />
+    <Content Include="FJHTML\images\airline-logos\VT.gif" />
+    <Content Include="FJHTML\images\airline-logos\VU.gif" />
+    <Content Include="FJHTML\images\airline-logos\VV.gif" />
+    <Content Include="FJHTML\images\airline-logos\VX.gif" />
+    <Content Include="FJHTML\images\airline-logos\VY.gif" />
+    <Content Include="FJHTML\images\airline-logos\VZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\W2.gif" />
+    <Content Include="FJHTML\images\airline-logos\W3.gif" />
+    <Content Include="FJHTML\images\airline-logos\W4.gif" />
+    <Content Include="FJHTML\images\airline-logos\W5.gif" />
+    <Content Include="FJHTML\images\airline-logos\W6.gif" />
+    <Content Include="FJHTML\images\airline-logos\W7.gif" />
+    <Content Include="FJHTML\images\airline-logos\W8.gif" />
+    <Content Include="FJHTML\images\airline-logos\W9.gif" />
+    <Content Include="FJHTML\images\airline-logos\WA.gif" />
+    <Content Include="FJHTML\images\airline-logos\WB.gif" />
+    <Content Include="FJHTML\images\airline-logos\WD.gif" />
+    <Content Include="FJHTML\images\airline-logos\WE.gif" />
+    <Content Include="FJHTML\images\airline-logos\WG.gif" />
+    <Content Include="FJHTML\images\airline-logos\WH.gif" />
+    <Content Include="FJHTML\images\airline-logos\WI.gif" />
+    <Content Include="FJHTML\images\airline-logos\WK.gif" />
+    <Content Include="FJHTML\images\airline-logos\WL.gif" />
+    <Content Include="FJHTML\images\airline-logos\WM.gif" />
+    <Content Include="FJHTML\images\airline-logos\WN.gif" />
+    <Content Include="FJHTML\images\airline-logos\WO.gif" />
+    <Content Include="FJHTML\images\airline-logos\WQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\WR.gif" />
+    <Content Include="FJHTML\images\airline-logos\WS.gif" />
+    <Content Include="FJHTML\images\airline-logos\WT.gif" />
+    <Content Include="FJHTML\images\airline-logos\WU.gif" />
+    <Content Include="FJHTML\images\airline-logos\WV.gif" />
+    <Content Include="FJHTML\images\airline-logos\WW.gif" />
+    <Content Include="FJHTML\images\airline-logos\WX.gif" />
+    <Content Include="FJHTML\images\airline-logos\WY.gif" />
+    <Content Include="FJHTML\images\airline-logos\WZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\X3.gif" />
+    <Content Include="FJHTML\images\airline-logos\XC.gif" />
+    <Content Include="FJHTML\images\airline-logos\XE.gif" />
+    <Content Include="FJHTML\images\airline-logos\XG.gif" />
+    <Content Include="FJHTML\images\airline-logos\XJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\XK.gif" />
+    <Content Include="FJHTML\images\airline-logos\XL.gif" />
+    <Content Include="FJHTML\images\airline-logos\XN.gif" />
+    <Content Include="FJHTML\images\airline-logos\XP.gif" />
+    <Content Include="FJHTML\images\airline-logos\XQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\XR.gif" />
+    <Content Include="FJHTML\images\airline-logos\XT.gif" />
+    <Content Include="FJHTML\images\airline-logos\XW.gif" />
+    <Content Include="FJHTML\images\airline-logos\XY.gif" />
+    <Content Include="FJHTML\images\airline-logos\XZ.gif" />
+    <Content Include="FJHTML\images\airline-logos\Y2.gif" />
+    <Content Include="FJHTML\images\airline-logos\Y4.gif" />
+    <Content Include="FJHTML\images\airline-logos\Y5.gif" />
+    <Content Include="FJHTML\images\airline-logos\Y7.gif" />
+    <Content Include="FJHTML\images\airline-logos\YC.gif" />
+    <Content Include="FJHTML\images\airline-logos\YD.gif" />
+    <Content Include="FJHTML\images\airline-logos\YM.gif" />
+    <Content Include="FJHTML\images\airline-logos\YO.gif" />
+    <Content Include="FJHTML\images\airline-logos\YT.gif" />
+    <Content Include="FJHTML\images\airline-logos\YV.gif" />
+    <Content Include="FJHTML\images\airline-logos\YX.gif" />
+    <Content Include="FJHTML\images\airline-logos\Z2.gif" />
+    <Content Include="FJHTML\images\airline-logos\Z4.gif" />
+    <Content Include="FJHTML\images\airline-logos\Z5.gif" />
+    <Content Include="FJHTML\images\airline-logos\Z7.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZA.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZB.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZE.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZF.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZG.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZH.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZI.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZJ.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZL.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZM.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZQ.gif" />
+    <Content Include="FJHTML\images\airline-logos\ZS.gif" />
+    <Content Include="FJHTML\images\airplane-arrow.svg" />
+    <Content Include="FJHTML\images\airplane.svg" />
+    <Content Include="FJHTML\images\american-express.png" />
+    <Content Include="FJHTML\images\amex_logo.jpg" />
+    <Content Include="FJHTML\images\amsterdam.jpg" />
+    <Content Include="FJHTML\images\arrive-loc.png" />
+    <Content Include="FJHTML\images\arrow-left.svg" />
+    <Content Include="FJHTML\images\arrow-right-pay.png" />
+    <Content Include="FJHTML\images\arrow-right.svg" />
+    <Content Include="FJHTML\images\arrows-down.png" />
+    <Content Include="FJHTML\images\athens.jpg" />
+    <Content Include="FJHTML\images\attach_money-24px.svg" />
+    <Content Include="FJHTML\images\back-bg.jpg" />
+    <Content Include="FJHTML\images\back-bg1.jpg" />
+    <Content Include="FJHTML\images\baggage-slide-img.png" />
+    <Content Include="FJHTML\images\barcelona.jpg" />
+    <Content Include="FJHTML\images\brg-call-icon.png" />
+    <Content Include="FJHTML\images\brg-tag.png" />
+    <Content Include="FJHTML\images\calendar.svg" />
+    <Content Include="FJHTML\images\cashback-icon.png" />
+    <Content Include="FJHTML\images\contact-us.jpg" />
+    <Content Include="FJHTML\images\country-flags\Afghanistan.png" />
+    <Content Include="FJHTML\images\country-flags\Albania.png" />
+    <Content Include="FJHTML\images\country-flags\Algeria.png" />
+    <Content Include="FJHTML\images\country-flags\Andorra.png" />
+    <Content Include="FJHTML\images\country-flags\Angola.png" />
+    <Content Include="FJHTML\images\country-flags\Anguilla.png" />
+    <Content Include="FJHTML\images\country-flags\Argentina.png" />
+    <Content Include="FJHTML\images\country-flags\Armenia.png" />
+    <Content Include="FJHTML\images\country-flags\Aruba.png" />
+    <Content Include="FJHTML\images\country-flags\Australia.png" />
+    <Content Include="FJHTML\images\country-flags\Azerbaijan.png" />
+    <Content Include="FJHTML\images\country-flags\Bahamas.png" />
+    <Content Include="FJHTML\images\country-flags\Bahrain.png" />
+    <Content Include="FJHTML\images\country-flags\Bangladesh.png" />
+    <Content Include="FJHTML\images\country-flags\Barbados.png" />
+    <Content Include="FJHTML\images\country-flags\Belarus.png" />
+    <Content Include="FJHTML\images\country-flags\Belize.png" />
+    <Content Include="FJHTML\images\country-flags\Benin.png" />
+    <Content Include="FJHTML\images\country-flags\Bermuda.png" />
+    <Content Include="FJHTML\images\country-flags\Bhutan.png" />
+    <Content Include="FJHTML\images\country-flags\Bolivia.png" />
+    <Content Include="FJHTML\images\country-flags\Bosnia-and-Herzegovina.png" />
+    <Content Include="FJHTML\images\country-flags\Botswana.png" />
+    <Content Include="FJHTML\images\country-flags\Bouvet-Island.png" />
+    <Content Include="FJHTML\images\country-flags\Brazil.png" />
+    <Content Include="FJHTML\images\country-flags\Brunei.png" />
+    <Content Include="FJHTML\images\country-flags\Bulgaria.png" />
+    <Content Include="FJHTML\images\country-flags\Burundi.png" />
+    <Content Include="FJHTML\images\country-flags\Cambodia.png" />
+    <Content Include="FJHTML\images\country-flags\Cameroon.png" />
+    <Content Include="FJHTML\images\country-flags\Canada.png" />
+    <Content Include="FJHTML\images\country-flags\Cape-Verde.png" />
+    <Content Include="FJHTML\images\country-flags\Cayman-Islands.png" />
+    <Content Include="FJHTML\images\country-flags\Chile.png" />
+    <Content Include="FJHTML\images\country-flags\China.png" />
+    <Content Include="FJHTML\images\country-flags\Colombia.png" />
+    <Content Include="FJHTML\images\country-flags\Comoros.png" />
+    <Content Include="FJHTML\images\country-flags\Cook-Islands.png" />
+    <Content Include="FJHTML\images\country-flags\Costa-Rica.png" />
+    <Content Include="FJHTML\images\country-flags\Croatia.png" />
+    <Content Include="FJHTML\images\country-flags\Cuba.png" />
+    <Content Include="FJHTML\images\country-flags\Curacao.png" />
+    <Content Include="FJHTML\images\country-flags\Czech-Republic.png" />
+    <Content Include="FJHTML\images\country-flags\Democratic-Republic-of-the-Congo.png" />
+    <Content Include="FJHTML\images\country-flags\Denmark.png" />
+    <Content Include="FJHTML\images\country-flags\Djibouti.png" />
+    <Content Include="FJHTML\images\country-flags\Dominican-Republic.png" />
+    <Content Include="FJHTML\images\country-flags\Egypt.png" />
+    <Content Include="FJHTML\images\country-flags\El-Salvador.png" />
+    <Content Include="FJHTML\images\country-flags\Eritrea.png" />
+    <Content Include="FJHTML\images\country-flags\Ethiopia.png" />
+    <Content Include="FJHTML\images\country-flags\Falkland-Islands.png" />
+    <Content Include="FJHTML\images\country-flags\Fiji.png" />
+    <Content Include="FJHTML\images\country-flags\French-Polynesia.png" />
+    <Content Include="FJHTML\images\country-flags\Gambia.png" />
+    <Content Include="FJHTML\images\country-flags\Georgia.png" />
+    <Content Include="FJHTML\images\country-flags\Ghana.png" />
+    <Content Include="FJHTML\images\country-flags\Gibraltar.png" />
+    <Content Include="FJHTML\images\country-flags\Guatemala.png" />
+    <Content Include="FJHTML\images\country-flags\Guinea.png" />
+    <Content Include="FJHTML\images\country-flags\Guyana.png" />
+    <Content Include="FJHTML\images\country-flags\Haiti.png" />
+    <Content Include="FJHTML\images\country-flags\Honduras.png" />
+    <Content Include="FJHTML\images\country-flags\hong-kong.png" />
+    <Content Include="FJHTML\images\country-flags\Hungary.png" />
+    <Content Include="FJHTML\images\country-flags\Iceland.png" />
+    <Content Include="FJHTML\images\country-flags\India.png" />
+    <Content Include="FJHTML\images\country-flags\Indonesia.png" />
+    <Content Include="FJHTML\images\country-flags\Iran.png" />
+    <Content Include="FJHTML\images\country-flags\Iraq.png" />
+    <Content Include="FJHTML\images\country-flags\Israel.png" />
+    <Content Include="FJHTML\images\country-flags\Jamaica.png" />
+    <Content Include="FJHTML\images\country-flags\Japan.png" />
+    <Content Include="FJHTML\images\country-flags\Jordan.png" />
+    <Content Include="FJHTML\images\country-flags\Kazakhstan.png" />
+    <Content Include="FJHTML\images\country-flags\Kenya.png" />
+    <Content Include="FJHTML\images\country-flags\Kuwait.png" />
+    <Content Include="FJHTML\images\country-flags\Kyrgyzstan.png" />
+    <Content Include="FJHTML\images\country-flags\Laos.png" />
+    <Content Include="FJHTML\images\country-flags\Lebanon.png" />
+    <Content Include="FJHTML\images\country-flags\Lesotho.png" />
+    <Content Include="FJHTML\images\country-flags\Liberia.png" />
+    <Content Include="FJHTML\images\country-flags\Libya.png" />
+    <Content Include="FJHTML\images\country-flags\Liechtenstein.png" />
+    <Content Include="FJHTML\images\country-flags\Macedonia.png" />
+    <Content Include="FJHTML\images\country-flags\Madagascar.png" />
+    <Content Include="FJHTML\images\country-flags\Malawi.png" />
+    <Content Include="FJHTML\images\country-flags\Malaysia.png" />
+    <Content Include="FJHTML\images\country-flags\Maldives.png" />
+    <Content Include="FJHTML\images\country-flags\Mauritania.png" />
+    <Content Include="FJHTML\images\country-flags\Mauritius.png" />
+    <Content Include="FJHTML\images\country-flags\Mexico.png" />
+    <Content Include="FJHTML\images\country-flags\Moldova.png" />
+    <Content Include="FJHTML\images\country-flags\Mongolia.png" />
+    <Content Include="FJHTML\images\country-flags\Morocco.png" />
+    <Content Include="FJHTML\images\country-flags\Mozambique.png" />
+    <Content Include="FJHTML\images\country-flags\myanmar.png" />
+    <Content Include="FJHTML\images\country-flags\Namibia.png" />
+    <Content Include="FJHTML\images\country-flags\Nepal.png" />
+    <Content Include="FJHTML\images\country-flags\Nicaragua.png" />
+    <Content Include="FJHTML\images\country-flags\Nigeria.png" />
+    <Content Include="FJHTML\images\country-flags\North Korea.png" />
+    <Content Include="FJHTML\images\country-flags\Oman.png" />
+    <Content Include="FJHTML\images\country-flags\Pakistan.png" />
+    <Content Include="FJHTML\images\country-flags\Panama.png" />
+    <Content Include="FJHTML\images\country-flags\Papua-New-Guinea.png" />
+    <Content Include="FJHTML\images\country-flags\Paraguay.png" />
+    <Content Include="FJHTML\images\country-flags\Peru.png" />
+    <Content Include="FJHTML\images\country-flags\Philippines.png" />
+    <Content Include="FJHTML\images\country-flags\Poland.png" />
+    <Content Include="FJHTML\images\country-flags\Qatar.png" />
+    <Content Include="FJHTML\images\country-flags\Romania.png" />
+    <Content Include="FJHTML\images\country-flags\Russia.png" />
+    <Content Include="FJHTML\images\country-flags\Rwanda.png" />
+    <Content Include="FJHTML\images\country-flags\Saint-Helena.png" />
+    <Content Include="FJHTML\images\country-flags\Samoa.png" />
+    <Content Include="FJHTML\images\country-flags\Sao-Tome-and-Principe.png" />
+    <Content Include="FJHTML\images\country-flags\Saudi-Arabia.png" />
+    <Content Include="FJHTML\images\country-flags\Serbia.png" />
+    <Content Include="FJHTML\images\country-flags\Seychelles.png" />
+    <Content Include="FJHTML\images\country-flags\Sierra-Leone.png" />
+    <Content Include="FJHTML\images\country-flags\Singapore.png" />
+    <Content Include="FJHTML\images\country-flags\Solomon-Islands.png" />
+    <Content Include="FJHTML\images\country-flags\Somalia.png" />
+    <Content Include="FJHTML\images\country-flags\South-Africa.png" />
+    <Content Include="FJHTML\images\country-flags\South-Korea.png" />
+    <Content Include="FJHTML\images\country-flags\South-Sudan.png" />
+    <Content Include="FJHTML\images\country-flags\Sri-Lanka.png" />
+    <Content Include="FJHTML\images\country-flags\Sudan.png" />
+    <Content Include="FJHTML\images\country-flags\Suriname.png" />
+    <Content Include="FJHTML\images\country-flags\Swaziland.png" />
+    <Content Include="FJHTML\images\country-flags\Sweden.png" />
+    <Content Include="FJHTML\images\country-flags\Syria.png" />
+    <Content Include="FJHTML\images\country-flags\Tajikistan.png" />
+    <Content Include="FJHTML\images\country-flags\Tanzania.png" />
+    <Content Include="FJHTML\images\country-flags\Thailand.png" />
+    <Content Include="FJHTML\images\country-flags\Tonga.png" />
+    <Content Include="FJHTML\images\country-flags\Trinidad-and-Tobago.png" />
+    <Content Include="FJHTML\images\country-flags\Tunisia.png" />
+    <Content Include="FJHTML\images\country-flags\Turkey.png" />
+    <Content Include="FJHTML\images\country-flags\Turkmenistan.png" />
+    <Content Include="FJHTML\images\country-flags\Uganda.png" />
+    <Content Include="FJHTML\images\country-flags\Ukraine.png" />
+    <Content Include="FJHTML\images\country-flags\United States.png" />
+    <Content Include="FJHTML\images\country-flags\United-Arab-Emirates.png" />
+    <Content Include="FJHTML\images\country-flags\United-Kingdom.png" />
+    <Content Include="FJHTML\images\country-flags\Uruguay.png" />
+    <Content Include="FJHTML\images\country-flags\Uzbekistan.png" />
+    <Content Include="FJHTML\images\country-flags\Vanuatu.png" />
+    <Content Include="FJHTML\images\country-flags\Venezuela.png" />
+    <Content Include="FJHTML\images\country-flags\Vietnam.png" />
+    <Content Include="FJHTML\images\country-flags\Yemen.png" />
+    <Content Include="FJHTML\images\country-flags\Zambia.png" />
+    <Content Include="FJHTML\images\countryImg.png" />
+    <Content Include="FJHTML\images\depart-date.png" />
+    <Content Include="FJHTML\images\depart-loc.png" />
+    <Content Include="FJHTML\images\departures.svg" />
+    <Content Include="FJHTML\images\discount.svg" />
+    <Content Include="FJHTML\images\down-arrow.png" />
+    <Content Include="FJHTML\images\facebook.svg" />
+    <Content Include="FJHTML\images\flight-24px.svg" />
+    <Content Include="FJHTML\images\flight-time.png" />
+    <Content Include="FJHTML\images\google-icon.svg" />
+    <Content Include="FJHTML\images\hidden-charges.svg" />
+    <Content Include="FJHTML\images\icons8-terms-and-conditions-100.png" />
+    <Content Include="FJHTML\images\infant.svg" />
+    <Content Include="FJHTML\images\last-minute-deal.jpg" />
+    <Content Include="FJHTML\images\LayoverIcon.svg" />
+    <Content Include="FJHTML\images\loading-back-img.png" />
+    <Content Include="FJHTML\images\loading-circle.gif" />
+    <Content Include="FJHTML\images\login-img.jpeg" />
+    <Content Include="FJHTML\images\logo.png" />
+    <Content Include="FJHTML\images\london.jpg" />
+    <Content Include="FJHTML\images\main-bgImg.jpg" />
+    <Content Include="FJHTML\images\map.png" />
+    <Content Include="FJHTML\images\mastercard.png" />
+    <Content Include="FJHTML\images\master_logo.gif" />
+    <Content Include="FJHTML\images\minus.svg" />
+    <Content Include="FJHTML\images\monetization_on-24px.svg" />
+    <Content Include="FJHTML\images\money.png" />
+    <Content Include="FJHTML\images\mycash.png" />
+    <Content Include="FJHTML\images\Newyork.jpg" />
+    <Content Include="FJHTML\images\no-booking-img.png" />
+    <Content Include="FJHTML\images\paris.jpg" />
+    <Content Include="FJHTML\images\passport-icon.png" />
+    <Content Include="FJHTML\images\plane-loading.svg" />
+    <Content Include="FJHTML\images\plane-mybook-bg.jpg" />
+    <Content Include="FJHTML\images\plus.svg" />
+    <Content Include="FJHTML\images\printerIcon.png" />
+    <Content Include="FJHTML\images\profile-dp.png" />
+    <Content Include="FJHTML\images\profile-icon.png" />
+    <Content Include="FJHTML\images\profile-pic.png" />
+    <Content Include="FJHTML\images\return-date.png" />
+    <Content Include="FJHTML\images\return.svg" />
+    <Content Include="FJHTML\images\reward-expired.png" />
+    <Content Include="FJHTML\images\reward-points.png" />
+    <Content Include="FJHTML\images\reward.png" />
+    <Content Include="FJHTML\images\rome.jpg" />
+    <Content Include="FJHTML\images\safeIcon.svg" />
+    <Content Include="FJHTML\images\search.svg" />
+    <Content Include="FJHTML\images\secured.svg" />
+    <Content Include="FJHTML\images\support.svg" />
+    <Content Include="FJHTML\images\sydney.jpg" />
+    <Content Include="FJHTML\images\telephone.jpg" />
+    <Content Include="FJHTML\images\telephone.svg" />
+    <Content Include="FJHTML\images\toronto.jpg" />
+    <Content Include="FJHTML\images\travel-stops.svg" />
+    <Content Include="FJHTML\images\traveler-with-a-suitcase.svg" />
+    <Content Include="FJHTML\images\TravelIcon.png" />
+    <Content Include="FJHTML\images\visa.png" />
+    <Content Include="FJHTML\images\visa_logo.gif" />
+    <Content Include="FJHTML\images\wallet-icon.png" />
+    <Content Include="FJHTML\images\wallet-img.png" />
+    <Content Include="FJHTML\images\world-map-bg.png" />
+    <Content Include="FJHTML\images\world-map.jpg" />
+    <Content Include="FJHTML\images\zurich.jpg" />
+    <Content Include="FJHTML\index.html" />
+    <Content Include="FJHTML\js\all.min.js" />
+    <Content Include="FJHTML\js\angucomplete-alt.js" />
+    <Content Include="FJHTML\js\angular.min.js" />
+    <Content Include="FJHTML\js\bootstrap-select.js" />
+    <Content Include="FJHTML\js\bootstrap.min.js" />
+    <Content Include="FJHTML\js\card-script.js" />
+    <Content Include="FJHTML\js\circle.js" />
+    <Content Include="FJHTML\js\Fj-theme.js" />
+    <Content Include="FJHTML\js\fl-Carousel.js" />
+    <Content Include="FJHTML\js\formvalidate.js" />
+    <Content Include="FJHTML\js\freshslider.min.css" />
+    <Content Include="FJHTML\js\freshslider.min.js" />
+    <Content Include="FJHTML\js\jquery-3.3.1.min.js" />
+    <Content Include="FJHTML\js\jquery-popover-0.0.3.js" />
+    <Content Include="FJHTML\js\jquery.flagstrap.js" />
+    <Content Include="FJHTML\js\jquery.payform.min.js" />
+    <Content Include="FJHTML\js\lightpick.js" />
+    <Content Include="FJHTML\js\moment.min.js" />
+    <Content Include="FJHTML\js\popover_script.js" />
+    <Content Include="FJHTML\js\scrollBar.js" />
+    <Content Include="FJHTML\js\tw-currency-select.js" />
+    <Content Include="FJHTML\loadingProcess.html" />
+    <Content Include="FJHTML\NewDemoFilter.html" />
+    <Content Include="FJHTML\passenger-details.html" />
+    <Content Include="FJHTML\payment-link.html" />
+    <Content Include="FJHTML\Temp\Something.txt" />
+    <Content Include="FJHTML\Temp\TempBookingDataFile.txt" />
+    <Content Include="FJHTML\Temp\TempRequestFile.txt" />
+    <Content Include="fonts\glyphicons-halflings-regular.svg" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Scripts\angular-mocks.js" />
+    <Content Include="Scripts\angular.js" />
+    <Content Include="Scripts\angular.min.js" />
+    <Content Include="Scripts\bootstrap.js" />
+    <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="FJHTML\fonts\abel-v10-latin-regular.eot" />
+    <Content Include="FJHTML\fonts\abel-v10-latin-regular.ttf" />
+    <Content Include="FJHTML\fonts\abel-v10-latin-regular.woff" />
+    <Content Include="FJHTML\fonts\abel-v10-latin-regular.woff2" />
+    <Content Include="FJHTML\fonts\fontawesome-webfont.eot" />
+    <Content Include="FJHTML\fonts\fontawesome-webfont.ttf" />
+    <Content Include="FJHTML\fonts\fontawesome-webfont.woff" />
+    <Content Include="FJHTML\fonts\fontawesome-webfont.woff2" />
+    <Content Include="FJHTML\fonts\FontAwesome.otf" />
+    <Content Include="Scripts\angular.min.js.map" />
+    <None Include="Scripts\jquery-3.4.1.intellisense.js" />
+    <Content Include="Scripts\jquery-3.4.1.js" />
+    <Content Include="Scripts\jquery-3.4.1.min.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.js" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\About.cshtml" />
+    <Content Include="Views\Home\Contact.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\Confirmation\FinalConfirmation.cshtml" />
+    <Content Include="Views\Confirmation\DTCDisplay.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
+    <Content Include="fonts\glyphicons-halflings-regular.woff" />
+    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
+    <Content Include="fonts\glyphicons-halflings-regular.eot" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-theme.min.css.map" />
+    <Content Include="Content\bootstrap-theme.css.map" />
+    <None Include="packages.config" />
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map" />
+    <Content Include="Scripts\jquery-3.4.1.min.map" />
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>62839</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>https://localhost:44379/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
+    <PropertyGroup>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
+    </PropertyGroup>
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>

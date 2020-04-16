@@ -1,0 +1,67 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title></title>
+    <script src="http://localhost:44311/Scripts/angular.js"></script>
+
+    <script src="http://localhost:44311/Scripts/rzslider.min.js"></script>
+    <link href="http://localhost:44311/FJHTML/css/rzslider.min.css" rel="stylesheet" />
+
+
+
+
+    <script>
+        var app = angular.module("test", ['rzSlider']);    
+        
+
+
+        app.controller("testController", function ($scope) {
+            $scope.name1 = "TEST";
+            $scope.name2 = "TEST";
+
+
+            $scope.update = () => {
+                $scope.name1 = "Updated TEST";
+                $scope.name2 = "Updated TEST";
+                $scope.priceslider.options.floor = 200;
+                 $scope.$broadcast('rzSliderForceRender');
+
+            };
+            $scope.priceslider = {
+                min: 1,
+                max: 450,
+                options: {
+                    floor: 1,
+                    ceil: 450,
+                    step: 1,
+                    onChange: function () {
+                        $scope.name1 = $scope.priceslider.min;
+                        $scope.name2 = $scope.priceslider.max;
+                    }
+                },
+            };
+
+           
+        });
+
+
+    </script>
+
+</head>
+<body ng-app="test">
+    <div ng-controller="testController">
+        <input type="text" ng-model="name1" />
+        <input type="text" ng-model="name2" />
+        <input type="button" value="Update" ng-click="update()" />
+
+        <rzslider rz-slider-model="priceslider.min"
+                  rz-slider-high="priceslider.max"
+                  rz-slider-options="priceslider.options"></rzslider>
+
+
+    </div>
+
+
+</body>
+</html>

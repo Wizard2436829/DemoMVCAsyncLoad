@@ -1,0 +1,51 @@
+.loadPro{
+	margin:0px auto;
+	text-align:center;
+	position:relative;
+	padding:20px;
+	margin-bottom:50px;
+	margin-top:50px;
+}
+.loadPro img{width:180px;margin-bottom:10px;}
+.payment-cards{margin-top:20px; margin-bottom:10px;}
+.payment-cards img{width:60px;}
+  #banner {
+    position: relative;
+    width:100%;
+    height:170px;
+	text-align:center;
+  }
+ #banner img{top:-74px; width:620px; position:relative; background-position:top center;}
+
+  #cloud-scroll {
+    background:url(../images/baggage-slide-img.png) repeat-x;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    position: absolute;
+    -webkit-animation: 900000s backgroundScroll infinite linear;
+    -moz-animation: 900000s backgroundScroll infinite linear;
+    -o-animation: 900000s backgroundScroll infinite linear;
+    -ms-animation: 900000s backgroundScroll infinite linear;
+    animation: 900000s backgroundScroll infinite linear;
+  } 
+
+  @-webkit-keyframes backgroundScroll {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -99999999px 0;
+    }
+  }
+  
+  @keyframes backgroundScroll {
+    from {
+      background-position: 0 0;
+    }
+    to {
+      background-position: -99999999px 0;
+    }
+  }

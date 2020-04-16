@@ -1,0 +1,90 @@
+﻿@model DemoConfirmation.Models.DateTimeConvert
+
+@{
+    ViewBag.Title = "DTCDisplay";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="DTConvertApp" ng-controller="DTController">
+
+    <div>
+        <label>
+            Dubai DateTime : {{DXBTime}}
+            Time : {{DXBHrs}}
+        </label>
+    </div>
+
+    <div>
+        <label>
+            San Fransico Time : {{SFOTime}}
+            Time : {{SFOHrs}} : {{SFOMins}}
+        </label>
+    </div>
+
+    <div>
+        <label>
+            Time Difference : {{SomeDTCMethod()}}
+        </label>
+    </div>
+
+    <script src="~/Scripts/angular.min.js"></script>
+    <script type="text/javascript">
+        var angularModule = angular.module("DTConvertApp", [])
+
+        angularModule.controller("DTController", function ($scope,$log) {
+
+            var DTCObj = @Html.Raw(Json.Encode(Model));
+
+            var JSDXBTime = new Date(DTCObj.DXBDateTimeString);
+            $scope.DXBTime = JSDXBTime.toISOString();
+            $scope.DXBHrs = DTCObj.DXBDateTimeString.substr(11,5);            
+
+            console.log(DTCObj.SomeDTOffsetDemoDT);
+
+            var JSSFOTime = new Date(DTCObj.SFODateTimeString);            
+            $scope.SFOTime = JSSFOTime.toISOString();
+            $scope.SFOHrs = JSSFOTime.getHours();
+            $scope.SFOMins = JSSFOTime.getMinutes();
+
+
+            var DTOffsetTempUTCString = new Date(DTCObj.SomeDTOffsetDemoDT).toUTCString();
+            console.log(DTOffsetTempUTCString);
+            //var DTOffsetTempISOString = new Date(DTCObj.SomeDTOffsetDemoDT).toISOString();
+            //console.log(DTOffsetTempISOString);
+            var DTOffsetTempDateString = new Date(DTCObj.SomeDTOffsetDemoDT).toDateString();
+            console.log(DTOffsetTempDateString);
+
+            var ParsingTempVar = new Date(parseInt(DTCObj.SomeDTOffsetDemoDT.substr(6)));
+            console.log(ParsingTempVar);
+            //var DTOffsetTempDateString = new Date(DTCObj.SomeDTOffsetDemoDT).
+            //console.log(DTOffsetTempDateString);
+
+
+
+            $scope.TimeDiff = ((JSDXBTime.getTime()) > (JSSFOTime.getTime())) ? ((JSDXBTime.getTime()) - (JSSFOTime.getTime())) : ((JSSFOTime.getTime()) - (JSDXBTime.getTime()));
+
+            $scope.SomeDTCMethod = function () {
+                var mins = Math.floor((($scope.TimeDiff) / (1000 * 60)) % 60);
+
+                var hrs = Math.floor((($scope.TimeDiff) / (1000 * 60 * 60)) % 24);
+
+                return hrs + " Hrs " + mins + " Mins ";
+            }
+
+            
+
+        });
+
+    </script>
+
+</body>
+
+</html>
+

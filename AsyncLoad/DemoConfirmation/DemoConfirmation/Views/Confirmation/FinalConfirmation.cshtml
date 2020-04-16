@@ -1,0 +1,730 @@
+﻿@model DemoConfirmation.ViewModel.RequestViewModel
+
+@{
+    ViewBag.Title = "FinalConfirmation";
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>Flight Journey</title>
+
+    <link rel="shortcut icon" type="image/x-icon" href="/FJHTML/images/favicon.ico" />
+
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/fj-bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/main-style.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/resultStyle.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/psd-style.css">
+
+    <!--[start]> currency select CSS <![end]-->
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/bootstrap-select.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/tw-currency-select.css">
+
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/font-awesome-animation.min.css">
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/animate.css">
+
+    <link rel="stylesheet" type="text/css" href="/FJHTML/css/device-friendly-style.css">
+    <!--[if lt IE 9]>
+        <script src = "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+        <script src = "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+
+    
+    <script type="text/javascript" src="/FJHTML/js/jquery-3.3.1.min.js"></script>
+    <script type="text/javascript" src="/FJHTML/js/bootstrap.min.js"></script>
+
+    <!--[start]> currency select JS <![end]-->
+    <script type="text/javascript" src="/FJHTML/js/bootstrap-select.js"></script>
+    <script type="text/javascript" src="/FJHTML/js/tw-currency-select.js"></script>
+    @*<script type="text/javascript">
+              var countriesApp = angular.module('currenciesApp', ['tw-currency-select']);
+              countriesApp.controller('CurrencyListController', function($scope) {
+
+                  $scope.currenciesWithNames = [
+                      {code: 'CAD', symbol: '$', name: 'en-CA'},
+                      {code: 'USD', symbol: '$', name: 'en-US'},
+                      {code: 'GBP', symbol: '£', name: 'en-GB'}
+                  ];
+        $scope.selectedCurrency = {code: 'CAD', symbol: '$'};
+                  $scope.otherClicked = function() {
+                      window.alert("Other clicked");
+                  };
+              });
+          </script>*@
+
+
+    @*<script src="/FJHTML/js/google-analytics.js" type="text/javascript"></script>*@
+
+</head>
+
+<body ng-app="myConfrimationApp" ng-controller="ConfirmAppController">
+    <div class="wraper">
+        <header>
+            @*<div class="navtopmenu">
+                    <div class="container">
+                        <div class="navtop pull-left">
+                            <ul class="pull-left">
+                                <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                                <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                                <li><a href="mailto:support@flightjourney.com"><i class="fa fa-envelope"></i> <span>support@flightjourney.com</span> </a></li>
+                            </ul>
+                        </div>
+                        <div class="pull-right">
+                            <div class="curency-lang">
+                                <currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                </currency-select>
+                            </div>
+
+                            <a type="button" class="btn loginBtn btn-primary" data-toggle="modal" href="#LoginModal"><span class="fa fa-unlock-alt mr-1"></span> Login</a>
+                        </div>
+                    </div>
+                    <div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-body">
+                                    <div id="signIn" style="opacity: 1;" data-target-group="idForm" class="animated fadeIn">
+                                        <header class="text-center mb-5">
+                                            <h2 class="h4 mb-0">Sign In your Account</h2>
+                                            <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                        </header>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <span class="fa fa-user"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <span class="fa fa-lock"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-6">
+                                                <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                                                    <input class="custom-control-input" id="rememberMeCheckbox" type="checkbox">
+                                                    <label class="custom-control-label" for="rememberMeCheckbox">
+                                                        Remember Me
+                                                    </label>
+                                                </div>
+                                            </div>
+
+                                            <div class="col-6 text-right">
+                                                <a class="js-animation-link float-right" onclick="show('forgotPassword');" href="javascript:;" data-target="#forgotPassword" data-link-group="idForm" data-animation-in="fadeIn">Forgot Password?</a>
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                                        </div>
+
+                                        <div class="text-center mb-3">
+                                            <p class="text-muted">
+                                                Do not have an account?
+                                                <a class="js-animation-link" onclick="show('signUp');" href="javascript:;" data-target="#signUp" data-link-group="idForm" data-animation-in="fadeIn">Create an Account</a>
+                                            </p>
+                                        </div>
+
+                                        <div class="text-center u-divider-wrapper my-3">
+                                            <span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                        </div>
+                                        <div class="row mx-gutters-2 mb-4">
+                                            <div class="col-sm-6 mb-2 mb-sm-0">
+                                                <button type="button" class="btn btn-block btn-facebook">
+                                                    <span class="fa fa-facebook-f mr-2"></span>
+                                                    Signin with Facebook
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <button type="button" class="btn btn-block btn-google">
+                                                    <span class="fa fa-google-plus mr-2"></span>
+                                                    Signin with google +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="signUp" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                        <header class="text-center mb-5">
+                                            <h2 class="h4 mb-0">Create your Account</h2>
+                                            <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                        </header>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <span class="fa fa-user"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <span class="fa fa-lock"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+
+                                                        <span class="fa fa-lock"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="confirmPassword" required placeholder="Confirm Password" aria-label="Confirm Password" data-msg="Password does not match the confirm password." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-block btn-primary">Signup</button>
+                                        </div>
+
+                                        <div class="text-center mb-3">
+                                            <p class="text-muted">
+                                                Have an account?
+                                                <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">
+                                                    Sign In
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                        <div class="text-center u-divider-wrapper my-3">
+                                            <span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                        </div>
+
+                                        <div class="row mx-gutters-2 mb-4">
+                                            <div class="col-sm-6 mb-2 mb-sm-0">
+                                                <button type="button" class="btn btn-block btn-facebook">
+                                                    <span class="fa fa-facebook-f mr-2"></span>
+                                                    Signin with Facebook
+                                                </button>
+                                            </div>
+                                            <div class="col-sm-6">
+                                                <button type="button" class="btn btn-block btn-google">
+                                                    <span class="fa fa-google-plus mr-2"></span>
+                                                    Signin with google +
+                                                </button>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div id="forgotPassword" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                        <header class="text-center mb-5">
+                                            <h2 class="h4 mb-0">Recover account</h2>
+                                            <p>Enter your email address and an email with instructions will be sent to you.</p>
+                                            <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                        </header>
+
+                                        <div class="mb-3">
+                                            <div class="input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text">
+                                                        <span class="fa fa-user"></span>
+                                                    </span>
+                                                </div>
+                                                <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                            </div>
+                                        </div>
+
+                                        <div class="mb-3">
+                                            <button type="submit" class="btn btn-block btn-primary">Recover Account</button>
+                                        </div>
+
+                                        <div class="text-center mb-3">
+                                            <p class="text-muted">
+                                                Have an account?
+                                                <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">
+                                                    Signin
+                                                </a>
+                                            </p>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>*@
+            <nav class="navbar navbar-default">
+                <div class="container">
+                    <div class="flex-container">
+                        <div class="navbar-header flex-item">
+                            <a class="navbar-brand" href="#"><img src="/FJHTML/images/logo.png" alt="Flight Journey" class="img-responsive"></a>
+                        </div>
+                        <ul class="nav navbar-nav flex-item hidden-xs" id="myMenu">
+                            <li class="active"><a href="#" class="Vbtn-2">Home</a></li>
+                            <li><a href="#" class="Vbtn-2">Flights</a></li>
+                            <li><a href="#" class="Vbtn-2">My Booking</a></li>
+                            <li><a href="#" class="Vbtn-2">Contact Us</a></li>
+                        </ul>
+                        <div class="callUs hidden-xs">
+                            <p class="bookOnline">Book online or call:</p>
+                            <div class="phoneNum"><a href="tel:+1-866-248-8940" class=""> <b> +1-866-248-8940</b></a></div>
+                        </div>
+                        <div class="menubar visible-xs">
+                            <button class="btn btn-bar dropdown-toggle " type="button" id="my-navmenu">
+                                <span class="fa fa-bars"></span>
+                            </button>
+                            <div class="overlay"></div>
+                            <div class="slidable-nav">
+                                <div class="slidable-nav-header">
+                                    <span><strong>Quick search</strong></span>
+                                    <a href="#" class="btn-nav-close slidable-close pull-right"><span class="fa fa-close"></span></a>
+                                </div>
+                                <ul id="navi">
+                                    <li><a href="#">Home</a></li>
+                                    <li><a href="#">Flights</a></li>
+                                    <li><a href="#">Hotels</a></li>
+                                    <li><a data-toggle="modal" href="#LoginModal"> Login / Register</a></li>
+                                    <li role="separator" class="divider"></li>
+                                    <li><a href="#">About Us</a></li>
+                                    <li><a href="#">Contact Us</a></li>
+                                    <li><a href="#">Term and Conditions</a></li>
+                                    <li><a href="#">Privacy Policy</a></li>
+                                    <li><a href="#">Faq's</a></li>
+
+                                    @*<div class="currency-change">
+                                            <p>Change language/currency</p>
+                                            <currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+                                            </currency-select>
+                                        </div>*@
+
+                                    <div class="phone-wrap">
+                                        <p>Book online or call:</p>
+                                        <div class="ph-num"><a href="tel:+1-866-248-8940"><i class="fa fa-phone-square"></i> +1-866-248-8940</a></div>
+                                    </div>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <div class="psd-wrap">
+            <div class="psd-content">
+                <div class="psd-confir-head">
+                    <div class="psd-confir-title">
+                        <h4><i class="fa fa-thumbs-o-up faa-vertical animated"></i> Congratulations, Your Booking is Confirmed</h4>
+                    </div>
+                </div>
+                <div class="psd-confir-term">
+                    <h4>Dear valued customer,</h4>
+
+                    <p>Your online booking is confirmed.</p>
+                    <p>
+                        Thank you for booking online with Flight Journey. We are currently processing your booking and payment. Please note that we can not
+                        guarantee the prices shown here until your payment has been cleared and your tickets have been issued. Please be patient and we
+                        will send you the final confirmation email as soon as possible. During this time, please do not try to book again as this may duplicate
+                        your booking and payment.
+                    </p>
+
+                    <div class="booking-status">
+                        <h5>Flight Booking Status</h5>
+                        <p>
+                            We are processing your reservation and will send you confirmation once this has completed and ticket has been issued.
+                            Please note that your purchase will be complete only after the ticket has been issued, and durring this time period,
+                            the fares are subject to change and may increase. In the rare event the fares increase,
+                            you may opt to cancel your Booking at no cost to you.
+                        </p>
+                    </div>
+                    <div class="psd-name-list" ng-init="LoadPaxNameArray()">
+                        <h4>Passenger Details</h4>
+                        <ul>
+                            <li ng-repeat="TempPax in PaxArrayNames"> {{$index+1}}. {{TempPax.salutation}}  {{TempPax.PaxFirstName}}  {{TempPax.PaxMiddleName}}  {{TempPax.PaxLastName}}</li>
+                            @*<li>2.Mr Tawatao melardo barreto </li>
+                                <li>3.Mr Laxmi Narayana </li>
+                                <li>4.Mr Tawatao melardo barreto </li>
+                                <li>5.Mr Laxmi Narayana  </li>
+                                <li>6.Mr Tawatao melardo barreto </li>*@
+                        </ul>
+
+                    </div>
+                </div>
+                <div class="psd-trip-head">
+                    <div class="psd-head-left">
+                        <div class="psd-head-icon"><i class="fa fa-plane"></i></div>
+                        <div class="psd-head-title">
+                            <h4>Check Your itinerary </h4>
+                            <p>(* All the times are local to Airports)</p>
+                        </div>
+                    </div>
+                    <div class="psd-head-right">
+                        <p class="incTax">Total price</p>
+                        <h4 class="psd-head-price">1070.26 <small>CAD</small></h4>
+                        <p class="incTax">* inc. all taxes and fees</p>
+                    </div>
+                </div>
+                <div id="FlightDetails">
+                    <div class="flightInfo-list" ng-repeat="TempLeg in BookingDataJSObj.iternary.Leg">
+
+                        <div class="timelineInfo" ng-init="ValidateLayovers(TempLeg)">
+                            <div class="otb-wrap"><span class="otbText">Departure:</span> {{TempLeg.IntialDepartureAirport.Airport.Name}} - {{TempLeg.FinalArrivalAirport.Airport.Name}}  <p class="otbText-path"></p></div>
+
+                            <div class="timeline-segList" ng-repeat="TempSegment in TempLeg.Segment">
+                                <div class="airlineWrap">
+                                    <div class="airlineImg"><img class="airLogoImg" src="/FJHTML/images/airline-logos/{{TempSegment.MarketingCarrier.Airline.Code}}.gif" alt="{{TempSegment.MarketingCarrier.Airline.Name}}"></div>
+                                    <div class="date-duration">
+                                        <div class="date-Text">{{TempSegment.MarketingCarrier.Airline.Name}}	({{TempSegment.FlightNumber}}) | Operated by {{TempSegment.OperatingCarrier.Airline.Name}}</div>
+                                        <div class="flt-inc-icon">
+                                            <div class="in-flightText">
+                                                <i class="fa fa-wifi"></i> <i class="fa fa-plug"></i> <i class="fa fa-cutlery"></i>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="timeline-seg-Item">
+
+                                    <div class="timeline-dept">
+                                        <div class="depTime">
+                                            <p class="depTime-text">{{TempSegment.DepartureTime}} </p>
+                                            <p class="depdate-text">{{TempSegment.DepartureDate}}</p>
+                                        </div>
+                                        <div class="depDest">
+                                            <p class="tripCity">{{TempSegment.DepartureAirport.Airport.Name}} ({{TempSegment.DepartureAirport.Airport.Code}}),  {{TempSegment.DepartureAirport.Airport.Country}} </p>
+                                            <p class="terminal">Departure Terminal : {{TempSegment.DepartureTerminal}} </p>
+                                        </div>
+                                    </div>
+
+                                    <div class="timeline-arrv">
+                                        <div class="depTime">
+                                            <p class="depTime-text">{{TempSegment.ArrivalTime}} </p>
+                                            <p class="depdate-text">{{DateFormatCSToJS(TempSegment.ArrivalDate)}}</p>
+                                        </div>
+                                        <div class="depDest">
+                                            <p class="tripCity">{{TempSegment.ArrivalAirport.Airport.Name}} ({{TempSegment.ArrivalAirport.Airport.Code}}),{{TempSegment.ArrivalAirport.Airport.Country}} </p>
+                                            <p class="terminal">Arrival Terminal : {{TempSegment.ArrivalTerminal}} </p>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="timelineLayover" ng-disable="LayoverEnableDisable">
+                                    <div class="layoverIcon">
+                                        <i class="fa fa-plane"></i>
+                                    </div>
+                                    <div class="layoverText">
+                                        {{TempLayoverObj.Name}} ({{TempLayoverObj.Code}}) - 01 hours 14 mins Layover
+                                    </div>
+                                </div>
+
+                            </div>
+
+
+                            <div class="baggage-in">
+                                <div class="baggage-inText">
+                                    <span class="fcb"><i class="fa fa-suitcase"></i> Check In Baggage: 1PC/Adult</span>
+                                    <span class="fhb"><i class="fa fa-shopping-bag"></i> Hand Baggage: 7 Kg/Adult</span>
+                                </div>
+                                <div class="jd-info jd"><i class="fa fa-clock-o"></i> Journey duration: {{(TempLeg.TotalJourneyTime)/60}}h  {{(TempLeg.TotalJourneyTime)%60}}m  </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <div class="local-wrap">
+                        <div class="">* All the times are local to Airports</div>
+                    </div>
+                </div>
+
+                <div class="psd-confir-term">
+                    <h5>Fare Rules:</h5>
+
+                    <p>Cancellation Fee</p>
+
+                    <p>
+                        Airline Fee* - This is a non-refundable ticket.<br>
+                        Flight Journey Admin Fee - CAD 150 per passenger.<br>
+                        Partly utilized tickets cannot be cancelled.
+                    </p>
+
+                    <h5>Change Fee</h5>
+
+                    <p>
+                        Airline Fee* - CAD 167 per passenger + fare difference (if applicable).<br>
+                        Flight Journey Admin Fee - CAD 150 per passenger.
+                    </p>
+
+                    <p>
+                        *Airlines stop accepting cancellation/change requests 4 - 72 hours before departure of the flight, depending on the airline.
+                        The airline fee is indicative based on an automated interpretation of airline fare rules.
+                        Flight Journey doesn't guarantee the accuracy of this information.
+                        The change/cancellation fee may also vary based on fluctuations in currency conversion rates.
+                        For exact cancellation/change fee, please call us at our customer care number.
+                    </p>
+
+                </div>
+
+                <div class="psd-confir-term">
+                    <h5>Booking Rules:</h5>
+
+                    <p>Book with confidence: We offer a 4 hour Full Refund Guarantee. </p>
+
+                    <h5>Details</h5>
+
+                    <p>Fare is non-refundable, name change is not permitted and ticket is non-transferable.</p>
+
+                    <p>Date changes will incur penalty and fees (airline penalty plus any fare difference plus our processing service fee) and is based on availability of flight at the time of change.</p>
+
+                    <p> Date change after departure must be done by the airline directly (airline penalty plus any fare difference will apply and is based on availability of flight at the time of change).</p>
+
+                    <p>Routing change will incur penalty and fees (airline penalty plus any fare difference plus our processing service fee will apply and is based on availability of flight at the time of change).</p>
+                    <p> Contact our 24/7 toll free customer service to make any changes.</p>
+                    <p>Prior to completing the booking in the Terms and Conditions, you should review our service fees for exchanges, changes, refunds and cancellations.</p>
+
+                    <div class="bg-warning bg-note">
+                        <strong>Note:</strong> As Airlines have frequent schedule changes, please call the Airline 24 hours prior to scheduled departure to reconfirm your flight details.
+                    </div>
+                </div>
+                <div class="psd-confir-term">
+                    <p>For Air Canada Online Check-in Click Here</p>
+                    <p>Please note this booking is not refundable and not changeable.</p>
+
+                    <p>We wish you a pleasant journey.</p>
+
+                    <p>Thank you,</p>
+                    <p>With Regards,</p>
+
+                    <p>
+                        <strong>FlightJourney.com</strong>,<br>
+                        1875, Lockeway Dr Suite#702,<br>
+                        Alpharetta GA 30004,<br>
+                        United States of America,<br>
+                        Tel: +1-866-248-8940 (USA),<br>
+                        Tel: +1-866-739-2998 (Canada),<br>
+                        Email id: support@flightjourney.com.
+                    </p>
+                </div>
+            </div>
+
+            <div class="psd-right-wrap">
+                <div class="psd-tripImg">
+                    <div class="psd-tripImg-head">
+                        <img src="/FJHTML/images/back-bg.jpg" alt="destination image">
+                    </div>
+                    <div class="psd-tripImg-body">
+                        <div class="psd-tripImg-list">
+                            <div class="pull-left">Trip Amount</div>
+                            <div class="pull-right">1312.19 CAD</div>
+                        </div>
+                        <div class="psd-tripImg-list">
+                            <div class="pull-left red">Promocode</div>
+                            <div class="pull-right red">- 0.00 CAD</div>
+                        </div>
+                        <div class="psd-tripImg-footer">
+                            <div class="trip-amount-text">Total Amount</div>
+                            <div class="trip-amount-price">
+                                <h5>1044.33 <small>CAD</small></h5>
+                                <p>incl. all taxes and fees</p>
+                            </div>
+                        </div>
+                        <p class="green"><i class="fa fa-check"></i> Flight Journey Price Guarantee</p>
+
+                    </div>
+                </div>
+
+                <div class="pas-needHelp">
+                    <div class="pas-needHelp-inner">
+                        <img src="/FJHTML/images/telephone.svg" alt="Phone Icon">
+                        <h3> Need Assistance?</h3>
+                        <p> Our experts are ready to help you plan your next vacation. Please give us a call </p>
+                    </div>
+                    <div class="pas-needText">
+                        <div class="pas-needText-cell"> US</div>
+                        <div class="pas-needNum-cell"><a href="tel:+1-866-248-8940" class=""> +1-866-248-8940 </a></div>
+                    </div>
+                    <div class="pas-needText">
+                        <div class="pas-needText-cell">Canada</div>
+                        <div class="pas-needNum-cell"><a href="tel:+1-866-248-8940" class="">  +1-866-248-8940 </a></div>
+                    </div>
+
+                    <div class="pas-needHelp-inner">
+                        <p>You can write to us <a href="mailto:support@flightjourney.com">support@flightjourney.com</a></p>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+
+        <footer class="footer">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                        <div class="Pay-methods">
+                            <strong>Payment methods we accept: </strong>
+                            <span class="fa fa-cc-visa"></span>
+                            <span class="fa fa-cc-mastercard"></span>
+                            <span class="fa fa-cc-amex"></span>
+                        </div>
+                        <div class="foot-social">
+                            <div class="help-left"><strong>Helpline: </strong> <a href="tel:+1-866-248-8940"> +1-866-248-8940</a></div>
+                            <div class="Follow-right">
+                                <strong>Follow us:</strong>
+                                <a href="" target="_blank"><span class="fa fa-facebook-f"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-twitter"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-google-plus"></span></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <hr class="footer-line">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                        <div class="footer-widget widget-border">
+                            <div class="footer-title">Security</div>
+                            <div class="secur-imgs">
+
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                        <div class="footer-widget widget-border">
+                            <div class="footer-title">Quick Links</div>
+                            <ul class="list-unstyled">
+                                <li><a href="#">Home</a></li>
+                                <li><a href="#">Flights</a></li>
+                                <li><a href="#">My Bookings</a></li>
+                                <li><a href="#">Log in/Sign up</a></li>
+                                <li><a href="#">Date Change</a></li>
+                                <li><a href="#">Customer Support</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                        <div class="footer-widget widget-border">
+                            <div class="footer-title">Support</div>
+                            <ul class="list-unstyled">
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                                <li><a href="#">Sitemap</a></li>
+                                <li><a href="#">Terms & Conditions</a></li>
+                                <li><a href="#">Privacy Policy</a></li>
+                                <li><a href="#">FAQ’s</a></li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                        <div class="footer-widget">
+                            <div class="footer-title">Corporate Address:</div>
+                            <address>
+                                Vyoma Travels Inc,<br>
+                                1875, Lockeway Dr Suite#702,<br>
+                                Alpharetta GA 30004,<br>
+                                United States of America.<br>
+                                Tel: <a href="tel:+1-866-248-8940">+1-866-248-8940</a> (USA) <br>
+                                Tel: <a href="tel:+1-866-739-2998">+1-866-739-2998</a> (Canada)<br>
+                                Email: <a href="mailto:support@flightjourney.com">support@flightjourney.com</a><br>
+                                Fax:  +1-678-669-2750
+                            </address>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="tiny-footer">
+                <div class="container">
+                    <div class="row">
+                        <div class="scrollup" href="#"><i class="fa fa-arrow-up"></i></div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+                            <p>Copyright © 2018 Vyoma Travels Inc - All Rights Reserved. <br> California: CST #2115700-50, Florida: ST39170, Iowa: SOT #1160 WA#603373092</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+
+    <script type="text/javascript" src="/FJHTML/js/Fj-theme.js"></script>
+    <script type="text/javascript" src="/FJHTML/js/popover_script.js"></script>
+
+    <script type="text/javascript" src="/FJHTML/js/jquery.payform.min.js"></script>
+    <script type="text/javascript" src="/FJHTML/js/card-script.js"></script>
+
+    <script type="text/javascript" src="/FJHTML/js/scrollBar.js"></script>
+    <script src="~/Scripts/angular.js"></script>
+
+    <script type="text/javascript">
+
+        var confirmApp = angular.module("myConfrimationApp", []);
+
+        confirmApp.controller("ConfirmAppController", function ($scope, $window, $log, $http) {
+
+            $scope.BookingDataJSObj = @Html.Raw(Json.Encode(Model.MyBookingData));
+
+            $scope.LayoverEnableDisable = true;
+            $scope.PaxArrayNames = [];
+
+            $scope.LoadPaxNameArray = function () {
+                angular.forEach($scope.BookingDataJSObj.paxInfo.paxList, function (TempPax) {
+                    $scope.PaxArrayNames.push(TempPax);
+                });
+            }
+
+            $scope.ValidateLayovers = function (TempLegObj) {
+                $scope.LayoverEnableDisable = (TempLegObj.Stops.Airport !== null && TempLegObj.Stops.Airport !== undefined) ? false : true;
+            }
+
+            $scope.LoopThroughLayovers = function (tempLeg, tempCounter) {
+                $scope.TempLayoverObj = tempLeg.Stops.Airport[tempCounter];
+            }
+
+            $scope.ConvertDateTime = function (SomeDate) {
+                //var Somedate = new Date(Date.parse(SomeDate));
+                var AlphaDate = new Date(SomeDate);
+                return AlphaDate;
+            }
+
+            $scope.DateFormatCSToJS = function (someDate) {
+                var date = new Date(parseInt(someDate.substr(6)));
+                return date.toString().substring(1, 10);
+            }
+
+        });
+
+    </script>
+
+
+
+
+
+    <script type="text/javascript">
+        //scrollBox booking terms js
+        $(".sb-container").scrollBox();
+    </script>
+
+</body>
+</html>
+
+
+

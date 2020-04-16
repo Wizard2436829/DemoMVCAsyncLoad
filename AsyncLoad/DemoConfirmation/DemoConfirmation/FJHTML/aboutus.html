@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="currenciesApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Flight Journey</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="css/fj-bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/main-style.css">
+
+<!--[start]> currency select CSS <![end]-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+<link rel="stylesheet" type="text/css" href="css/tw-currency-select.css">
+
+
+<link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
+<link rel="stylesheet" type="text/css" href="css/font-awesome-animation.min.css">
+<link rel="stylesheet" type="text/css" href="css/animate.css">
+
+<link rel="stylesheet" type="text/css" href="css/device-friendly-style.css">
+
+
+<!--[if lt IE 9]>         
+    <script src = "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    <script src = "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+    
+    <noscript>
+    <div class="nojs"><h5>JavaScript is not enabled.</h5></div>
+	</noscript>
+   
+<script type="text/javascript" src="js/angular.min.js"></script> 
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+
+<!--[start]> currency select JS <![end]-->
+<script type="text/javascript" src="js/bootstrap-select.js"></script> 
+<script type="text/javascript" src="js/tw-currency-select.js"></script>
+<script type="text/javascript">
+        var countriesApp = angular.module('currenciesApp', ['tw-currency-select']);
+        countriesApp.controller('CurrencyListController', function($scope) {
+
+            $scope.currenciesWithNames = [
+                {code: 'CAD', symbol: '$', name: 'en-CA'},
+                {code: 'USD', symbol: '$', name: 'en-US'},
+                {code: 'GBP', symbol: '£', name: 'en-GB'}
+            ];
+  $scope.selectedCurrency = {code: 'CAD', symbol: '$'};
+            $scope.otherClicked = function() {
+                window.alert("Other clicked");
+            };
+        });
+    </script>
+
+
+<script src="js/google-analytics.js" type="text/javascript"></script>   
+</head>
+
+<body ng-controller="CurrencyListController">
+<div class="wraper">
+<header>
+<div class="navtopmenu">
+<div class="container">
+	<div class="navtop pull-left">
+	<ul class="pull-left">
+    	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="mailto:support@flightjourney.com"><i class="fa fa-envelope"></i> <span>support@flightjourney.com</span> </a></li>
+ 	</ul>
+    </div>
+    <div class="pull-right">
+    	<div class="curency-lang">
+       	<currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+</currency-select>	
+      	</div>
+            
+        <a type="button" class="btn loginBtn btn-primary" data-toggle="modal" href="#LoginModal"><span class="fa fa-unlock-alt mr-1"></span> Login</a>
+	</div>
+</div>
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                           		<div class="modal-body">
+                              		<div id="signIn" style="opacity: 1;" data-target-group="idForm" class="animated fadeIn">
+                                      	<header class="text-center mb-5">
+                                        <h2 class="h4 mb-0">Sign In your Account</h2>
+                                        <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                      </header>
+    
+                                      	<div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-user"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                        </div>
+                                      </div>
+    
+                                      	<div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-lock"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                        </div>
+                                      </div>
+                                      	<div class="row mb-3">
+                                        <div class="col-6">
+                                          <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                                            <input class="custom-control-input" id="rememberMeCheckbox" type="checkbox">
+                                            <label class="custom-control-label" for="rememberMeCheckbox">
+                                              Remember Me
+                                            </label>
+                                          </div>
+                                        </div>
+                            
+                                        <div class="col-6 text-right">
+                                          <a class="js-animation-link float-right" onclick="show('forgotPassword');" href="javascript:;" data-target="#forgotPassword" data-link-group="idForm" data-animation-in="fadeIn">Forgot Password?</a>
+                                        </div>
+                                      </div>
+                            
+                                      	<div class="mb-3">
+                                        <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                                      </div>
+                        
+                                      	<div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Do not have an account?
+                                          <a class="js-animation-link" onclick="show('signUp');" href="javascript:;" data-target="#signUp" data-link-group="idForm" data-animation-in="fadeIn">Create an Account</a>
+                                        </p>
+                                      </div>
+                                      
+                                      	<div class="text-center u-divider-wrapper my-3">
+                                    		<span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                    	</div>
+                                 		<div class="row mx-gutters-2 mb-4">
+                                    <div class="col-sm-6 mb-2 mb-sm-0">
+                                      <button type="button" class="btn btn-block btn-facebook">
+                                        <span class="fa fa-facebook-f mr-2"></span>
+                                        Signin with Facebook
+                                      </button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <button type="button" class="btn btn-block btn-google">
+                                        <span class="fa fa-google-plus mr-2"></span>
+                                        Signin with google +
+                                      </button>
+                                    </div>
+                                  </div>
+                        			</div>
+                                    
+                                    <div id="signUp" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                          <header class="text-center mb-5">
+                                            <h2 class="h4 mb-0">Create your Account</h2>
+                                            <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                          </header>
+
+                                          <div class="mb-3">
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <span class="fa fa-user"></span>
+                                                </span>
+                                              </div>
+                                              <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                            </div>
+                                          </div>
+
+                                          <div class="mb-3">
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <span class="fa fa-lock"></span>
+                                                </span>
+                                              </div>
+                                              <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                            </div>
+                                          </div>
+
+                                      	<div class="mb-3">
+                                        	<div class="input-group">
+                                          		<div class="input-group-prepend">
+                                            		<span class="input-group-text">
+
+                                              		<span class="fa fa-lock"></span>
+                                            		</span>
+                                          		</div>
+                                          		<input class="form-control" name="confirmPassword" required placeholder="Confirm Password" aria-label="Confirm Password" data-msg="Password does not match the confirm password." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                        	</div>
+                                      	</div>
+
+                                        <div class="mb-3">
+                                        	<button type="submit" class="btn btn-block btn-primary">Signup</button>
+                                     	</div>
+                            
+                                      	<div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Have an account?
+                                          <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">Sign In
+                                          </a>
+                                        </p>
+                                      </div>
+                                      
+                                     	<div class="text-center u-divider-wrapper my-3">
+                                        	<span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                        </div>
+
+                                 		<div class="row mx-gutters-2 mb-4">
+                                    <div class="col-sm-6 mb-2 mb-sm-0">
+                                      <button type="button" class="btn btn-block btn-facebook">
+                                        <span class="fa fa-facebook-f mr-2"></span>
+                                        Signin with Facebook
+                                      </button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <button type="button" class="btn btn-block btn-google">
+                                        <span class="fa fa-google-plus mr-2"></span>
+                                        Signin with google +
+                                      </button>
+                                    </div>
+                                  </div>
+                                	</div>
+                                    
+                                   	<div id="forgotPassword" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                      <header class="text-center mb-5">
+                                        <h2 class="h4 mb-0">Recover account</h2>
+                                        <p>Enter your email address and an email with instructions will be sent to you.</p>
+                                        <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                      </header>
+
+                                      <div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-user"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                        </div>
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <button type="submit" class="btn btn-block btn-primary">Recover Account</button>
+                                      </div>
+                            
+                                      <div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Have an account?
+                                          <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">Signin
+                                          </a>
+                                        </p>
+                                      </div>
+        	
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+</div>
+<nav class="navbar navbar-default">
+<div class="container">
+      <div class="flex-container">  
+        <div class="navbar-header flex-item">
+          <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Flight Journey" class="img-responsive"></a>
+        </div>
+        <ul class="nav navbar-nav flex-item hidden-xs" id="myMenu">
+          <li class="active"><a href="#" class="Vbtn-2">Home</a></li>
+          <li><a href="#" class="Vbtn-2">Flights</a></li> 
+          <li><a href="#" class="Vbtn-2">My Booking</a></li>
+          <li><a href="#" class="Vbtn-2">Contact Us</a></li>
+        </ul>
+        <div class="callUs hidden-xs">
+        	<p class="bookOnline">Book online or call:</p> 
+            <div class="phoneNum"><a href="tel:+1-866-248-8940" class=""> <b> +1-866-248-8940</b></a></div>
+        </div>
+          <div class="menubar visible-xs">
+            <button class="btn btn-bar dropdown-toggle " type="button" id="my-navmenu">
+              <span class="fa fa-bars"></span>
+            </button>
+            <div class="overlay"></div>
+            <div class="slidable-nav">
+                <div class="slidable-nav-header">
+                	<span><strong>Quick search</strong></span>
+                	<a href="#" class="btn-nav-close slidable-close pull-right"><span class="fa fa-close"></span></a>
+           		</div>
+            	<ul id="navi">
+                  	<li><a href="#">Home</a></li>
+                  	<li><a href="#">Flights</a></li> 
+                  	<li><a href="#">Hotels</a></li>
+                    <li><a data-toggle="modal" href="#LoginModal"> Login / Register</a></li>
+                  	<li role="separator" class="divider"></li>
+                  	<li><a href="#">About Us</a></li> 
+                  	<li><a href="#">Contact Us</a></li>
+                  	<li><a href="#">Term and Conditions</a></li>
+                  	<li><a href="#">Privacy Policy</a></li>
+                  	<li><a href="#">Faq's</a></li>
+
+                    <div class="currency-change">
+                    	<p>Change language/currency</p>
+                        <currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+</currency-select>
+                    </div>
+                        
+                    <div class="phone-wrap">
+                    	<p>Book online or call:</p>
+                    	<div class="ph-num"><a href="tel:+1-866-248-8940"><i class="fa fa-phone-square"></i> +1-866-248-8940</a></div>
+                    </div>
+                </ul>
+            </div>
+          </div>
+        </div>  
+      </div>
+</nav>
+</header>
+
+<section class="about-wrap">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<h2>About Us</h2>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="breadcrumb-wrap">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<ul class="breadcrumb">
+                	<li>Home</li>
+                    <li><a href="#">About us</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<section class="about-body">
+	<div class="container">
+    	<div class="row">
+                <div class="col-md-12">
+                    <p>We, at Flight Journey, are committed to providing the best end-to-end service creating perfect vacations that far exceed every customer's expectations every step of the way. Our desire is to provide you with truly unforgettable opportunities by doing something you never did before and to create new memories and experiences.</p>
+                    <p>Flight Journey has started their journey with a commitment to provide low fare best travel deals with high quality customer service. We are specialized with our wide range of travel products including flights, hotels, vacation packages, cars and travel insurance. Flight Journey is committed to providing great travel at cheapest fare available. Currently Flight Journey is introducing short and long haul flight deals but we will promise, very soon you will see hotels, holiday packages and rental car deals on our web site.</p>
+                    <p>Flight Journey is able to offer travel products at a higher discount on standard prices. The company has close relationships with leading travel suppliers which enable it to offer discounts. Along with other offered travel products, we have a particular specialty in long and mid haul destinations including Asia, Europe, Far East and the Australia.</p>
+                    <p>At Flight Journey, we build our business being innovative and pro-active.Our dedicated, passionate IT and business team developed a customized unique search and booking engine and user friendly website ensure that our customers keep returning. Highly trained and experienced customer service agents provide you the best customer service. Our web site is developed to minimize your questions before you book but if you still need to contact us, please do so by contacting us via email / phone or fax.</p>
+                </div>
+            </div>
+    </div>
+</section>
+<section class="about-icon-wrap">
+	<div class="container">
+    	<div class="row">
+            <div class="col-md-4 col-sm-4 col-xs-12">
+            	<div class="about-icon-cont">
+                	<div class="about-icon"><i class="fa fa-ticket"></i></div>
+                    <div class="about-icon-text">
+                    	<h5>Easy Booking </h5>
+                        <p>The fastest and the most convenient way to book your trip. Search, pick and save.</p>
+                    </div>
+                </div>	
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+            	<div class="about-icon-cont">
+                	<div class="about-icon"><i class="fa fa-thumbs-o-up"></i></div>
+                    <div class="about-icon-text">
+                    	<h5> Best Prices </h5>
+                        <p>Explore our lowest price to destinations worldwide, guaranteed</p>
+                    </div>
+                </div>	
+            </div>
+            <div class="col-md-4 col-sm-4 col-xs-12">
+            	<div class="about-icon-cont">
+                	<div class="about-icon"><i class="fa fa-clock-o"></i></div>
+                    <div class="about-icon-text">
+                    	<h5>Around the clock Customer support</h5>
+                        <p>Get special deals and award-winning service! Contact us today.</p>
+                    </div>
+                </div>	
+            </div>
+    	</div>
+    </div>
+</section>
+<footer class="footer">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    	<div class="Pay-methods">
+                        	<strong>Payment methods we accept: </strong>
+                            <span class="fa fa-cc-visa"></span>
+                            <span class="fa fa-cc-mastercard"></span>
+                            <span class="fa fa-cc-amex"></span>
+                        </div>
+                        <div class="foot-social">
+                        	<div class="help-left"><strong>Helpline: </strong> <a href="tel:+1-866-248-8940"> +1-866-248-8940</a></div>
+                            <div class="Follow-right">
+                            	<strong>Follow us:</strong> 
+                            	<a href="" target="_blank"><span class="fa fa-facebook-f"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-twitter"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-google-plus"></span></a>
+                        	</div>
+                		</div>
+                    </div>
+            	</div>
+            	<hr class="footer-line">
+            	<div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Security</div>
+                        <div class="secur-imgs">
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Quick Links</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Flights</a></li>
+                            <li><a href="#">My Bookings</a></li>
+                            <li><a href="#">Log in/Sign up</a></li>
+                            <li><a href="#">Date Change</a></li>
+                            <li><a href="#">Customer Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Support</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQ’s</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget">
+                        <div class="footer-title">Corporate Address:</div>
+                        <address>
+                        	Vyoma Travels Inc,<br>
+                            1875, Lockeway Dr Suite#702,<br>
+                            Alpharetta GA 30004,<br>
+                            United States of America.<br>
+                            Tel: <a href="tel:+1-866-248-8940">+1-866-248-8940</a> (USA) <br>
+                            Tel: <a href="tel:+1-866-739-2998">+1-866-739-2998</a> (Canada)<br>
+                            Email: <a href="mailto:support@flightjourney.com">support@flightjourney.com</a><br>
+                            Fax:  +1-678-669-2750
+                        </address>
+                    </div>
+                </div>
+            	</div>
+        	</div>
+            <div class="tiny-footer">
+            	<div class="container">
+                    <div class="row">
+                    <div class="scrollup" href="#"><i class="fa fa-arrow-up"></i></div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+							<p>Copyright © 2018 Vyoma Travels Inc - All Rights Reserved. <br> California: CST #2115700-50, Florida: ST39170, Iowa: SOT #1160 WA#603373092</p>
+                        </div>
+                    </div>
+            	</div>
+            </div>
+        </footer>
+
+
+</div>
+
+<script type="text/javascript" src="js/Fj-theme.js"></script>
+</body>
+</html>

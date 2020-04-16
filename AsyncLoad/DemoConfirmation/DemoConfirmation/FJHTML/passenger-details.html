@@ -1,0 +1,1737 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="currenciesApp">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Flight Journey</title>
+
+<link rel="shortcut icon" type="image/x-icon" href="images/favicon.ico" />
+
+<link rel="stylesheet" type="text/css" href="css/fj-bootstrap.min.css">
+<link rel="stylesheet" type="text/css" href="css/main-style.css">
+<link rel="stylesheet" type="text/css" href="css/resultStyle.css">
+<link rel="stylesheet" type="text/css" href="css/psd-style.css">
+
+<!--[start]> currency select CSS <![end]-->
+<link rel="stylesheet" type="text/css" href="css/bootstrap-select.css">
+<link rel="stylesheet" type="text/css" href="css/tw-currency-select.css">
+
+<link rel="stylesheet" type="text/css" href="css/circle.css">
+
+<link rel="stylesheet" type="text/css" href="css/all.min.css">
+
+<link rel="stylesheet" type="text/css" href="css/device-friendly-style.css">
+	<!--[if lt IE 9]>         
+    	<script src = "https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+    	<script src = "https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]--> 
+    
+    <noscript>
+    <div class="nojs"><h5>JavaScript is not enabled.</h5></div>
+	</noscript>
+<script type="text/javascript" src="js/angular.min.js"></script> 
+<script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script> 
+<script type="text/javascript" src="js/all.min.js"></script>
+
+<!--[start]> currency select JS <![end]-->
+<script type="text/javascript" src="js/bootstrap-select.js"></script> 
+<script type="text/javascript" src="js/tw-currency-select.js"></script>
+<script type="text/javascript">
+        var countriesApp = angular.module('currenciesApp', ['tw-currency-select']);
+        countriesApp.controller('CurrencyListController', function($scope) {
+
+            $scope.currenciesWithNames = [
+                {code: 'CAD', symbol: '$', name: 'en-CA'},
+                {code: 'USD', symbol: '$', name: 'en-US'},
+                {code: 'GBP', symbol: '£', name: 'en-GB'}
+            ];
+  $scope.selectedCurrency = {code: 'CAD', symbol: '$'};
+            $scope.otherClicked = function() {
+                window.alert("Other clicked");
+            };
+        });
+    </script>
+
+
+
+<script src="js/google-analytics.js" type="text/javascript"></script> 
+
+</head>
+
+<body ng-controller="CurrencyListController">
+<div class="wraper">
+<header>
+<div class="navtopmenu">
+<div class="container">
+	<div class="navtop pull-left">
+	<ul class="pull-left">
+    	<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+        <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+        <li><a href="mailto:support@flightjourney.com"><i class="fa fa-envelope"></i> <span>support@flightjourney.com</span> </a></li>
+ 	</ul>
+    </div>
+    <div class="pull-right">
+    	<div class="curency-lang">
+       	<currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+</currency-select>	
+      	</div>
+            
+        <a type="button" class="btn loginBtn btn-primary" data-toggle="modal" href="#LoginModal"><span class="fa fa-unlock-alt mr-1"></span> Login</a>
+	</div>
+</div>
+<div class="modal fade" id="LoginModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                           		<div class="modal-body">
+                              		<div id="signIn" style="opacity: 1;" data-target-group="idForm" class="animated fadeIn">
+                                      	<header class="text-center mb-5">
+                                        <h2 class="h4 mb-0">Sign In your Account</h2>
+                                        <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                      </header>
+    
+                                      	<div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-user"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                        </div>
+                                      </div>
+    
+                                      	<div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-lock"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                        </div>
+                                      </div>
+                                      	<div class="row mb-3">
+                                        <div class="col-6">
+                                          <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
+                                            <input class="custom-control-input" id="rememberMeCheckbox" type="checkbox">
+                                            <label class="custom-control-label" for="rememberMeCheckbox">
+                                              Remember Me
+                                            </label>
+                                          </div>
+                                        </div>
+                            
+                                        <div class="col-6 text-right">
+                                          <a class="js-animation-link float-right" onclick="show('forgotPassword');" href="javascript:;" data-target="#forgotPassword" data-link-group="idForm" data-animation-in="fadeIn">Forgot Password?</a>
+                                        </div>
+                                      </div>
+                            
+                                      	<div class="mb-3">
+                                        <button type="submit" class="btn btn-block btn-primary">Sign In</button>
+                                      </div>
+                        
+                                      	<div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Do not have an account?
+                                          <a class="js-animation-link" onclick="show('signUp');" href="javascript:;" data-target="#signUp" data-link-group="idForm" data-animation-in="fadeIn">Create an Account</a>
+                                        </p>
+                                      </div>
+                                      
+                                      	<div class="text-center u-divider-wrapper my-3">
+                                    		<span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                    	</div>
+                                 		<div class="row mx-gutters-2 mb-4">
+                                    <div class="col-sm-6 mb-2 mb-sm-0">
+                                      <button type="button" class="btn btn-block btn-facebook">
+                                        <span class="fa fa-facebook-f mr-2"></span>
+                                        Signin with Facebook
+                                      </button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <button type="button" class="btn btn-block btn-google">
+                                        <span class="fa fa-google-plus mr-2"></span>
+                                        Signin with google +
+                                      </button>
+                                    </div>
+                                  </div>
+                        			</div>
+                                    
+                                    <div id="signUp" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                          <header class="text-center mb-5">
+                                            <h2 class="h4 mb-0">Create your Account</h2>
+                                            <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                          </header>
+
+                                          <div class="mb-3">
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <span class="fa fa-user"></span>
+                                                </span>
+                                              </div>
+                                              <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                            </div>
+                                          </div>
+
+                                          <div class="mb-3">
+                                            <div class="input-group">
+                                              <div class="input-group-prepend">
+                                                <span class="input-group-text">
+                                                  <span class="fa fa-lock"></span>
+                                                </span>
+                                              </div>
+                                              <input class="form-control" name="password" required placeholder="Password" aria-label="Password" data-msg="Your password is invalid. Please try again." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                            </div>
+                                          </div>
+
+                                      	<div class="mb-3">
+                                        	<div class="input-group">
+                                          		<div class="input-group-prepend">
+                                            		<span class="input-group-text">
+
+                                              		<span class="fa fa-lock"></span>
+                                            		</span>
+                                          		</div>
+                                          		<input class="form-control" name="confirmPassword" required placeholder="Confirm Password" aria-label="Confirm Password" data-msg="Password does not match the confirm password." data-error-class="u-has-error" data-success-class="u-has-success" type="password">
+                                        	</div>
+                                      	</div>
+
+                                        <div class="mb-3">
+                                        	<button type="submit" class="btn btn-block btn-primary">Signup</button>
+                                     	</div>
+                            
+                                      	<div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Have an account?
+                                          <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">Sign In
+                                          </a>
+                                        </p>
+                                      </div>
+                                      
+                                     	<div class="text-center u-divider-wrapper my-3">
+                                        	<span class="u-divider u-divider--xs u-divider--text">OR</span>
+                                        </div>
+
+                                 		<div class="row mx-gutters-2 mb-4">
+                                    <div class="col-sm-6 mb-2 mb-sm-0">
+                                      <button type="button" class="btn btn-block btn-facebook">
+                                        <span class="fa fa-facebook-f mr-2"></span>
+                                        Signin with Facebook
+                                      </button>
+                                    </div>
+                                    <div class="col-sm-6">
+                                      <button type="button" class="btn btn-block btn-google">
+                                        <span class="fa fa-google-plus mr-2"></span>
+                                        Signin with google +
+                                      </button>
+                                    </div>
+                                  </div>
+                                	</div>
+                                    
+                                   	<div id="forgotPassword" style="opacity: 1; display:none;" data-target-group="idForm" class="animated fadeIn">
+                                      <header class="text-center mb-5">
+                                        <h2 class="h4 mb-0">Recover account</h2>
+                                        <p>Enter your email address and an email with instructions will be sent to you.</p>
+                                        <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                      </header>
+
+                                      <div class="mb-3">
+                                        <div class="input-group">
+                                          <div class="input-group-prepend">
+                                            <span class="input-group-text">
+                                              <span class="fa fa-user"></span>
+                                            </span>
+                                          </div>
+                                          <input class="form-control" name="email" required placeholder="Email" aria-label="Email" data-msg="Please enter a valid email address." data-error-class="u-has-error" data-success-class="u-has-success" type="email">
+                                        </div>
+                                      </div>
+
+                                      <div class="mb-3">
+                                        <button type="submit" class="btn btn-block btn-primary">Recover Account</button>
+                                      </div>
+                            
+                                      <div class="text-center mb-3">
+                                        <p class="text-muted">
+                                          Have an account?
+                                          <a class="js-animation-link" onclick="show('signIn');" href="javascript:;" data-target="#signIn" data-link-group="idForm" data-animation-in="fadeIn">Signin
+                                          </a>
+                                        </p>
+                                      </div>
+        	
+                                    </div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+</div>
+<nav class="navbar navbar-default">
+<div class="container">
+      <div class="flex-container">  
+        <div class="navbar-header flex-item">
+          <a class="navbar-brand" href="#"><img src="images/logo.png" alt="Flight Journey" class="img-responsive"></a>
+        </div>
+        <ul class="nav navbar-nav flex-item hidden-xs" id="myMenu">
+          <li class="active"><a href="#" class="Vbtn-2">Home</a></li>
+          <li><a href="#" class="Vbtn-2">Flights</a></li> 
+          <li><a href="#" class="Vbtn-2">My Booking</a></li>
+          <li><a href="#" class="Vbtn-2">Contact Us</a></li>
+        </ul>
+        <div class="callUs hidden-xs">
+        	<p class="bookOnline">Book online or call:</p> 
+            <div class="phoneNum"><a href="tel:+1-866-248-8940" class=""> <b> +1-866-248-8940</b></a></div>
+        </div>
+          <div class="menubar visible-xs">
+            <button class="btn btn-bar dropdown-toggle " type="button" id="my-navmenu">
+              <span class="fa fa-bars"></span>
+            </button>
+            <div class="overlay"></div>
+            <div class="slidable-nav">
+                <div class="slidable-nav-header">
+                	<span><strong>Quick search</strong></span>
+                	<a href="#" class="btn-nav-close slidable-close pull-right"><span class="fa fa-close"></span></a>
+           		</div>
+            	<ul id="navi">
+                  	<li><a href="#">Home</a></li>
+                  	<li><a href="#">Flights</a></li> 
+                  	<li><a href="#">Hotels</a></li>
+                    <li><a data-toggle="modal" href="#LoginModal"> Login / Register</a></li>
+                  	<li role="separator" class="divider"></li>
+                  	<li><a href="#">About Us</a></li> 
+                  	<li><a href="#">Contact Us</a></li>
+                  	<li><a href="#">Term and Conditions</a></li>
+                  	<li><a href="#">Privacy Policy</a></li>
+                  	<li><a href="#">Faq's</a></li>
+
+                    <div class="currency-change">
+                    	<p>Change language/currency</p>
+                        <currency-select search-placeholder="Search..." none-selected-text="Nothing selected" ng-model="selectedCurrency" currencies="currenciesWithNames" class="ng-pristine ng-untouched ng-valid ng-isolate-scope ng-not-empty">
+</currency-select>
+                    </div>
+                        
+                    <div class="phone-wrap">
+                    	<p>Book online or call:</p>
+                    	<div class="ph-num"><a href="tel:+1-866-248-8940"><i class="fa fa-phone-square"></i> +1-866-248-8940</a></div>
+                    </div>
+                </ul>
+            </div>
+          </div>
+        </div>  
+      </div>
+</nav>
+</header>
+<section class="breadcrumb-wrap">
+	<div class="container">
+    	<div class="row">
+        	<div class="col-md-12">
+            	<ol class="breadcrumb">
+                	<li><a href="#">Home</a></li>
+                    <li><a href="#">Flight Results</a></li>
+                    <li><a href="#">Passenger Details</a></li>
+                </ol>
+            </div>
+        </div>
+    </div>
+</section>
+<div class="psd-wrap">
+	<div class="psd-content">
+        	<div class="psd-trip-head">
+            <div class="psd-head-left">
+            	<div class="psd-head-icon"><i class="fa fa-plane"></i></div>
+                <div class="psd-head-title">
+                	<h4>Review Your Trip Details & Book</h4>
+					<p>This is the last step - only a couple more minutes and you’re done!</p>
+                </div>
+                </div>
+                <div class="psd-head-right">
+                	<p class="incTax">Total price</p>
+					<h4 class="psd-head-price">1070.26 <small>CAD</small></h4>
+					<p class="incTax">* inc. all taxes and fees</p>
+                </div>
+            </div>
+            
+            <div class="wish-wrap">
+            	<div class="pull-left wish-text"><h5><i class="fa fa-thumbs-o-up"></i> Congratulations, You got the best price.</h5> </div>
+                <div class="pull-right seatLeft gray"><p>Only 9 Seats left</p></div>
+            </div>
+            
+        	<div id="FlightDetails">
+             <div class="flightInfo-list">
+                                    	
+                                		<div class="timelineInfo">
+                                        <div class="otb-wrap"><span class="otbText">Departure:</span> San Francisco - Athens  <p class="otbText-path"></p></div>
+                                        <div class="timeline-segList">
+                                        	<div class="airlineWrap">
+                                            	<div class="airlineImg"><img class="airLogoImg" src="images/airline-logos/LH.gif" alt="Lufthansa"></div>
+                                                <div class="date-duration">
+                                            		<div class="date-Text">Lufthansa	(LH-7489) | Operated by United Airlines</div>
+                                                    <div class="flt-inc-icon">
+                                                    	<div class="in-flightText">
+                                                            <i class="fa fa-wifi"></i> <i class="fa fa-plug"></i> <i class="fa fa-cutlery"></i>
+                                                        </div>
+                                                    </div>
+                                            	</div>
+                                          	</div>
+                                            
+                                            
+                                        	<div class="timeline-seg-Item">
+                                            	<div class="timeline-dept">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">07:30 <small>AM</small></p>
+                                                   		<p class="depdate-text">Mon, Nov 05 , 2018 </p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">San Francisco International (SFO),  United States </p>
+                                                        <p class="terminal">Departure Terminal : I </p>
+                                                    </div>
+                                            	</div>
+                                                
+                                                <div class="timeline-arrv">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">03:26 <small>PM</small></p>
+                                                   		<p class="depdate-text">Tue, Dec 04 , 2018 </p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Toronto Lester B Pearson Intl (YYZ),Canada </p>
+                                                        <p class="terminal">Arrival Terminal : 1 </p>
+                                                    </div>
+                                            	</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="timelineLayover">
+                                            <div class="layoverIcon">
+                                            	<i class="fa fa-plane"></i>
+                                            </div>
+                                            <div class="layoverText">
+                                        		Toronto (YYZ) - 01 hours 14 mins Layover
+                                            </div>
+                                        </div>  
+                                        
+                                       	<div class="timeline-segList">
+                                        	<div class="airlineWrap">
+                                            	<div class="airlineImg"><img class="airLogoImg" src="images/airline-logos/LH.gif" alt="Lufthansa"></div>
+                                                <div class="date-duration">
+                                            		<div class="date-Text">Lufthansa	(LH-7489) | Operated by United Airlines</div>
+                                                    <div class="flt-inc-icon">
+                                                    	<div class="in-flightText">
+                                                            <i class="fa fa-wifi"></i> <i class="fa fa-plug"></i> <i class="fa fa-cutlery"></i>
+                                                        </div>
+                                                    </div>
+                                            	</div>
+                                          	</div>
+                                        	<div class="timeline-seg-Item">
+                                            	<div class="timeline-dept">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">04:40  <small>PM</small></p>
+                                                   		<p class="depdate-text">Mon, Nov 05 , 2018</p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Toronto Lester B Pearson Intl (YYZ),Canada</p>
+                                                        <p class="terminal">Departure Terminal : I </p>
+                                                    </div>
+                                            	</div>
+                                                
+                                                <div class="timeline-arrv">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text"> 09:20 <small>AM</small></p>
+                                                   		<p class="depdate-text">Tue, Nov 06 , 2018</p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Athens (ATH) Eleftherios Venizelos Intl Arpt, Greece </p>
+                                                        <p class="terminal">Arrival Terminal : 1 </p>
+                                                    </div>
+                                            	</div>
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="baggage-in">
+                                        	<div class="baggage-inText">
+                                            	<span class="fcb"><i class="fa fa-suitcase"></i> Check In Baggage: 1PC/Adult</span> 
+                                        		<span class="fhb"><i class="fa fa-shopping-bag"></i> Hand Baggage: 7 Kg/Adult</span>
+                                            </div>
+                                            <div class="jd-info jd"><i class="fa fa-clock-o"></i> Journey duration: 17h 35m</div>
+                                        </div>
+                                         
+                                	</div>
+                                    </div>
+             <div class="flightInfo-list">
+                                    	
+                                		<div class="timelineInfo">
+                                        <div class="otb-wrap"><span class="otbText">Return:</span> Athens - San Francisco  <p class="inbText-path"></p></div>
+                                        <div class="timeline-segList">
+                                        	<div class="airlineWrap">
+                                            	<div class="airlineImg"><img class="airLogoImg" src="images/airline-logos/LH.gif" alt="Lufthansa"></div>
+                                                <div class="date-duration">
+                                            		<div class="date-Text">Lufthansa	(LH-7489) | Operated by United Airlines</div>
+                                                    <div class="flt-inc-icon">
+                                                    	<div class="in-flightText">
+                                                            <i class="fa fa-wifi"></i> <i class="fa fa-plug"></i> <i class="fa fa-cutlery"></i>
+                                                        </div>
+                                                    </div>
+                                            	</div>
+                                          	</div>
+                                        	<div class="timeline-seg-Item">
+                                            	<div class="timeline-dept">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">07:30 <small>AM</small></p>
+                                                   		<p class="depdate-text">Mon, Nov 05 , 2018 </p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">San Francisco International (SFO),  United States </p>
+                                                        <p class="terminal">Departure Terminal : I </p>
+                                                    </div>
+                                            	</div>
+                                                
+                                                <div class="timeline-arrv">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">03:26 <small>PM</small></p>
+                                                   		<p class="depdate-text">Tue, Dec 04 , 2018 </p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Toronto Lester B Pearson Intl (YYZ),Canada </p>
+                                                        <p class="terminal">Arrival Terminal : 1 </p>
+                                                    </div>
+                                            	</div>
+                                            </div>
+                                        </div>
+                                        
+                                        <div class="timelineLayover">
+                                            <div class="layoverIcon">
+                                            	<i class="fa fa-plane"></i>
+                                            </div>
+                                            <div class="layoverText">
+                                        		Toronto (YYZ) - 01 hours 14 mins Layover
+                                            </div>
+                                        </div>  
+                                        
+                                       	<div class="timeline-segList">
+                                        	<div class="airlineWrap">
+                                            	<div class="airlineImg"><img class="airLogoImg" src="images/airline-logos/LH.gif" alt="Lufthansa"></div>
+                                                <div class="date-duration">
+                                            		<div class="date-Text">Lufthansa	(LH-7489) | Operated by United Airlines</div>
+                                                    <div class="flt-inc-icon">
+                                                    	<div class="in-flightText">
+                                                            <i class="fa fa-wifi"></i> <i class="fa fa-plug"></i> <i class="fa fa-cutlery"></i>
+                                                        </div>
+                                                    </div>
+                                            	</div>
+                                          	</div>
+                                        	<div class="timeline-seg-Item">
+                                            	<div class="timeline-dept">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text">04:40  <small>PM</small></p>
+                                                   		<p class="depdate-text">Mon, Nov 05 , 2018</p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Toronto Lester B Pearson Intl (YYZ),Canada</p>
+                                                        <p class="terminal">Departure Terminal : I </p>
+                                                    </div>
+                                            	</div>
+                                                
+                                                <div class="timeline-arrv">
+                                            		<div class="depTime">
+                                                    	<p class="depTime-text"> 09:20 <small>AM</small></p>
+                                                   		<p class="depdate-text">Tue, Nov 06 , 2018</p>
+                                                    </div>
+                                                    <div class="depDest">
+                                                    	<p class="tripCity">Athens (ATH) Eleftherios Venizelos Intl Arpt, Greece </p>
+                                                        <p class="terminal">Arrival Terminal : 1 </p>
+                                                    </div>
+                                            	</div>
+                                            </div>
+                                        </div> 
+                                        
+                                        <div class="baggage-in">
+                                        	<div class="baggage-inText">
+                                            	<span class="fcb"><i class="fa fa-suitcase"></i> Check In Baggage: 1PC/Adult</span> 
+                                        		<span class="fhb"><i class="fa fa-shopping-bag"></i> Hand Baggage: 7 Kg/Adult</span>
+                                            </div>
+                                            <div class="jd-info jd"><i class="fa fa-clock-o"></i> Journey duration: 17h 35m</div>
+                                        </div> 
+                                	</div>
+                                    </div>
+             <div class="local-wrap">
+                                        	<div class="">* All the times are local to Airports</div>
+                                        </div>                   	
+         	</div>
+            <div class="upgrade-bg">
+                    <div class="upgrade-head">
+                    	<div class="upgrade-icon"><img src="images/upgrade-flight-icon.png" alt="Upgrade flight icon"></div>
+                        <div class="upgrade-title">
+                        	<h5>Want more flexibility and flight options?</h5>
+							<p>Upgrade your flight to Standard Economy for just a little bit more!</p>
+                        </div>
+                    </div>
+                    <div class="upgrade-body">
+						
+                        <div class="upgrade-col-1">
+                        	<div class="upgrade-inn">
+                        	<div class="upgrade-col-head">
+                            	<p>Basic Economy</p>
+                                <h3>$0.00</h3> 
+                        	</div>
+                            <div class="upgrade-col-body">
+                            	<ul>
+                                <li class="wrong">No upgrade options </li>
+                                <li class="wrong">No flight changes or refunds</li>
+                                <li class="wrong">Board in last group</li>
+                                <li class="wrong">Pay to check bags</li>
+                                <li class="wrong">Pay to choose seats</li>
+                                </ul>
+                            </div>
+                            <div class="upgrade-col-btn">
+                            	<button type="button" class="btn upBtn-gray btn-block">Included</button>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="upgrade-col-2">
+                        	<div class="upgrade-inn">
+                            <div class="upgrade-col-head">
+                            	<p>Standard Economy</p>
+                                <h3>$13.95 </h3> 
+                        	</div>
+                            <div class="upgrade-col-body">
+                            	<ul>
+                                	<li class="check">No upgrade options </li>
+                                	<li class="check">No flight changes or refunds</li>
+                                	<li class="check">Board in last group</li>
+                                	<li class="check">Pay to check bags</li>
+                                	<li class="check">Pay to choose seats</li>
+                                </ul>
+                            </div>
+                            <div class="upgrade-col-btn">
+                            	<button type="button" class="btn upBtn-green btn-block">Upgrade</button>
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="upgrade-col-3">
+                        	<div class="upgrade-inn">
+                            <div class="upgrade-col-head">
+                            	<p>Premium Economy</p>
+                                <h3>$39.95 </h3> 
+                        	</div>
+                            <div class="upgrade-col-body">
+                            	<ul>
+                                	<li class="check">No upgrade options </li>
+                                	<li class="check">No flight changes or refunds</li>
+                                	<li class="check">Board in last group</li>
+                                	<li class="check">Pay to check bags</li>
+                                	<li class="check">Pay to choose seats</li>
+                                </ul>
+                            </div>
+                            <div class="upgrade-col-btn">
+                            	<button type="button" class="btn upBtn-green btn-block">Upgrade</button>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+             <div class="psd-signup">
+            	<div class="psd-signup-icon"><i class="fa fa-user" ></i> </div>
+                <div class="psd-signup-text">
+                	<h5>Sign in if you have an account</h5>
+					<p>We will retrieve saved travelers and credit cards for faster checkout</p>
+                </div>
+            <div class="psd-signup-right">
+            	<button type="button" class="btn btn-block btn-primary" data-toggle="modal" id="LoginModal"><i class="fa fa-lock"></i> Sign In</button>
+            </div>
+      	</div>                   
+           	<div class="psd-trip-head">
+            <div class="psd-head-left">
+            	<div class="psd-head-icon"><i class="fa fa-user"></i></div>
+                <div class="psd-head-title-full">
+                	<h4>Passenger Details </h4>
+					<p>All travelers must provide their full name, date of birth that match exactly with the Passport or Government issued photo ID.</p>
+                </div>
+                </div>
+            </div>
+            <div class="bg-warning bg-note bg-note-blk">
+           		<p>(Note : A Transit Visa may be required while connecting at International gateway.)</p>
+          	</div>
+            <div class="psd-list-info">
+                <div class="psd-list-info-row">
+               		<div class="psd-list-info-head">
+                    	<div class="psd-left-info-Icon"><i class="fa fa-user"></i> </div>
+                   		<div class="psd-left-info-Text">
+                        	Passenger 1 
+                        	<span>Adult (11 +)</span>
+                        </div>
+                    </div>
+                    <div class="psd-right-info-cel">
+                    	<div class="form-group t-select v-error">
+                        	<label>Title: <small class="red">*</small></label>
+                            <select name="Title" class="form-control">
+                                <option value="" selected>Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                        	</select>
+                            
+                            <div class="v-danger">
+                            	Please select the pax title
+                            </div>
+                    	</div>
+                        <div class="form-group f-name v-error">
+                        	<label>First name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your first name" value="" />
+                            <div class="v-validation">
+                            	As per name Passport or Government ID
+                            </div>
+                            <div class="v-danger">
+                            	Please enter the pax first name.
+                            </div>
+                    	</div>
+                        <div class="form-group m-name">
+                        	<label>Middle name <small>(Optional)</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your middle name" value="" />
+                    	</div>
+                        <div class="form-group l-name v-error">
+                        	<label>Last name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your last name" value="" />
+                            <div class="v-validation">
+                            	Please enter the pax last name.
+                            </div>
+                    	</div>
+                        <div class="dob">
+                        	<label>Date of Birth: *  <small class="red">*</small></label>
+                        	<div class="form-group  v-error">
+                                <select name="Day" class="form-control">
+                                    <option value="">Day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of day.
+                            	</div>
+                        	</div>
+                        	<div class="form-group  v-error">
+                                <select name="Month" class="form-control">
+                                    <option value="">Month</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of month.
+                            	</div>
+                            </div>
+                        	<div class="form-group  v-error">
+                                <select name="Year" class="form-control">
+                                    <option value="">Year</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of year.
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="freqBtn-wrap">
+                        <button type="button" class="freqBtn btn collapsed" data-toggle="collapse" data-target="#frequentFlyer" aria-expanded="false"> Frequent Flyer Airline (optional) and meal request </button>
+                        </div>
+                        <div id="frequentFlyer" class="collapse frequentFlyer" aria-expanded="false" style="height: 10px;">
+                       		<div class="frequent-inn">
+                    			<div class="form-group seat-select-a">
+                                    <label> Seat Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Seat</option><option value="NSSA-2">Aisle seat</option><option value="NSSW-3">Window seat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-b">
+                                    <label> Meal Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Meal</option><option value="AVML-5">Asian Veg.Meal</option><option value="BLML-6">Bland Meal</option><option value="DBML-7">Diabetic Meal</option><option value="GFML-8">Gluten Free</option><option value="HNML-9">Hindu</option><option value="KSML-10">Kosher</option><option value="LCML-11">Low Calorie</option><option value="LCRB-12">Low Carbohydrate</option><option value="LFML-13">Low Choles./fat</option><option value="LSML-14">Low Sodium</option><option value="MOML-15">Muslim Meal</option><option value="NLML-16">Non Lactose</option><option value="NSML-17">No Salt Meal</option><option value="PFML-18">Peanut Free Meal</option><option value="RVML-19">Raw Vegetarian</option><option value="SFML-20">Seafood Meal</option><option value="SPML-21">Spec Request</option><option value="VGML-22">Vegetarian</option><option value="VLML-23">Veg/Lacto-ovo</option><option value="BBML-30">Baby Meal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-c">
+                                    <label>Special Service:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">None</option><option value="BLND-25">Blind Passenger</option><option value="DEAF-26">Deaf Passenger</option><option value="WCHC-27">Wheelchair/Must be carried</option><option value="WCHR-28">Wheelchair/Can walk up stairs</option><option value="WCHS-29">Wheelchair/Can walk to seat</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                            <div class="frequent-inn">
+                            	<h4>Frequent Flyer:</h4>
+                            	<div class="form-group seat-select-a">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-b">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-c">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                            </div>
+                     	</div>
+                    </div>
+                </div>	
+            </div>
+            
+            <div class="psd-list-info">
+                <div class="psd-list-info-row">
+               		<div class="psd-list-info-head">
+                    	<div class="psd-left-info-Icon"><i class="fa fa-child" ></i> </div>
+                   		<div class="psd-left-info-Text">
+                        	Passenger 2 
+                        	<span>Child (2-11 years)</span>
+                        </div>
+                    </div>
+                    <div class="psd-right-info-cel">
+                    	<div class="form-group t-select v-error">
+                        	<label>Title: <small class="red">*</small></label>
+                            <select name="Title" class="form-control">
+                                <option value="" selected>Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                        	</select>
+                            
+                            <div class="v-danger">
+                            	Please select the pax title
+                            </div>
+                    	</div>
+                        <div class="form-group f-name v-error">
+                        	<label>First name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your first name" value="" />
+                            <div class="v-validation">
+                            	As per name Passport or Government ID
+                            </div>
+                            <div class="v-danger">
+                            	Please enter the pax first name.
+                            </div>
+                    	</div>
+                        <div class="form-group m-name">
+                        	<label>Middle name <small>(Optional)</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your middle name" value="" />
+                    	</div>
+                        <div class="form-group l-name v-error">
+                        	<label>Last name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your last name" value="" />
+                            <div class="v-validation">
+                            	Please enter the pax last name.
+                            </div>
+                    	</div>
+                        <div class="dob">
+                        	<label>Date of Birth: *  <small class="red">*</small></label>
+                        	<div class="form-group  v-error">
+                                <select name="Day" class="form-control">
+                                    <option value="">Day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of day.
+                            	</div>
+                        	</div>
+                        	<div class="form-group  v-error">
+                                <select name="Month" class="form-control">
+                                    <option value="">Month</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of month.
+                            	</div>
+                            </div>
+                        	<div class="form-group  v-error">
+                                <select name="Year" class="form-control">
+                                    <option value="">Year</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of year.
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="freqBtn-wrap">
+                        <button type="button" class="freqBtn btn collapsed" data-toggle="collapse" data-target="#frequentFlyer" aria-expanded="false"> Frequent Flyer Airline (optional) and meal request </button>
+                        </div>
+                        <div id="frequentFlyer" class="collapse frequentFlyer" aria-expanded="false" style="height: 10px;">
+                       		<div class="frequent-inn">
+                    			<div class="form-group seat-select-a">
+                                    <label> Seat Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Seat</option><option value="NSSA-2">Aisle seat</option><option value="NSSW-3">Window seat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-b">
+                                    <label> Meal Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Meal</option><option value="AVML-5">Asian Veg.Meal</option><option value="BLML-6">Bland Meal</option><option value="DBML-7">Diabetic Meal</option><option value="GFML-8">Gluten Free</option><option value="HNML-9">Hindu</option><option value="KSML-10">Kosher</option><option value="LCML-11">Low Calorie</option><option value="LCRB-12">Low Carbohydrate</option><option value="LFML-13">Low Choles./fat</option><option value="LSML-14">Low Sodium</option><option value="MOML-15">Muslim Meal</option><option value="NLML-16">Non Lactose</option><option value="NSML-17">No Salt Meal</option><option value="PFML-18">Peanut Free Meal</option><option value="RVML-19">Raw Vegetarian</option><option value="SFML-20">Seafood Meal</option><option value="SPML-21">Spec Request</option><option value="VGML-22">Vegetarian</option><option value="VLML-23">Veg/Lacto-ovo</option><option value="BBML-30">Baby Meal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-c">
+                                    <label>Special Service:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">None</option><option value="BLND-25">Blind Passenger</option><option value="DEAF-26">Deaf Passenger</option><option value="WCHC-27">Wheelchair/Must be carried</option><option value="WCHR-28">Wheelchair/Can walk up stairs</option><option value="WCHS-29">Wheelchair/Can walk to seat</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                            <div class="frequent-inn">
+                            	<h4>Frequent Flyer:</h4>
+                            	<div class="form-group seat-select-a">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-b">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-c">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                            </div>
+                     	</div>
+                    </div>
+                </div>	
+            </div>
+            
+            <div class="psd-list-info">
+                <div class="psd-list-info-row">
+               		<div class="psd-list-info-head">
+                    	<div class="psd-left-info-Icon"><img src="images/infant.svg" alt="Infant icon"></div>
+                   		<div class="psd-left-info-Text">
+                        	Passenger 3 
+                        	<span>Infant in lap (0-2 years)</span>
+                        </div>
+                    </div>
+                    <div class="psd-right-info-cel">
+                    	<div class="form-group t-select v-error">
+                        	<label>Title: <small class="red">*</small></label>
+                            <select name="Title" class="form-control">
+                                <option value="" selected>Title</option>
+                                <option value="Mr">Mr</option>
+                                <option value="Ms">Ms</option>
+                                <option value="Mrs">Mrs</option>
+                        	</select>
+                            
+                            <div class="v-danger">
+                            	Please select the pax title
+                            </div>
+                    	</div>
+                        <div class="form-group f-name v-error">
+                        	<label>First name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your first name" value="" />
+                            <div class="v-validation">
+                            	As per name Passport or Government ID
+                            </div>
+                            <div class="v-danger">
+                            	Please enter the pax first name.
+                            </div>
+                    	</div>
+                        <div class="form-group m-name">
+                        	<label>Middle name <small>(Optional)</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your middle name" value="" />
+                    	</div>
+                        <div class="form-group l-name v-error">
+                        	<label>Last name <small class="red">*</small></label>
+                            <input type="text" class="form-control" placeholder="Enter your last name" value="" />
+                            <div class="v-validation">
+                            	Please enter the pax last name.
+                            </div>
+                    	</div>
+                        <div class="dob">
+                        	<label>Date of Birth: *  <small class="red">*</small></label>
+                        	<div class="form-group  v-error">
+                                <select name="Day" class="form-control">
+                                    <option value="">Day</option><option value="01">01</option><option value="02">02</option><option value="03">03</option><option value="04">04</option><option value="05">05</option><option value="06">06</option><option value="07">07</option><option value="08">08</option><option value="09">09</option><option value="10">10</option><option value="11">11</option><option value="12">12</option><option value="13">13</option><option value="14">14</option><option value="15">15</option><option value="16">16</option><option value="17">17</option><option value="18">18</option><option value="19">19</option><option value="20">20</option><option value="21">21</option><option value="22">22</option><option value="23">23</option><option value="24">24</option><option value="25">25</option><option value="26">26</option><option value="27">27</option><option value="28">28</option><option value="29">29</option><option value="30">30</option><option value="31">31</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of day.
+                            	</div>
+                        	</div>
+                        	<div class="form-group  v-error">
+                                <select name="Month" class="form-control">
+                                    <option value="">Month</option><option value="01">Jan</option><option value="02">Feb</option><option value="03">Mar</option><option value="04">Apr</option><option value="05">May</option><option value="06">Jun</option><option value="07">Jul</option><option value="08">Aug</option><option value="09">Sep</option><option value="10">Oct</option><option value="11">Nov</option><option value="12">Dec</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of month.
+                            	</div>
+                            </div>
+                        	<div class="form-group  v-error">
+                                <select name="Year" class="form-control">
+                                    <option value="">Year</option><option value="2007">2007</option><option value="2006">2006</option><option value="2005">2005</option><option value="2004">2004</option><option value="2003">2003</option><option value="2002">2002</option><option value="2001">2001</option><option value="2000">2000</option><option value="1999">1999</option><option value="1998">1998</option><option value="1997">1997</option><option value="1996">1996</option><option value="1995">1995</option><option value="1994">1994</option><option value="1993">1993</option><option value="1992">1992</option><option value="1991">1991</option><option value="1990">1990</option><option value="1989">1989</option><option value="1988">1988</option><option value="1987">1987</option><option value="1986">1986</option><option value="1985">1985</option><option value="1984">1984</option><option value="1983">1983</option><option value="1982">1982</option><option value="1981">1981</option><option value="1980">1980</option><option value="1979">1979</option><option value="1978">1978</option><option value="1977">1977</option><option value="1976">1976</option><option value="1975">1975</option><option value="1974">1974</option><option value="1973">1973</option><option value="1972">1972</option><option value="1971">1971</option><option value="1970">1970</option><option value="1969">1969</option><option value="1968">1968</option><option value="1967">1967</option><option value="1966">1966</option><option value="1965">1965</option><option value="1964">1964</option><option value="1963">1963</option><option value="1962">1962</option><option value="1961">1961</option><option value="1960">1960</option><option value="1959">1959</option><option value="1958">1958</option><option value="1957">1957</option><option value="1956">1956</option><option value="1955">1955</option><option value="1954">1954</option><option value="1953">1953</option><option value="1952">1952</option><option value="1951">1951</option><option value="1950">1950</option><option value="1949">1949</option><option value="1948">1948</option><option value="1947">1947</option><option value="1946">1946</option><option value="1945">1945</option><option value="1944">1944</option><option value="1943">1943</option><option value="1942">1942</option><option value="1941">1941</option><option value="1940">1940</option><option value="1939">1939</option><option value="1938">1938</option><option value="1937">1937</option><option value="1936">1936</option><option value="1935">1935</option><option value="1934">1934</option><option value="1933">1933</option><option value="1932">1932</option><option value="1931">1931</option><option value="1930">1930</option><option value="1929">1929</option><option value="1928">1928</option><option value="1927">1927</option><option value="1926">1926</option><option value="1925">1925</option><option value="1924">1924</option><option value="1923">1923</option><option value="1922">1922</option><option value="1921">1921</option><option value="1920">1920</option><option value="1919">1919</option>
+                                </select>
+                                <div class="v-validation">
+                            	Please select the pax birth of year.
+                            </div>
+                            </div>
+                        </div>
+                        
+                        <div class="freqBtn-wrap">
+                        <button type="button" class="freqBtn btn collapsed" data-toggle="collapse" data-target="#frequentFlyer" aria-expanded="false"> Frequent Flyer Airline (optional) and meal request </button>
+                        </div>
+                        <div id="frequentFlyer" class="collapse frequentFlyer" aria-expanded="false" style="height: 10px;">
+                       		<div class="frequent-inn">
+                    			<div class="form-group seat-select-a">
+                                    <label> Seat Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Seat</option><option value="NSSA-2">Aisle seat</option><option value="NSSW-3">Window seat</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-b">
+                                    <label> Meal Preference:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">Any Meal</option><option value="AVML-5">Asian Veg.Meal</option><option value="BLML-6">Bland Meal</option><option value="DBML-7">Diabetic Meal</option><option value="GFML-8">Gluten Free</option><option value="HNML-9">Hindu</option><option value="KSML-10">Kosher</option><option value="LCML-11">Low Calorie</option><option value="LCRB-12">Low Carbohydrate</option><option value="LFML-13">Low Choles./fat</option><option value="LSML-14">Low Sodium</option><option value="MOML-15">Muslim Meal</option><option value="NLML-16">Non Lactose</option><option value="NSML-17">No Salt Meal</option><option value="PFML-18">Peanut Free Meal</option><option value="RVML-19">Raw Vegetarian</option><option value="SFML-20">Seafood Meal</option><option value="SPML-21">Spec Request</option><option value="VGML-22">Vegetarian</option><option value="VLML-23">Veg/Lacto-ovo</option><option value="BBML-30">Baby Meal</option>
+                                    </select>
+                                </div>
+                                <div class="form-group seat-select-c">
+                                    <label>Special Service:</label>
+                                    <select name="Title" class="form-control">
+                                        <option value="">None</option><option value="BLND-25">Blind Passenger</option><option value="DEAF-26">Deaf Passenger</option><option value="WCHC-27">Wheelchair/Must be carried</option><option value="WCHR-28">Wheelchair/Can walk up stairs</option><option value="WCHS-29">Wheelchair/Can walk to seat</option>
+                                    </select>
+                                </div>
+                            
+                            </div>
+                            <div class="frequent-inn">
+                            	<h4>Frequent Flyer:</h4>
+                            	<div class="form-group seat-select-a">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-b">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                                
+                                <div class="form-group seat-select-c">
+                                    <label>Singapore Airlines </label>
+                                    <input type="text" class="form-control" placeholder="Enter your airline name" value="" />
+                                </div>
+                            </div>
+                     	</div>
+                    </div>
+                </div>	
+            </div>
+            
+            <div class="psd-passport">
+            	<div class="psd-passport-icon">
+                	<div class="passport-icon-bg"><img src="images/passport-icon.png" alt="Passport Icon"></div>
+               	</div>
+                <div class="psd-passport-text">
+                	<h3>Check passenger details again</h3>
+					<p>Make sure that all above passenger names are exactly same as in their passports, otherwise airlines deny the boarding and you might need to buy a new ticket or pay additional charges to make changes.</p>
+                </div>
+            </div>
+            
+            <div class="psd-trip-head">
+            <div class="psd-head-left">
+            	<div class="psd-head-icon"><i class="fa fa-dollar"></i></div>
+                <div class="psd-head-title-full">
+                	<h4> Price Details (CAD) </h4>
+                    <p>Confirm the price details of your itinerary for all passengers.</p>
+                </div>
+                </div>
+            </div> 
+            
+            <div class="psd-price-info">
+            <div class="bg-warning bg-note">
+            	<p>Please Note: All fares are quoted in CAD. Some airlines may charge baggage fees. Your credit/debit card may be billed in multiple charges totaling the final total price. </p>
+            </div>
+            <div class="psd-price-left-info">
+            	<div class="psd-promo-bg">
+            	 <p class="green">Voucher is valid for 5.00 USD</p>
+                    <p class="red">Promo Code Not valid</p>
+            	<div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter promo code">
+                  <div class="input-group-append">
+                    <button class="btn btn-promo" type="button">Apply</button>
+                  </div>
+                </div>
+            	
+           	</div>
+            </div>
+           	<div class="psd-price-right-info">
+        		<div class="psd-price-body">			
+                    <div class="psd-price-list">
+                        <div class="pull-left">Trip Amount</div>
+                        <div class="pull-right">1312.19 CAD</div>
+                    </div>
+                    <div class="psd-price-list">
+                        <div class="pull-left red">Promocode</div>
+                        <div class="pull-right red">- 0.00 CAD</div>
+                    </div>
+            	</div> 
+                
+                <div class="psd-price-footer">
+            	<div class="tl-amount-text">Total Amount</div>
+                <div class="tl-amount-price">
+                	 <h5>1044.33 CAD</h5>
+                     <p>incl. all taxes and fees</p>
+                </div>
+            </div>  
+           	</div>
+     	</div> 
+        	
+           	<div class="psd-cancel">
+        	<div class="psd-cancel-head">
+            	<div class="psd-cancel-head-icon"><img src="images/24hr-icon.png" alt="24 hours icon"></div>
+                <div class="psd-cancel-head-text">
+                	<h3>24 hours cancellation policy  <small>(optional)</small></h3>
+                </div>
+            </div>
+            <div class="psd-cancel-body">
+            	<p> Hassle free cancellation for a very minimum fee. Our 24 hours Cancellation Policy allows you to cancel your flight for any reason with in 24 hours of your booking. </p>
+        		<div class="psd-cancel-opt">
+                    <div class="psd-cancel-opt-list">
+                        <input id="yes" name="selector" type="radio">
+                        <label for="yes">Yes, I'd like to take advantage of the 24 Hours Cancellation Policy benefits! Add 15 CAD</label>
+                    </div>            	
+                    <div class="psd-cancel-opt-list">	
+                        <input id="no" name="selector" type="radio">
+                        <label for="no">No, I decline the 24 Hours Cancellation Policy.</label>
+                    </div>
+            </div>
+            </div>
+        </div>
+            
+        	<div class="psd-trip-head">
+            <div class="psd-head-left">
+            	<div class="psd-head-icon"><i class="fa fa-credit-card"></i></div>
+                <div class="psd-head-title-full">
+                	<h4> Payment Details </h4>
+                    <p>Your credit card information is protected by a Secure SSL Encrypted Transaction </p>
+                </div>
+                </div>
+            </div>
+            
+            <div class="psd-payment-info">
+            	<div class="creditCardForm">
+                    <div class="payment">
+                        <form class="">
+                            <div class="credit-cards-wrap">
+                            	<div class="form-group cards-left" id="credit_cards">
+                                	<img src="images/visa.png" id="visa">
+                                	<img src="images/mastercard.png" id="mastercard">
+                                	<img src="images/american-express.png" id="amex">
+                            	</div>
+                            
+                            	<div class="cards-right">
+                                    <p class="incTax">Total price</p>
+                                    <h4 class="psd-head-price">1070.26 <small>CAD</small></h4>
+                                    <p class="incTax">* inc. all taxes and fees</p>
+                                </div>
+                            </div>
+                            <div class="form-group owner">
+                                <label for="owner">Card Holder Name</label>
+                                <input type="text" class="form-control" id="owner">
+                            </div>
+                            
+                            <div class="form-group card-num" id="card-number-field">
+                                <label for="cardNumber">Card Number</label>
+                                <input type="text" class="form-control" id="cardNumber">
+                            </div>
+                            <div class="form-group" id="expiration-date">
+                                <label>Expiration Date</label>
+                                <div class="exp-m">
+                                <select class="form-control">
+                                    <option value="01">January</option>
+                                    <option value="02">February </option>
+                                    <option value="03">March</option>
+                                    <option value="04">April</option>
+                                    <option value="05">May</option>
+                                    <option value="06">June</option>
+                                    <option value="07">July</option>
+                                    <option value="08">August</option>
+                                    <option value="09">September</option>
+                                    <option value="10">October</option>
+                                    <option value="11">November</option>
+                                    <option value="12">December</option>
+                                </select>
+                                </div>
+                                <div class="exp-y">
+                                <select class="form-control">
+                                    <option value="16"> 2016</option>
+                                    <option value="17"> 2017</option>
+                                    <option value="18"> 2018</option>
+                                    <option value="19"> 2019</option>
+                                    <option value="20"> 2020</option>
+                                    <option value="21"> 2021</option>
+                                </select>
+                                </div>
+                            </div>
+                            <div class="card-cvv">
+                            <div class="form-group CVV">
+                                <label for="cvv">Cvv</label>
+                                <input type="text" class="form-control" id="cvv">
+                            </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div> 
+            
+            <div class="psd-trip-head">
+            <div class="psd-head-left">
+            	<div class="psd-head-icon"><i class="fa fa-credit-card"></i></div>
+                <div class="psd-head-title-full">
+                	<h4> Billing & Contact Information </h4>
+                    <p>Please enter the billing information and phone number on file with your credit card provider. If this information does not match the account information on file with your card provider, your booking could be delayed or cancelled.</p>
+                </div>
+                </div>
+            </div>
+            <div class="psd-address-info">
+            	<div class="form-group address-input">
+                	<label>Address <small class="red">*</small></label>
+                    <input type="text" class="form-control" placeholder="Enter your address" value="" />
+           		</div>
+                <div class="form-group city-input">
+                	<label>City <small class="red">*</small></label>
+                    <input type="text" class="form-control" placeholder="Enter your city" value="" />
+           		</div>
+                <div class="form-group state-input">
+                	<label>State <small class="red">*</small></label>
+                    <input type="text" class="form-control" placeholder="Enter your state" value="" />
+           		</div>
+                <div class="form-group post-input">
+                	<label>Postcode <small class="red">*</small></label>
+                    <input type="text" class="form-control" placeholder="Enter your postcode" value="" />
+           		</div>
+                <div class="form-group country-select">
+                	<label>Country <small class="red">*</small></label>
+                    <select class="form-control">
+                    	<option value="">Select country Name</option><option value="AF">Afghanistan</option><option value="AX">Aland Islands</option><option value="AL">Albania</option><option value="DZ">Algeria</option><option value="AS">American Samoa</option><option value="AD">Andorra</option><option value="AO">Angola</option><option value="AI">Anguilla</option><option value="AQ">Antarctica</option><option value="AG">Antigua and Barbuda</option><option value="AR">Argentina</option><option value="AM">Armenia</option><option value="AW">Aruba</option><option value="AU">Australia</option><option value="AT">Austria</option><option value="AZ">Azerbaijan</option><option value="BS">Bahamas</option><option value="BH">Bahrain</option><option value="BD">Bangladesh</option><option value="BB">Barbados</option><option value="BY">Belarus</option><option value="BE">Belgium</option><option value="BZ">Belize</option><option value="BJ">Benin</option><option value="BM">Bermuda</option><option value="BT">Bhutan</option><option value="BO">Bolivia, Plurinational State of</option><option value="BQ">Bonaire, Sint Eustatius and Saba</option><option value="BA">Bosnia and Herzegovina</option><option value="BW">Botswana</option><option value="BV">Bouvet Island</option><option value="BR">Brazil</option><option value="IO">British Indian Ocean Territory</option><option value="BN">Brunei Darussalam</option><option value="BG">Bulgaria</option><option value="BF">Burkina Faso</option><option value="BI">Burundi</option><option value="CV">Cabo Verde</option><option value="KH">Cambodia</option><option value="CM">Cameroon</option><option value="CA">Canada</option><option value="KY">Cayman Islands</option><option value="CF">Central African Republic</option><option value="TD">Chad</option><option value="CL">Chile</option><option value="CN">China</option><option value="CO">Colombia</option><option value="KM">Comoros</option><option value="CG">Congo</option><option value="CD">Congo, The Democratic Republic of The</option><option value="CK">Cook Islands</option><option value="CR">Costa Rica</option><option value="CI">Cote D'ivoire</option><option value="HR">Croatia</option><option value="CU">Cuba</option><option value="CW">Curacao</option><option value="CY">Cyprus</option><option value="CZ">Czech Republic</option><option value="DK">Denmark</option><option value="DJ">Djibouti</option><option value="DM">Dominica</option><option value="DO">Dominican Republic</option><option value="EC">Ecuador</option><option value="EG">Egypt</option><option value="SV">El Salvador</option><option value="GQ">Equatorial Guinea</option><option value="ER">Eritrea</option><option value="EE">Estonia</option><option value="ET">Ethiopia</option><option value="FK">Falkland Islands (Malvinas)</option><option value="FO">Faroe Islands</option><option value="FJ">Fiji</option><option value="FI">Finland</option><option value="FR">France</option><option value="GF">French Guiana</option><option value="PF">French Polynesia</option><option value="GA">Gabon</option><option value="GM">Gambia</option><option value="GE">Georgia</option><option value="DE">Germany</option><option value="GH">Ghana</option><option value="GI">Gibraltar</option><option value="GR">Greece</option><option value="GL">Greenland</option><option value="GD">Grenada</option><option value="GP">Guadeloupe</option><option value="GU">Guam</option><option value="GT">Guatemala</option><option value="GG">Guernsey</option><option value="GN">Guinea</option><option value="GW">Guinea-Bissau</option><option value="GY">Guyana</option><option value="HT">Haiti</option><option value="VA">Holy See</option><option value="HN">Honduras</option><option value="HK">Hong Kong</option><option value="HU">Hungary</option><option value="IS">Iceland</option><option value="IN">India</option><option value="ID">Indonesia</option><option value="IR">Iran, Islamic Republic of</option><option value="IQ">Iraq</option><option value="IE">Ireland</option><option value="IM">Isle of Man</option><option value="IL">Israel</option><option value="IT">Italy</option><option value="JM">Jamaica</option><option value="JP">Japan</option><option value="JE">Jersey</option><option value="JO">Jordan</option><option value="KZ">Kazakhstan</option><option value="KE">Kenya</option><option value="KI">Kiribati</option><option value="KP">Korea, Democratic People's Republic of</option><option value="KR">Korea, Republic of</option><option value="KW">Kuwait</option><option value="KG">Kyrgyzstan</option><option value="LA">Lao People's Democratic Republic</option><option value="LV">Latvia</option><option value="LB">Lebanon</option><option value="LS">Lesotho</option><option value="LR">Liberia</option><option value="LY">Libya</option><option value="LI">Liechtenstein</option><option value="LT">Lithuania</option><option value="LU">Luxembourg</option><option value="MO">Macao</option><option value="MK">Macedonia, The Former Yugoslav Republic of</option><option value="MG">Madagascar</option><option value="MW">Malawi</option><option value="MY">Malaysia</option><option value="MV">Maldives</option><option value="ML">Mali</option><option value="MT">Malta</option><option value="MH">Marshall Islands</option><option value="MQ">Martinique</option><option value="MR">Mauritania</option><option value="MU">Mauritius</option><option value="YT">Mayotte</option><option value="MX">Mexico</option><option value="FM">Micronesia, Federated States of</option><option value="MD">Moldova, Republic of</option><option value="MC">Monaco</option><option value="MN">Mongolia</option><option value="ME">Montenegro</option><option value="MS">Montserrat</option><option value="MA">Morocco</option><option value="MZ">Mozambique</option><option value="MM">Myanmar</option><option value="NA">Namibia</option><option value="NR">Nauru</option><option value="NP">Nepal</option><option value="NL">Netherlands</option><option value="NC">New Caledonia</option><option value="NZ">New Zealand</option><option value="NI">Nicaragua</option><option value="NE">Niger</option><option value="NG">Nigeria</option><option value="NU">Niue</option><option value="NF">Norfolk Island</option><option value="MP">Northern Mariana Islands</option><option value="NO">Norway</option><option value="OM">Oman</option><option value="PK">Pakistan</option><option value="PW">Palau</option><option value="PS">Palestine, State of</option><option value="PA">Panama</option><option value="PG">Papua New Guinea</option><option value="PY">Paraguay</option><option value="PE">Peru</option><option value="PH">Philippines</option><option value="PN">Pitcairn</option><option value="PL">Poland</option><option value="PT">Portugal</option><option value="PR">Puerto Rico</option><option value="QA">Qatar</option><option value="RE">Reunion</option><option value="RO">Romania</option><option value="RU">Russian Federation</option><option value="RW">Rwanda</option><option value="BL">Saint Barthelemy</option><option value="SH">Saint Helena, Ascension and Tristan Da Cunha</option><option value="KN">Saint Kitts and Nevis</option><option value="LC">Saint Lucia</option><option value="MF">Saint Martin (French Part)</option><option value="PM">Saint Pierre and Miquelon</option><option value="VC">Saint Vincent and The Grenadines</option><option value="WS">Samoa</option><option value="SM">San Marino</option><option value="ST">Sao Tome and Principe</option><option value="SA">Saudi Arabia</option><option value="SN">Senegal</option><option value="RS">Serbia</option><option value="SC">Seychelles</option><option value="SL">Sierra Leone</option><option value="SG">Singapore</option><option value="SX">Sint Maarten (Dutch Part)</option><option value="SK">Slovakia</option><option value="SI">Slovenia</option><option value="SB">Solomon Islands</option><option value="SO">Somalia</option><option value="ZA">South Africa</option><option value="GS">South Georgia and The South Sandwich Islands</option><option value="SS">South Sudan</option><option value="ES">Spain</option><option value="LK">Sri Lanka</option><option value="SD">Sudan</option><option value="SR">Suriname</option><option value="SZ">Swaziland</option><option value="SE">Sweden</option><option value="CH">Switzerland</option><option value="SY">Syrian Arab Republic</option><option value="TW">Taiwan, Province of China</option><option value="TJ">Tajikistan</option><option value="TZ">Tanzania, United Republic of</option><option value="TH">Thailand</option><option value="TL">Timor-Leste</option><option value="TG">Togo</option><option value="TK">Tokelau</option><option value="TO">Tonga</option><option value="TT">Trinidad and Tobago</option><option value="TN">Tunisia</option><option value="TR">Turkey</option><option value="TM">Turkmenistan</option><option value="TC">Turks and Caicos Islands</option><option value="TV">Tuvalu</option><option value="UG">Uganda</option><option value="UA">Ukraine</option><option value="AE">United Arab Emirates</option><option value="GB">United Kingdom</option><option value="US">United States</option><option value="UM">United States Minor Outlying Islands</option><option value="UY">Uruguay</option><option value="UZ">Uzbekistan</option><option value="VU">Vanuatu</option><option value="VE">Venezuela, Bolivarian Republic of</option><option value="VN">Viet Nam</option><option value="VG">Virgin Islands, British</option><option value="VI">Virgin Islands, U.S.</option><option value="WF">Wallis and Futuna</option><option value="YE">Yemen</option><option value="ZM">Zambia</option><option value="ZW">Zimbabwe</option>
+                	</select>
+           		</div>
+                
+                <div class="psd-ph-email">
+                	<div class="form-group mobile-input">
+                		<label>Mobile <small class="red">*</small></label>
+                    	<input type="text" class="form-control" placeholder="Enter your mobile number" value="" />
+           			</div>
+                    <div class="form-group email-input">
+                		<label>E-mail <small class="red">*</small></label>
+                    	<input type="email" class="form-control" placeholder="Enter your email id" value="" />
+           			</div>
+                    <div class="form-group subscribe-check">
+                        <input id="Subscribe" name="selector" type="checkbox">
+                        <label for="Subscribe">Subscribe to our news channel</label>
+           			</div>
+                </div>
+            </div>
+        
+        <div class="psd-trip-head">
+        	<div class="psd-head-left">
+            	<div class="psd-head-title-full">
+                	<h4><i class="fa fa-file-text"></i> Review the trip terms: </h4>
+                </div>
+        	</div>
+      	</div>                                      
+        <div class="tripterms">
+        	<ul>
+            	<li>1. Name changes are not permitted. Tickets are non-refundable and non-transferable.</li>
+                <li>2. Where permitted, changes to your itinerary costs you minimum of CAD150 per ticket. Airlines fare/fees are additional cost for you.</li>
+                <li>3. Your credit/debit card may be billed in multiple charges totaling the final total price. Billing statement may disply Airlines name or Flight Journey or Agent Fee or our suplier name.</li>
+            </ul>
+            
+            <h4><i class="fa fa-file-text"></i> Terms and Conditions: </h4>
+            
+            <div class="sb-container psd-scroll">
+            	
+                    <h4>Introduction </h4>
+                    <p>
+                        Following is the User agreement between you, the User (referred to herein as "User"or you) and
+                        Flight Journey ("we","FlightJourney.com", or "Flight Journey"). 
+                    Please read these terms and conditions (Terms and Conditions) before using the FlightJourney.com site (Site) or making any Bookings. 
+                    You consent to the Terms and Conditions when you use the site, without qualification. If you disagree with any part of the Terms and Conditions, you may not use the site in any way or make a Booking. 
+                    All correspondence regarding customer service,yourBooking, these Terms and Conditions, or any other questions should be sent to FlightJourney.com, 925 Boul De Maosonneuve O, APP 247, Montreal QC H3A 0A5, Canada or email to <a href="mailto:support@flightjourney.com">support@flightjourney.com.</a>
+                    </p>
+
+                    <h4>Your Contract</h4>
+                    <p>
+                        A "Booking"is defined herein as any order for products or services you make on FlightJourney.com (the"Site"). 
+                    Acceptance will be made by Flight Journey when we have received full payment from you and sent you a confirmation email (from either Flight Journey or the relevant Travel Supplier). All travel products and services featured on the Site are subject to availability. 
+                    Our prices are subject to change in real time. No claim relating to the price of a Booking will be considered once the contract is concluded.
+                    </p>
+
+                    <p>
+                        Flight Journey is solely acting as the agent for the third party Travel Suppliers such as airlines, hotels, motels, resorts, 
+                    and insurance companies ("Travel Suppliers" or "Suppliers"), made available through our Site. When you make a Bookingwith Flight Journey, and your preferred travel product or service is available, 
+                    your contract will be between the Travel Supplier and you. Flight Journey is not a party to the contractual relationship formed by you and the Travel Supplier, and is not responsible for the actions of thoseTravel Suppliers.
+                    </p>
+
+                    <h4>Travel Supplier’s Terms and Conditions: </h4>
+                    <p><strong>All Bookings are subject to the Terms and Conditions of the Travel Suppliers providing the services offered on the Site.</strong> By placing an order with Flight Journey, you agree to abide by all the Terms and Conditions and relevant policies of the applicable Suppliers (including airline’s security policies, fare revision policies, flight schedule change policies, cancellation policies, refund policies, baggage allowance policies, pet policies, privacy policies and payment policies) without reservation, and to be bound by the limitations therein. Before you make any Booking on our Site, it is your responsibility to check and accept the policies of the all Travel Suppliers included in your Booking. User acknowledges that Travel Suppliers can cancel your ticketed or Booked itinerary in case they discover a violation of any of their relevant policies. If the Supplier’s Terms and Conditions are ever in conflict with the Terms and Conditions of Flight Journey, Flight Journey will control all issues relating to the liabilities and responsibilities of Flight Journey.</p>
+
+                    <h4>Site Usage </h4>
+                    <p>Flight Journey.comBookings are available for purchase by residents of the United States (excluding Hawaii) while in the United States, its territories, possessions, and protectorates, who have all the requisite power and authority to enter into and perform the obligations under these Terms and Conditions. Travelers must be over the age of 18 to make a Booking through FlightJourney.com. You agree that you are legally 18yrs of age and have legal authority to enter an agreement with us and to use our Site as per our Site’s Terms and Conditions. </p>
+                    <p>Please read these Terms and Conditions carefully, ask us any questions, and consult an attorney for any clarifications before you agree to be bound by them. User acknowledges that they have taken note of these Terms and Conditions before making a Booking and have accepted the same by clicking on the "I have accepted the <a href="terms_conditions.html" target="_blank">Terms and Conditions</a> of the booking" check box on the bottom of the Booking submission page. When User is making a Booking for someone besides themselves, clicking on the "I have accepted the Terms and Conditions of the booking" check box verifies User has informed all other Travelers in their group of these Terms and Conditions, our privacy policy, the relevant Travel Suppliers Terms and Conditions and policies, and accepts them on their behalf, warranting that the other Travelers in their group, after consideration and with an opportunity to consult legal counsel, also agree to be bound by these Terms and Conditions to the same extent as User. Without this acceptance, the processing of aBooking is not technically possible. Therefore, by placing an order with Flight Journey, you, and all Travelers in your group (if applicable), agree to abide by these Terms and Conditions without reservation and to be bound by the terms and limitations herein.</p>
+
+                    <p>User warrants that all information provided by you during Bookingis accurate and true. User agrees to be financially responsible for the Bookings theymake with Flight Journey, even if those Bookings are for third parties.</p>
+
+                    <h4>Modification of Our Terms and Conditions </h4>
+                    <p>Our Terms and Conditions may be amended or modified by us at any time, without notice, on the understanding that such changes will not apply to Bookings made prior to the amendment or modification. It is therefore essential that you consult and accept our Terms and Conditions at the time of making a Booking, particularly in order to determine which provisions are in operation at that time in case they have changed since the last time you placed an order with Flight Journey or reviewed our Terms and Conditions.</p>
+
+                    <h4>Payment </h4>
+                    <p>Flight Journey accepts payments through Master, Visa and American Express Card which can be either Debit/Credit Card. Your Booking is confirmed only when we receive full payment for the Booking and when we issue the ticket(s) for your Booking. </p>
+                    <p>If we could not process your payment and take payment from your payment card account, we will send you an email with in 24 hours of your Booking. This could be because of insufficient funds in your payment card account, incorrect details provided by you on our site, any fraud alerts received from our fraud prevention system or if your bank declined the transaction. You can also contact your bank or card issuing company to authorize your transaction or provide us a different payment card acceptable by Flight Journey. We do not take responsibility for any damages caused by the non-acceptance of your payment card.</p>
+                    <p>Fares may increase while we process your Booking. If there is an increase in the booked airfare, airline does not confirm your trip and decline your payment during the transaction. In such case, <strong>you can either cancel the Booking without any extra cost or purchase the ticket(s) at the increased fare.</strong></p>
+                    <p>When a Booking is submitted, you hereby authorize that Flight Journey and/or its authorized Travel Suppliers may charge the payment card provided to us for the total amount of your Booking.</p>
+
+                    <p>If we notice any fraudulent transaction from the provided credit or debit card, we will inform such activity to Credit Card Verification Company, bank, or airline, and if required we will also inform the appropriate legal authorities. We process all credit and debit card transactions securely and transmit the data using SSL.</p>
+                    <p>Flight Journey does not accept P.O.Box as billing address and <strong>your billing address must be valid and verifiable.</strong> </p>
+                    <p>We may request you to send us the <strong>credit card authorization</strong> form (completed and signed) along with additional documents to verify your identity and process the payment. This step must be completed by you with in <strong>24 hours</strong> of your Booking; otherwise Flight Journey has the right to cancel your Booking.</p>
+                    <p>You are authorizing Flight Journey to perform pre-authorization verification by charging less than one US dollar on your payment card and get the confirmation of the same charge from you. This charge is temporary and will be refunded immediately.</p>
+                    <p>You are agreeing to show the original payment card used to make this purchase to airport authorities or airlines staff during the check in or before your departure. It is your responsibility to check with airlines, if it is required to show the original payment card during the check in or not. Flight Journey is not liable if airlines refused to board you on any flight for not showing the original payment card used to purchase your tickets on our Site.</p>
+
+                    <h4>Booking Service Fee</h4>
+                    <p>When you do an online Booking on our site, Flight Journey includes a Booking service fee in the total price of the ticket. This fee is in between <strong>0 USD to 150 USD per person</strong> for both domestic and international travel. </p>
+                    <p>You can also make Bookings by contacting our call center agents and the service for such Bookings will be anywhere between <strong>0 USD to 150 USD per person</strong> for both domestic and international travel.</p>
+                    <p>Flight Journey has authority to change this fee without any notice. <strong>If the total reflected price on the site is NOT acceptable by you then you have the right to cancel the Booking and not to make any purchase.</strong></p>
+                    <p>Flight Journey does not make any representations or promises in regards to the Booking Service Fees we charge. This fee is for Site usage and our Booking services. This Booking service fee charged for online Bookings or call center Bookings is <strong>not refundable.</strong></p>
+
+                    <h4>Exchange Fee for Modifications and Cancellations </h4>
+                    <p>If any itinerary permits the changes (cancellation or modification), Flight Journey reserve the right to charge an exchange fee of <strong>150 USD per traveler</strong> in addition to the penalties of the Travel Suppliers and any difference in the fare/rate. It is your responsibility to contact our customer representative agents and find out the total cost for any changes. </p>
+
+                    <h4>California and Illinois Residents only </h4>
+                    <p>Upon cancellation of the transportation or travel services, where the Traveler is not at fault and has not canceled in violation of any terms and conditions previously clearly and conspicuously disclosed and agreed to by the Traveler, all sums paid to the seller of travel for services not provided will be promptly paid to the Traveler, unless the Traveler advises the seller of travel in writing, after cancellation. In California, this provision does not apply where the seller of travel has remitted the payment to another registered wholesale seller of travel or a carrier, without obtaining a refund, and where the wholesaler or provider defaults in providing the agreed-upon transportation or service. In this situation, the seller of travel must provide the Traveler with a written statement accompanied by bank records establishing the disbursement of the payment, and if disbursed to a wholesale seller of travel, proof of current registration of that wholesaler.</p>
+
+
+                    <h4>Booking Reconfirmation </h4>
+                    <p>It is your responsibility to review and reconfirm the Itinerary details (including each passenger’s legal name(first, middle and last name) as given in the passport, date of birth, title, travel dates, departure city, destination city, flight number, scheduled departure and arrival time) for the itinerary that you have booked on our site <a href="http://FlightJourney.com/" target="_blank">FlightJourney.com</a> or through our customer support agent. Please contact us with in 4 hours from your Booking time for any changes required on your Booking. After this time window, Flight Journey considers all your details are accurate and acceptable by you and without any liability on our part.</p>
+
+                    <h4>Errors in Booking and ticketing: </h4>
+                    <p>Our staff is committed to avoid any human errors during Booking and tickets process. It is very unlikely, but if any of our agents unknowingly makes a mistake during Booking or ticketing of your flight/Accommodations it is your responsibility to contact us with in 24 hours of receiving the confirmed itinerary or e-ticket, so that we can do our best to correct the issue as soon as we can. After 24 hours, we cannot correct any errors on your itinerary or e-ticket. If your Booking is canceled by mistake, we are committed to reimbursing a maximum of our Booking Service Fee for your Booking in addition to a 50 USD voucher which you can use within 12 months for your next Booking with Flight Journey.</p>
+
+                    <h4>AIR TRANSPORT </h4>
+                    <h4>Ticket delivery:</h4>
+                    <p>Your purchase will be completed when the payment has been taken from your payment card and when we issue the e-ticket for your Booking. Flight Journey delivers the e-tickets to the email address that you provide to us during the Booking process. It is your responsibility to provide us a valid and personal email address for which you have access to it. </p>
+                    <p>As of June 1st, 2008, the International Air Transport Association (IATA) imposed rules with regard to the issuing of air travel tickets. As of that date, travel agencies and airlines have an obligation to only issue travel tickets via electronic means (i.e. electronic ticket or "e-ticket"). Due to technical constraints to do with airline’s restrictions in relation to certain requirements (infants under the age of 2, inter-airline agreements, groups, etc.), it may be impossible to issue an electronic ticket. Therefore, though a flight may be shown as available, it might prove impossible for us to honor your reservation.This situation, which is outside our control, will not result in liability on our part.</p>
+                    <p>We will deliver paper tickets in certain cases such as (but not limited to) required by law, required by airline, e-tickets system is down, technical issues to deliver an email from our end. Flight Journey will not take any responsibility in the delay of delivering your paper ticket. It is your responsibility to provide us with accurate mailing address to deliver these tickets. </p>
+
+                    <h4>Best Price Guarantee Policy </h4>
+                    <p>With in the 4hours of your Booking with us, if you can find a lower price for the same itinerary on reputed US based website and call our customer support agent so that they may verify that price, we will either: cancel your itinerary; provide you full refund; or refund you the fare difference. We need all the documentation from you to prove that all the elements of the lower offer, including, without limitation, airline, class, ticket type, fare, cancellation policy, departure and arrival dates and locations must match with itinerary which you booked on our Site. The lower rate fare must be available for Booking when you call our support center. If the carrier is not displayed on lower fare displayed web site during the fare search then it is not qualified under this policy. This policy applies when lower fare on other US based reputed website(in English language) is advertised and available for public to book.A lower price offered solely through another sellers call center will not be considered for this offer/ subject to our Best Price Guarantee Policy.</p>
+
+
+<!--
+
+                    <h4>24 Hours Cancellation Policy </h4>
+                    <p>Once you confirm the booking, shortly you will receive a booking confirmation email from us. If you purchased ‘24 Hours Cancellation Policy’, you will be able to cancel your booking with in 24hours of the booking confirmation email. With this, you do not need to provide any reason or additional documentation when you contact us via email or by calling our support team to cancel your booking. After 24hours from booking confirmation or if you do not purchase this policy, additional cancellation or ticket change fee will apply. The fee details are provided under “Exchanges, Cancellation and Refund Policies” section of our terms and conditions.</p>
+
+-->
+
+                    <h4>Exchange, Cancellation and Refund Policies </h4>
+                    <p>Flight Journey offers non-refundable airfare only. In some instances, if you call our customer service agent prior to 72 hours of your departure time, some airlines may grant cancellation or refund on certain ticket types. If the relevant airline allows, Flight Journey can process your request to cancel your ticketed itineraries. Instead of refunds some airlines offer credit for future travel for the same passenger on their airline. Be aware there could be an expiration date for this travel credit and check with airlines directly regarding the terms of any credit offered. In this case, Airlines may also charge you a penalty and the fare difference for any changes (if allowed). These charges are in addition to Flight Journey’s 150 USD per passenger exchange fee.</p>
+                    <p>Flight Journey reserves the right to determine the amount of refund value in case cancellation and modifications are permitted by airlines. Our decision is final on the refund value. Refunded amount will be funded back to the payment card which was used to complete the Booking. It will take 30-45 days to process refunds for all services. In certain cases, Flight Journey may transfer the refunded value to passenger’s bank account. This is subjected to security verifications.</p>
+                    <p>There will be no refund on unutilized services. All cancellation and change fees are subjected to apply as stated in this policy document. </p>
+
+                    <h4>Alteration Policy </h4>
+                    <p><strong>All confirmed flight bookings are non-changeable</strong>.In some instances, Flight Journey can process change requests (Ex: change in travel dates, departure city, destination city, etc.) on confirmed tickets as long as these requests are acceptable by relevant airline’s and subjected to their policies. Not all change requests are allowed by airlines. If changes are permitted,User will be charge the airline’s penalty fee in addition to the fare difference and our <strong>150 USD per passenger as change fee</strong>. Contact our customer service agents to find out the total cost for your request and the timeframe to complete the changes. </p>
+                    <p>Flight Journey does not guarantee any changes will be accepted and does not accept any liability, if airlines do not accept your change request or it is not processed within the timeframe you have anticipated or require.</p>
+
+                    <h4>No-Show or Unused </h4>
+                    <p>Your ticket will be considered as a no-show ticket,if you neither turn up to catch a confirmed schedule flight before its scheduled departure time nor cancel the flight by calling the airline or our customer support center with in the allowable time window to cancel your trip. These no show tickets do not hold any value and not refundable.</p>
+                    <p>Flight Journey and/or Airlines do not process any refunds if you partially use a ticket. All segments must be travelled by you. </p>
+
+                    <h4>Flight Schedule Change or Cancellations by Airlines </h4>
+                    <p>Depending on various reasons, airlines may change a flight schedule or to cancel it. Flight Journey has no control over these decisions made by airlines and is not liable for flight cancellation or flight schedule change (Date, time or both). Before your departure or during your trip, it is your responsibility to check with airlines regarding flight cancellation or flight schedule change relevant to your trip. Flight Journey makes all efforts to inform you about schedule changes or cancellations but we do not take any liability if you do not receive any alert from us.</p>
+                    <p>Not all the tickets (Itinerary types and flight types) are refundable against flight cancellation within 4 hours prior to the scheduled departure. In such cases, Flight Journey does not accept any request from you to refund your ticket and is not liable to give you refund. You must review the relevant airline’s refund policy and contact the relevant airline for further help. </p>
+
+                    <h4>Multiple Airline Itineraries </h4>
+                    <p>Depending on the number of airlines included on your Itinerary, separate fare rules, terms &amp; conditions and policies(Baggage allowance policy, baggage fee, refund policy etc) will apply by each airline. For any of your change, cancellation and refund requests may handle separately by each airline and different rules and penalties/fees apply by those airlines. If any of flight schedule changes or cancelled by airlines or by you then your return or connecting airline is not obligated to issue a refund or exchange or change your itinerary. It is your responsibility to comply with each airline’s terms &amp;conditions and various other policies.</p>
+                    <p>It is recommended to have a physical copy of all your e-ticket confirmations from all the airlines included in your confirmed itinerary. While entering into airport or during check in, you are responsible to show your all itinerary, tickets or both. </p>
+
+                    <h4>Fare Changes </h4>
+                    <p>All airline fares very dynamic and fares are subject to change in real time. Flight Journey does not take liability on airline fare changes and your Booking is not confirmed with the fare you have chosen until we issue the ticket for your Booking.</p>
+                    <p>If there is an increase in the booked airfare, airline does not confirm your trip and may decline your payment during the transaction. In such case, you have right to cancel the Booking without any extra cost or purchase the ticket(s) at the increased fare. </p>
+
+                    <h4>Baggage Policy and Fee </h4>
+                    <p>Every airline has its own baggage policy which defines their baggage allowance for checked and cabin bags. Baggage fee is determined based on the number, weight and measurement of each checked bag. Baggage fee is directly payable to airlines. It is your responsibility to check the baggage allowance policy of each airline included on your confirmed itinerary. If multiple airlines are included on your trip and may have different baggage policies and fees that you need to check with relevant airlines.</p>
+                    <p>Also it is your responsibility to check the baggage policy of each airline for prohibited items and acceptable items in your checked and carryon bags. You will be responsible for paying to the airline any additional charges for checked or overweight baggage, including, but not limited to, golf bags and oversized luggage. If you exceed the weight limit set by your airline, and excess weight is permitted, you must pay a supplement directly to the airline at the airport. </p>
+                    <p>Flight Journey assumes no liability for any loss or damage to baggage or personal effects, whether in transit or during your trip. Your airline is liable to you for the baggage you entrust to it only up to the compensation contemplated in the international conventions and relevant statutes. In the event of damage, late forwarding, theft or loss of luggage, you should contact the your airline and declare the damage, absence or loss of your personal effects before leaving the airport, and then submit a declaration, attaching the originals of the following documents: the travel ticket, the baggage check-in slip, and the declaration. Some airlines may require additional info, it is your responsibility to follow the appropriate procedures. If traveling with valuable items, it is recommended that you take out an insurance policy covering the value of your items. </p>
+
+                    <h4>Over Booking by Airlines </h4>
+                    <p>It is unlikely but airline flights may be overbooked, in such case there is a possibility that seats may not be available for you for which you have a confirmed reservation. In this case, airlines try to accommodate the passengers by asking the passengers to volunteer to give up their reserved seat for compensation. If there are not enough volunteers, you may be denied boarding at the departure airport. Persons denied boarding involuntarily may be entitled to receive compensation from their airline. You can check with check-in counters and boarding locations for the airlines policies for the payment of compensation and boarding priorities. Flight Journey cannot be held liable for denied boarding.</p>
+
+                    <h4>Frequent flyer reward policy </h4>
+                    <p>Most of the airlines offer rewards program for frequent flyer and every airline have different policy for frequent flyer rewards program and these policies are out of our terms and conditions. It is your responsibility to check directly with the airline (or the airline which you have booked a trip) regarding their frequent flyer rewards program policy. We have no control on their policies.</p>
+
+                    <h4>Optional Services offered by Airline </h4>
+                    <p>Every airline may offer some optional services and they may charge extra for these services. The total fare provided by Flight Journey does not include these extra charges imposed by airlines for any optional service. It is your responsibility to check with airlines directly on their terms of service for these optional services and the charges for these services.</p>
+                    <p>Your special requests like seat, meals, frequent flyer, wheel chair, bassinet and other requests are requests only and these are subjected to availability. Airlines reserve the right to make changes to allocated seats and also check with airlines directly on all your special requests. Flight Journey does not guarantee and does not accept any liability for any special requests you made through our Site. </p>
+
+                    <h4>Unaccompanied Minors </h4>
+                    <p>Flight Journey does not issue tickets directly to unaccompanied minors (age 18 or under). It is your responsibility to check with airlines directly regarding their policies and regulations for children travelling without adult supervision.</p>
+
+                    <h4>Visa and Entry Requirements </h4>
+                    <p>It is User’s responsibility to verify that they (including infants)have all the necessary visas, passport, and vaccinations prior to travel. A full and valid passport is required for all persons traveling to any of the destinations outside the U.S. that we feature. You must obtain and have possession of a valid passport, all visas, permits and certificates, and vaccination certificates required for your entire Trip. </p>
+                    <p>Most international travel requires a passport valid until at least six (6) months beyond the scheduled end of your Itinerary.  Non-U.S. citizens should contact the appropriate consular office for any requirements pertaining to their Tour.  Further information on entry requirements can be obtained from the State Department, by phone (202) 647-5335 or access online at <a href="http://travel.state.gov/travel" target="_blank">http://travel.state.gov/travel</a> or directly from the destination country's website.</p>
+                    <p>Some countries require you to be in possession of a return ticket or exit ticket and have sufficient funds, etc. Similarly, certain countries require that the Traveler produce evidence of insurance/repatriation coverage before it will issue a visa. </p>
+                    <p>You must carefully observe all applicable formalities and ensure that the surnames, middle names and forenames used for all passengers when making a booking and appearing in your travel documents (booking forms, travel tickets, vouchers, etc.), correspond exactly with those appearing on your passport, visas, etc. </p>
+                    <p>Immunization requirements vary from country to country and even region to region.  Up-to date information should be obtained from your local health department and consulate.  You assume complete and full responsibility for, and hereby release Flight Journey from, any duty of checking and verifying vaccination or other entry requirements of each destination, as well as all safety and security conditions of such destinations during the length of the proposed travel or extensions expected or unexpected.  For State Department information about conditions abroad that may affect travel safety and security, go to <a href="http://travel.state.gov/travel/travel_1744.html" target="_blank">http://travel.state.gov/travel/travel_1744.html</a>, or contact them by phone at (202) 647-5335. For foreign health requirements and dangers, contact the U.S. Centers for Disease Control (CDC) at (404) 332-4559, use their fax information service at (404) 332-4565, or go to <a href="http://wwwnc.cdc.gov/travel/" target="_blank">http://wwwnc.cdc.gov/travel/</a>.</p>
+                    <p>It is your responsibility to ensure that you hold the correct, valid documents for the countries you are visiting and have obtained the necessary vaccinations, clearance to travel, and hold the necessary confirmations for medications required as we cannot be held liable for any illness, delays, compensation, claims and costs resulting from your failure to meet these requirements. </p>
+                    <p>WE CANNOT ACCEPT RESPONSIBILITY IF YOU ARE REFUSED PASSAGE ON ANY AIRLINE, TRANSPORT OR ENTRY INTO ANY COUNTRY DUE TO THE FAILURE ON YOUR PART TO CARRY OR OBTAIN THE CORRECT DOCUMENTATION. IF FAILURE TO DO SO RESULTS IN FINES, SURCHARGES, CLAIMS, FINANCIAL DEMANDS OR OTHER FINANCIAL PENALTIES BEING IMPOSED ON US, YOU WILL BE RESPONSIBLE FOR INDEMNIFYING AND REIMBURSING US ACCORDINGLY. </p>
+
+                    <h4>Travel Risks </h4>
+                    <p>Although most travel to destinations made available through the Site is completed without incident, travel to certain areas may involve greater risk than others. You assume sole responsibility for your own safety at any destination traveled to. Flight Journey does not guarantee your safety at any time, and assumes no responsibility for gathering and/or disseminating information for you relating to risks associated with your destinations. BY OFFERING OR FACILITATING TRAVEL TO CERTAIN DESTINATIONS, WE DO NOT REPRESENT OR WARRANT THAT TRAVEL TO SUCH POINTS IS ADVISABLE OR WITHOUT RISK, AND WE SHALL NOT BE LIABLE FOR DAMAGES OR LOSSES THAT MAY RESULT FROM TRAVEL TO SUCH DESTINATIONS. </p>
+
+                    <h4>Discount Fares </h4>
+                    <p>According to the US Airline Deregulation Act, Open Sky Agreement, and other acts/codifications, it is legal to offer discounted airfares. Because of our Travel Supplier’s huge inventory and our large volume, we are allowed to provide you many published air fares for less than the carriers published fares. The discount value may be changed based on carrier, availability, fare type, seasonality, destinations and referral source. These discounts may continuously vary/change.</p>
+
+                    <h4>Hazardous Materials </h4>
+                    <p>
+                        Federal law strictly prohibits carrying any hazardous material in your checked baggage, cabin bags, carrying on bags or on person. Any violation can result in 5yrs of imprisonment and penalty of 250,000 USD or more (49 U.S.C 5124). Hazardous materials include explosives, flammable liquids and solids, compressed gases, poisons, oxidizers, corrosives and radioactive materials, including paints, fireworks, tear gases, lighter fluid, radio-pharmaceuticals and oxygen bottles. Check this link for detail information 
+                 <a href="http://www.faa.gov/about/office_org/headquarters_offices/ash/ash_programs/hazmat/passenger_info/" target="_blank">http://www.faa.gov/about/office_org/headquarters_offices/ash/ash_programs/hazmat/passenger_info/</a>
+                    </p>
+
+                    <h4>APIS </h4>
+                    <p>All airlines are required to collect Advance Passenger Information (API) from passengers before travel to or from the USA and certain other countries. You agree to supply this information to Flight Journey and consent to Flight Journey passing this information to the airlines who may then disclose it to foreign authorities as necessary. If you do not supply Advance Passenger Information at the time of reservation, you may be refused to entry to these countries. Many airlines require complete passport information before issuance of tickets. It is very important that this information is accurate so that you do not have any delay when you pass through immigration on arrival in these countries. The information you will be asked to provide will depend on the country you are visiting, and can include passport information, city and country of residence and destination address for all travelers on your Booking. If you are traveling to a country that requires API, Flight Journey will ask for the information after completing your reservation. It is Users responsibility to provide us the requested information on time. If User is not able to provide the requested information, you will be charged the airline’s cancellation charge in addition to our cancellation fee described herein.</p>
+
+                    <h4>Non-Use of Flight Segments </h4>
+                    <p>You agree not to purchase a ticket or tickets containing flight segments that you will not be using, such as a "point-beyond", "hidden-city", or "back-to-back tickets". You further agree not to purchase a round-trip ticket that you plan to use only for one-way travel. You acknowledge that the airlines generally prohibit all such tickets, and therefore we do not guarantee that the airline will honor your ticket or tickets. You agree to indemnify Flight Journey against any airline claims for the difference between the full fare of your actual itinerary and the value of the ticket or tickets that you purchased. </p>
+
+                    <h4>Babies and Infants </h4>
+                    <p>Babies (up to 2 years of age) do not occupy a seat; the price of the ticket is generally 10% of the official rate. On certain flights children (from 2 to 11 years of age) may be granted a reduction, except on charter flights. Always check the relevant airlines for their policies before booking.</p>
+
+                    <h4>Pregnancy </h4>
+                    <p>Different airlines have their own restrictions on when pregnant woman may fly on their plane, which can range from prohibiting flying anywhere from 7 to 30 days by the due date. It is your responsibility to check the restrictions of your particular airline. If you are denied boarding, Flight Journey will not be responsible for any resulting cancellation fees and charges.</p>
+
+                    <h4>LIABILITY LIMITATIONS, DISCLAIMERS, AND INDEMNIFICATION </h4>
+                    <p>WE DO NOT WARRANT OR REPRESENT THAT THE CONTENT OF THIS WEBSITE IS ACCURATE, UP-TO-DATE OR COMPLETE, NOR THAT IT DOES NOT INFRINGE THE RIGHTS OF OTHERS. WE ARE PROVIDING THIS WEBSITE AND ITS CONTENTS ON AN "AS IS" BASIS. WE MAKE NO REPRESENTATIONS OR WARRANTIES OF ANY KIND WITH RESPECT TO THE WEBSITE, ITS CONTENTS OR ANY OF THE PRODUCTS OR SERVICES SUPPLIED THROUGH THIS WEBSITE. TO THE MAXIMUM EXTENT PERMITTED BY LAW, WE DISCLAIM ALL IMPLIED REPRESENTATIONS AND WARRANTIES INCLUDING, WITHOUT LIMITATION, IMPLIED WARRANTIES THAT THE PRODUCTS AND SERVICES OFFERED AND SUPPLIED THROUGH THIS WEBSITE WILL BE OF MERCHANTABLE QUALITY, FIT FOR ANY PURPOSE OR WILL COMPLY WITH ANY DESCRIPTIONS ON THIS WEBSITE OR SAMPLES.</p>
+                    <p>We do not represent or warrant that this website, the server that makes it available or any of our products or services supplied through this website will be free of errors, viruses or defects. Your access and use of this website is subject to factors beyond our control. We do not warrant that this website or the products and services offered via this website will meet your requirements or that the service will be uninterrupted or timely. We will use our best endeavors to make this website secure and have implemented technology for this purpose. However, because of the nature of the internet, we do not warrant that this Website will be secure.</p>
+                    <p>TO THE EXTENT PERMITTED BY LAW, YOU RELEASE US FROM ALL LIABILITY, COST, DAMAGES, CLAIMS AND EXPENSES (INCLUDING DIRECT, INDIRECT, SPECIAL AND CONSEQUENTIAL LOSS OR DAMAGE WHETHER IN NEGLIGENCE OR OTHERWISE) ARISING OUT OF THE SUPPLY OR FAILURE TO SUPPLY OR USE OR NON-USE OF THE THIRD PARTY PRODUCTS OR SERVICES. </p>
+                    <p>To the maximum extent permitted by law, neither we nor any of our officers, employees, shareholders or other representatives will be liable in damages or otherwise in connection with your use of or inability to access this website or the purchase and use of any products and services supplied via this website or any breach of any warranties that may be implied by law. This limitation of liability applies to all damages of any kind, including compensatory, direct, indirect or consequential damages, loss of data, income or profit, loss of or damage to property, personal injury and claims of third parties. In the event that our website fails to operate or causes you loss or damage, your sole remedy is the refund any money that you paid to us to use this website.</p>
+                    <p>IN NO EVENT SHALL Flight Journey BE LIABLE FOR ANY CONSEQUENTIAL, INDIRECT, EXEMPLARY, SPECIAL, INCIDENTAL OR PUNITIVE DAMAGES OF ANY KIND, INCLUDING WITHOUT LIMITATION, DAMAGES FOR ANY LOSS OF OPPORTUNITY OR OTHER PECUNIARY LOSS, EVEN IF Flight Journey HAS BEEN ADVISED OF THE POSSIBILITY OR PROBABILITY OF SUCH DAMAGES OR LOSSES, WHETHER SUCH LIABILITY IS BASED UPON CONTRACT, TORT, NEGLIGENCE OR OTHER LEGAL THEORY. IN NO EVENT SHALL Flight Journey’ TOTAL AGGREGATE LIABILITY TO THE TRAVELER FOR CLAIMS ARISING UNDER THIS AGREEMENT EXCEED THE TOTAL AMOUNTS PAID BY THE TRAVELER TO Flight Journey IN FEES UNDER THIS AGREEMENT.</p>
+                    <p>Flight Journey IS ACTING AS A MERE AGENT FOR ALL SUPPLIERS OF SERVICES AND CONVEYANCES ADVERTISED AND/OR SOLD BY US. ANY AND ALL SUPPLIERS OF SERVICES AND CONVEYANCES ADVERTISED AND/OR SOLD BY Flight Journey ARE THIRD PARTY VENDORS AND Flight Journey RETAINS NO OWNERSHIP INTEREST, MANAGEMENT, OR CONTROL OF THOSE THIRD PARTY VENDORS. TO THE FULLEST EXTENT PERMITTED BY LAW, Flight Journey DOES NOT ASSUME LIABILITY FOR ANY INJURY, DAMAGE, DEATH, LOSS, ACCIDENT OR DELAY DUE TO AN ACT OR OMISSION OF ANY THIRD PARTIES (INCLUDING THIRD PARTY VENDORS), GOVERNMENTAL AUTHORITY, OR ACTS ATTRIBUTABLE TO YOU YOURSELF, INCLUDING, WITHOUT LIMITATION, NEGLIGENT OR RECKLESS ACTS, EVEN IF Flight Journey HAS BEEN ADVISED THAT SUCH DAMAGES WERE POSSIBLE OR PROBABLE. </p>
+
+                    <h4>Indemnification and Release </h4>
+                    <p>Except as otherwise set forth herein, User hereby releases Flight Journey from any and all liability, loss, expense, damages, or claims arising out of or resulting from User’s Booking or their use of the Site, whether caused by the negligent or reckless conduct of User, a Supplier, a third party, or otherwise.</p>
+                    <p>User hereby also agrees to indemnify, defend and hold harmless Flight Journey our affiliates, officers, employees and agents against all losses, costs, damages, claims and expenses (including reasonable attorneys' fees) arising from: </p>
+                    <p>Any breach of these Terms and Conditions by you;</p>
+                    <p>Any act or omission by you or an officer, employee or agent of you;</p>
+                    <p>Any claim, action, demand or proceeding by a third party against us or our officers, employees or agents caused or contributed to by you or an employee or agent of you. </p>
+
+                    <h4>DISPUTES </h4>
+                    <h4>Binding Arbitration, Governing Law, Jurisdiction, Venue, etc:</h4>
+                    <p>These Terms and Conditions and the relationship between You and Flight Journey will be governed by the laws of the State of Georgia without regard to its conflict of law provisions. </p>
+                    <p>You and Flight Journey shall attempt in good faith to resolve any dispute concerning, relating, or referring to a Booking, our Privacy Policy, Credit Card charges, Flight Journey’ website, any literature or materials concerning Flight Journey, and these Terms and Conditions or the breach, termination, enforcement, interpretation or validity thereof, (hereinafter a "Dispute") through preliminary negotiations. The parties shall use their best efforts to settle the dispute, claim, question, or disagreement. To this effect, they shall consult and negotiate with each other in good faith and, recognizing their mutual interests, attempt to reach a just and equitable solution satisfactory to both parties. If they do not reach such solution within a period of 60 days, then, upon noticeby either party to the other, all disputes, claims, questions, or differences shall be finally settled by arbitration in Atlanta, GA, administered by the American Arbitration Association in accordance with the provisions of its Commercial Arbitration Rules, and judgment on the award rendered by the arbitrator(s) may be entered in any court having jurisdiction thereof.</p>
+                    <p>In the event a party fails to proceed with arbitration the other party is entitled of costs of suit including a reasonable attorney’s fee for having to compel arbitration. Nothing herein will be construed to prevent any party’s use of injunction, and/or any other prejudgment or provisional action or remedy. Any such action or remedy shall act as a waiver of the moving party’s right to compel arbitration of any dispute.</p>
+                    You and Flight Journey agree to submit to the personal jurisdiction of the federal and state courts located in Fulton County, GA with respect to any legal proceedings that may arise in connection with, or relate to, our Binding Arbitration clause and/or a Dispute. The Client and Flight Journey agree the exclusive venue for any and all legal proceedings that may arise in connection with, or relate to, our Binding Arbitration clause and/or a Dispute, shall be the federal and state courts located in Washington, DC and to irrevocably submit to the jurisdiction of any such court in any such action, suit or proceeding and hereby agrees not to assert, by way of motion, as a defense or otherwise, in any such action, suit or proceeding, any claim that (i) he, she or it is not subject personally to the jurisdiction of such court, (ii) the venue is improper, or (iii) this agreement or the subject matter hereof may not be enforced in or by such court. YOU RECOGNIZE, BY AGREEING TO THESE TERMS AND CONDITIONS, YOU AND Flight Journey ARE EACH WAIVING THE RIGHT TO A TRIAL BY JURY OR TO PARTICIPATE IN A CLASS ACTION WITH RESPECT TO THE CLAIMS COVERED BY THIS MANDATORY BINDING ARBITRATION PROVISION.<p></p>
+ 
+                    <h4>Attorney’s Fees, Costs, and Expenses of Suit:  </h4>
+                    <p>If any act of law or equity, including an action for declaratory relief or any Arbitration Proceeding, is brought to enforce, interpret or construe the provisions of these Terms and Conditions, our Privacy Policy, Flight Journey’ website or any literature or materials concerning Flight Journey, the prevailing party shall be entitled to recover actual reasonable attorney’s fees, costs, and expenses.</p>
+
+                    <h4>MISCELLANEOUS  </h4>
+                    <h4>Insurance: </h4>
+                    <p>Flight Journey strongly recommends that all Users purchase some form of Travel, Cancellation, Lost Baggage and/or Medical Emergency Insurance for all travel. User acknowledges that it is User’s responsibility to understand the limitations of their insurance coverage and purchase additional insurance as needed. It is the User’s sole responsibility to research, evaluate and purchase appropriate coverage. User agrees that Flight Journey is not responsible for any uninsured losses.</p>
+
+                    <h4>Notices </h4>
+                    <p>Any notices required or permitted hereunder shall be given: </p>
+                    <p>a. If to Flight Journey, via certified mail, return receipt requested, to the address listed above. Notice may also be sent via email to: <a href="mailto:support@flightjourney.com" target="_blank">support@flightjourney.com</a></p>
+                    <p>b. If to User, at the email or physical address provided by User during the booking process.</p>
+                    <p>c. Such notice shall be deemed given: upon personal delivery; if sent by electronic mail, upon confirmation of receipt; or if sent by certified or registered mail, postage prepaid, three (3) days after the date of mailing. </p>
+
+                    <h4>Privacy Policy </h4>
+                    <p>The terms of the Flight Journey privacy policy are incorporated into these Terms and Conditions. You agree to the use of personal information by Flight Journey and its affiliates or third party suppliers in accordance with the terms of and for the purposes set forth in the Flight Journey privacy policy.</p>
+
+                    <h4>Confidentiality </h4>
+                    <p>By accepting our Terms, you acknowledge that any liability arising form you sharing the details of your Booking with any third party is yours alone. Flight Journey will not be liable if any third party misuses Booking information shared by you. You are considered liable for loses occurred in such cases.</p>
+
+                    <h4>Force Majeure </h4>
+                    <p>Flight Journey shall not be responsible for failure to perform any of its obligations under this Agreement during any period in which such performance is prevented or delayed due to Force Majeure. "Force Majeure" refers to any event beyond Flight Journey’ reasonable control, including but not limited to severe weather, fire, flood, mudslides, earthquakes, war, labor disputes, strikes, epidemics, World Health Organization’s advisories and/or alerts, Center for Disease Control’s advisories and/or alerts, U.S. State Department’s advisories and/or alerts, any order of any local, provincial or federal government authority, interruption of power Services, terrorism or any other causes beyond the control of Flight Journey or deemed by Flight Journey to constitute a danger to the safety and well-being of Users.</p>
+
+                    <h4>Data Security </h4>
+                    <p>To prevent payment card fraud and to make sure the payment card is being used with your consent, we perform security checks based on the data you provided to us during the Booking process on our Site. By accepting these Terms and Conditions, you are here by authorizing Flight Journey to carry out such security checks. You understand and acknowledge that the personal information provided to us can be disclosed to registered credit agencies which may keep a record of such information partially or entire information. This check is to verify your identity and to avoid any fraud. This security will not perform a credit check and your credit rating will not be affected with this security check. We process your data securely as per data protection act.</p>
+
+                    <h4>User Obligations </h4>
+                    <p>You agree to be bound by the following obligations, including without limitation:</p>
+                    <p>You accept financial responsibility for all transactions made under your name or account.</p>
+                    <p>You must be 18 years of age or over and have legal capacity.</p>
+                    <p>You warrant that all information you provide about yourself or members of your household shall be true and accurate. </p>
+                    <p>You will not use, or caused to be used, the Site for speculative, false or fraudulent Bookings. The Site and any content may not be modified, copied, transmitted, distributed, sold, displayed, licensed or reproduced in any way by you, except that one copy of the information contained within the Site may be made for personal, non-commercial use. </p>
+
+                    <h4>Denial of Access </h4>
+                    <p>Flight Journey reserves the right to deny access to the Site at any time without notice.</p>
+
+                    <h4>Links to Third Party Web Sites </h4>
+                    <p>The Site may contain hyperlinks to external web sites owned and operated by third parties. Flight Journey has no control over or association with such third party sites and no responsibility in relation to the accuracy, completeness and quality of the information contained within them. Any and all contents on these external web sites do not reflect products, services or information provided by Flight Journey. You should direct any concerns regarding any external link to the site administrator or webmaster of such site.</p>
+
+                    <h4>Information on the Site </h4>
+                    <p>Flight Journey offers all of the general information on the site for purposes of guidance only. Please note that Flight Journey may at any time change any aspect of the site or its content, including the availability of any suppliers, features, information, database or content. You need to check with the relevant Travel Supplier, destination, embassy, or tourist office to confirm the guidance is up to date. In particular, with respect to passports, visas, and vaccination requirements, Flight Journey does not guarantee that the information is always up to date and it is your responsibility to ensure that you understand and comply with all relevant passport, visa, and vaccination requirements. Flight Journey does not guarantee that information on the site (including without limitation prices, descriptions or dates) is free from errors or omissions but we will use all reasonable endeavors to correct any errors or omissions as soon as practicable once they have been brought to our attention.</p>
+
+                    <h4>Feedback and Complaints relating to your Booking </h4>
+                    <p>Please contact our customer services team, if you have any other enquiries or complaints relating to yourBooking prior to departure. If you have a complaint relating to a Travel Supplier, please ensure that you officially log your complaint with the relevant Travel Supplier prior to your return. If you have any other enquiries or complaints relating to your Booking, please contact our customer services team on your return and no later than 30 days after it giving your Booking reference and all other relevant information. If we or any of our Travel Supplier's requires further information you must supply that promptly in writing. This simple procedure must be followed as we and our Travel Supplier's need to be able to investigate the problem and, where possible, rectify it quickly.</p>
+
+                    <h4>Seller of Travel Information </h4>
+                    <p>California: CST#2115700-50. REGISTRATION AS A SELLER OF TRAVEL DOES NOT CONSTITUTE APPROVAL BY THE STATE OF CALIFORNIA. CALIFORNIA LAW REQUIRES CERTAIN SELLERS OF TRAVEL TO HAVE A TRUST ACCOUNT OR BOND. Vyoma Travels Inc HAS A BOND ISSUED BY HARTFORD FIRE INSURNACE COMPANY IN THE AMOUNT OF 10,000 USD . Vyoma Travels Inc IS NOT A PARTICIPANT IN THE TRAVEL CONSUMER RESTITUTION FUND (TCRF). For any question related to refunds, Please contact our Customer Service at  California: CST#2115700-50. REGISTRATION AS A SELLER OF TRAVEL DOES NOT CONSTITUTE APPROVAL BY THE STATE OF CALIFORNIA. CALIFORNIA LAW REQUIRES CERTAIN SELLERS OF TRAVEL TO HAVE A TRUST ACCOUNT OR BOND. Vyoma Travels Inc HAS A BOND ISSUED BY HARTFORD FIRE INSURNACE COMPANY IN THE AMOUNT OF 10,000 USD. Vyoma Travels Inc IS NOT A PARTICIPANT IN THE TRAVEL CONSUMER RESTITUTION FUND (TCRF). For any question related to refunds, Please contact our Customer Service at <a href="tel:+1-866-248-8940 ">+1-866-248-8940</a>  </p>
+                    <p>
+                        Iowa:SOT# 1160<br>
+                        FL: SOT# ST39170<br>
+                        WA: SOT# 603373092
+                    </p>
+
+                    <h4>Assignment </h4>
+                    <p>User may not assign his rights or obligations hereunder without the prior written consent of Flight Journey. </p>
+
+                    <h4>Severability and Survivability </h4>
+                    <p>If any provision, or portion of a provision, in these Terms and Conditions shall be unlawful, void, or for any reason unenforceable, then that provision shall be deemed severable and shall not affect the validity and enforceability of any remaining provisions. User and Flight Journey agree to substitute for such provision a valid provision which most closely approximates the intent and economic effect of such severed provision. </p>
+                    <p>Notwithstanding any other provisions of this these Terms and Conditions, or any general legal principles to the contrary, any provision of these Terms and Conditions that imposes or contemplates continuing obligations on a party will survive the expiration or termination of these Terms and Conditions. </p>
+
+                    <h4>Entire Agreement, Waiver, Etc </h4>
+                    <p>These Terms and Conditions constitute the entire understanding and agreement of the parties with respect to the subject matter covered by them, and supersede all prior and contemporaneous understandings and agreements, whether written or oral, with respect to such subject matter. No terms contained on any proposal, purchase order, acknowledgment or other document will be effective with respect to affecting the terms hereof. No delay or failure by either party to exercise or enforce at any time any right or provision hereof will be considered a waiver thereof of such party's rights thereafter to exercise or enforce each and every right and provision hereof. No single waiver will constitute a continuing or subsequent waiver. Flight Journey does not guarantee it will take action against all breaches of these Terms and Conditions. No waiver, modification or amendment of any provision hereof will be effective unless it is in a writing signed by both the parties.</p>
+
+                    <p>**Terms and Conditions have been updated on 06/10/2018.</p>
+                
+            </div>
+            
+            <div class="form-group">
+            	<input id="Subscribe" name="selector" type="checkbox">
+                <label for="Subscribe">I/We have all the travel required documents, visa and transit visa to travel.</label>
+           	</div>
+            
+            <div class="form-group">
+            	<input id="Subscribe" name="selector" type="checkbox">
+           		<label for="Subscribe">By clicking “Pay Now” button, you agree to our <a href="Termsandconditions.aspx" target="_blank">Terms and Conditions</a> including refund and cancellation policy of this booking.</label>
+         	</div>
+        </div>
+        
+        <div class="bg-warning bg-note bg-note-blk">
+        	<strong>Note:</strong> The next screen could be <a class="blue" data-toggle="modal" href="#3DSecure">
+            <i class="fa fa-lock"></i> 3D Secure</a> page from Veryfied by VISA or Master card secure.
+       	</div>
+        <div class="modal fade" id="3DSecure" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" >
+                          <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                            	<header class="text-center mb-5">
+                                        <h2 class="h4 mb-0"><i class="fa fa-lock"></i>3D Secure</h2>
+                                        <button type="button" class="close md-close" data-dismiss="modal" aria-label="Close"><i class="fa fa-times"></i></button>
+                                      </header>
+                           		<div class="modal-body">
+                              		<div class="threeD">
+                                    	<div class="threeD-cell">
+                                        	<img src="images/visa_logo.gif" alt="Verified by Visa">
+                                   		</div>
+                                        <div class="threeD-text-cell">
+                                        	<strong>Verified by Visa (VBV)</strong> is a new service from VISA that lets you shop securely online with your existing Visa Card. Usable only on Verified by Visa sites, this service through a simple checkout process, confirms your identity when you make purchases.
+                                		</div>
+                              		</div>
+
+                                    <div class="threeD">
+                                    	<div class="threeD-cell">
+                                        	<img src="images/master_logo.gif" alt="MasterCard SecureCode">
+                                      	</div>
+                                        <div class="threeD-text-cell">
+                                        	<strong>MasterCard® SecureCode™</strong> is an easy to use, secured online payment service that lets you shop securely online with your MasterCard® Card. This service through a simple checkout process, confirms your identity when you make purchases on the Internet. 
+                                        </div>
+                                   	</div>
+									
+                                    <div class="threeD">
+                                    	<div class="threeD-cell">
+                                        	<img src="images/amex_logo.jpg" alt="American Express Cards">
+                                        </div>
+                                        <div class="threeD-text-cell">
+                                        	<strong>American Express Cards</strong> With American Express Card just shop online as you normally would and then enter your correct card information and billing address. We would validate the billing address that you provide with our records and authenticate your transaction. It’s that simple and helps in safeguarding your online transaction.
+                                       	</div>
+                            		</div>
+                                </div>
+                            </div>
+                          </div>
+                        </div>
+        <div class="psd-tl-foot">
+        	<div class="psd-tl-foot-left">
+            	<p class="incTax">Total price</p>
+                <h4 class="psd-head-price">1070.26 <small>CAD</small></h4>
+                <p class="incTax">* inc. all taxes and fees</p>
+            </div>
+            <div class="psd-tl-foot-right cinfirm-brn">
+            	<button type="button" id="" class="btn btn-block btn-primary">CONFIRM & BOOK <i class="fa fa-plane"></i></button>
+            </div>
+        </div>
+        
+        <p class="pl-text"><i class="fa fa-lock"></i> Your transaction and personal information are secure. </p>
+	</div>
+            
+<div class="psd-right-wrap">
+	<div id="stickbar" class="stickbar psd-tripImg">
+    	<div class="psd-tripImg-head">
+        	<img src="images/back-bg.jpg" alt="destination image">
+        </div>
+        <div class="psd-tripImg-body">
+        	<div class="psd-tripImg-list">
+            	<div class="pull-left">Trip Amount</div>
+            	<div class="pull-right">1312.19 CAD</div>
+            </div>
+            <div class="psd-tripImg-list">
+            	<div class="pull-left red">Promocode</div>
+                <div class="pull-right red">- 0.00 CAD</div>
+           	</div>
+            <div class="psd-tripImg-footer">
+            	<div class="trip-amount-text">Total Amount</div>
+                <div class="trip-amount-price">
+                	<h5>1044.33 <small>CAD</small></h5>
+                	<p>incl. all taxes and fees</p>
+                </div>
+            </div>
+            <div class="psd-promo-bg">
+            	 <p class="green">Voucher is valid for 5.00 USD</p>
+                    <p class="red">Promo Code Not valid</p>
+            	<div class="input-group">
+                  <input type="text" class="form-control" placeholder="Enter promo code">
+                  <div class="input-group-append">
+                    <button class="btn btn-promo" type="button">Apply</button>
+                  </div>
+                </div>
+            	
+           	</div> 
+            <p class="green guaranteeText"><i class="fa fa-check"></i> Flight Journey Price Guarantee</p>
+            <div class="cinfirm-brn">
+            	<button type="button" id="" class="btn btn-block btn-primary">CONFIRM & BOOK  <i class="fa fa-plane"></i></button>
+        	</div> 
+        </div>
+    </div>
+    <div class="psd-time-expir" >
+    	<div id="time-circle" class="circlebar" data-circle-startTime=0 data-circle-maxTime=3  data-circle-dialWidth=10 data-circle-size="80px">
+                <div class="loader-bg">
+                    <div class="text">00:00</div>
+                </div>
+            </div>
+    	
+        <div class="time-circleText">
+        	
+            <p id="timermsg">For security reasons, your session  will expire automatically</p>
+        </div>
+        
+    </div>
+    <div class="pas-needHelp">
+    	<div class="pas-needHelp-inner">
+        <img src="images/telephone.svg" alt="Phone Icon">
+    	<h3> Need Assistance?</h3>
+    	<p> Our experts are ready to help you plan your next vacation. Please give us a call </p>
+        </div>
+        <div class="pas-needText">
+        	<div class="pas-needText-cell"> US</div>
+            <div class="pas-needNum-cell"><a href="tel:+1-866-248-8940" class=""> +1-866-248-8940 </a></div>
+        </div>
+        <div class="pas-needText">
+        	<div class="pas-needText-cell">Canada</div>
+            <div class="pas-needNum-cell"><a href="tel:+1-866-248-8940" class="">  +1-866-248-8940 </a></div>
+        </div>
+        
+        <div class="pas-needHelp-inner">
+        <p>You can write to us <a href="mailto:support@flightjourney.com">support@flightjourney.com</a></p>
+        </div>
+        
+    </div>         	
+</div>          
+</div>
+
+
+<footer class="footer">
+        	<div class="container">
+            	<div class="row">
+                	<div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12">
+                    	<div class="Pay-methods">
+                        	<strong>Payment methods we accept: </strong>
+                            <span class="fa fa-cc-visa"></span>
+                            <span class="fa fa-cc-mastercard"></span>
+                            <span class="fa fa-cc-amex"></span>
+                        </div>
+                        <div class="foot-social">
+                        	<div class="help-left"><strong>Helpline: </strong> <a href="tel:+1-866-248-8940"> +1-866-248-8940</a></div>
+                            <div class="Follow-right">
+                            	<strong>Follow us:</strong> 
+                            	<a href="" target="_blank"><span class="fa fa-facebook-f"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-twitter"></span></a>
+                                <a href="" target="_blank"><span class="fa fa-google-plus"></span></a>
+                        	</div>
+                		</div>
+                    </div>
+            	</div>
+            	<hr class="footer-line">
+            	<div class="row">
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Security</div>
+                        <div class="secur-imgs">
+                        
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Quick Links</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#">Home</a></li>
+                            <li><a href="#">Flights</a></li>
+                            <li><a href="#">My Bookings</a></li>
+                            <li><a href="#">Log in/Sign up</a></li>
+                            <li><a href="#">Date Change</a></li>
+                            <li><a href="#">Customer Support</a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget widget-border">
+                        <div class="footer-title">Support</div>
+                        <ul class="list-unstyled">
+                            <li><a href="#">About Us</a></li>
+                            <li><a href="#">Contact Us</a></li>
+                            <li><a href="#">Sitemap</a></li>
+                            <li><a href="#">Terms & Conditions</a></li>
+                            <li><a href="#">Privacy Policy</a></li>
+                            <li><a href="#">FAQ’s</a></li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="col-xl-3 col-lg-3 col-md-3 col-sm-3 col-12">
+                    <div class="footer-widget">
+                        <div class="footer-title">Corporate Address:</div>
+                        <address>
+                        	Vyoma Travels Inc,<br>
+                            1875, Lockeway Dr Suite#702,<br>
+                            Alpharetta GA 30004,<br>
+                            United States of America.<br>
+                            Tel: <a href="tel:+1-866-248-8940">+1-866-248-8940</a> (USA) <br>
+                            Tel: <a href="tel:+1-866-739-2998">+1-866-739-2998</a> (Canada)<br>
+                            Email: <a href="mailto:support@flightjourney.com">support@flightjourney.com</a><br>
+                            Fax:  +1-678-669-2750
+                        </address>
+                    </div>
+                </div>
+            	</div>
+        	</div>
+            <div class="tiny-footer">
+            	<div class="container">
+                    <div class="row">
+                    <div class="scrollup" href="#"><i class="fa fa-arrow-up"></i></div>
+                        <div class="col-xl-12 col-lg-12 col-md-12 col-sm-12 col-12 text-center">
+							<p>Copyright © 2018 Vyoma Travels Inc - All Rights Reserved. <br> California: CST #2115700-50, Florida: ST39170, Iowa: SOT #1160 WA#603373092</p>
+                        </div>
+                    </div>
+            	</div>
+            </div>
+        </footer>
+
+</div>
+
+<script type="text/javascript" src="js/Fj-theme.js"></script>
+<script type="text/javascript" src="js/popover_script.js"></script>
+
+<script type="text/javascript" src="js/jquery.payform.min.js"></script>
+<script type="text/javascript" src="js/card-script.js"></script>
+
+<script type="text/javascript" src="js/circle.js"></script>
+
+<script type="text/javascript" src="js/scrollBar.js"></script>
+<script type="text/javascript">
+//scrollBox booking terms js
+$(".sb-container").scrollBox();
+</script>
+
+<script type="text/javascript">
+var stickbar = document.getElementById('stickbar');
+Stickyfill.add(stickbar);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,279 @@
+@charset "utf-8";
+/* CSS Document */
+
+*, *:before, *:after {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 100%;
+  width: 100%;
+  -webkit-text-size-adjust: 100%;
+  font-family: "Helvetica Neue", helvetica, arial, sans-serif;
+}
+/*Header style*/
+#wrapper{
+	width: 100%;
+	display: block;
+	margin: 0px;
+	position: relative;
+}
+
+header {
+    height:65px;
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    transition: all 0.5s;
+    z-index: 997;
+    background-color: #fff;
+    box-shadow: 5px 0px 15px #c3c3c3;
+}
+.navbar-toggle .icon-bar{background-color:#ccc;}
+.navbar-collapse .navbar-nav{background-color:#fff;}
+
+.logo img{width:180px;}
+.menubar{
+	display: block;
+	margin: 0px;
+    min-height: inherit;
+    z-index: 9;
+    -webkit-transition: all 0.5s ease 0s;
+    -moz-transition: all 0.5s ease 0s;
+    -o-transition: all 0.5s ease 0s;
+    transition: all 0.5s ease 0s;
+    background-color: transparent;
+}
+.header .menubar .mega-dropdown:hover .dropdown-toggle{
+	background-color: #850072;
+	color: #fff;
+}
+.navbar-header,.navbar-collapse{float:left;}
+.rightmenu{
+	float:right;
+	display:inline-table;
+	width:18%;
+}
+.carencyBtn,.langBtn,.showBtn{display:table-cell; width:5%;}
+.rightmenu a{border:1px solid #e5e5e5; background-color:#fff; text-decoration:none; padding:5px 10px; border-radius:3px;}
+
+.menubar li.dropdown:hover > .dropdown-menu {display: block;}
+
+.mega-dropdown-menu {
+    padding: 10px;
+    background-color: #f7f5fb;
+    border-bottom: none;
+    box-shadow: 0px 8px 10px -6px #ababab;
+    -webkit-box-shadow: 0px 8px 15px -10px #ababab;
+}
+
+.mega-dropdown-menu > li > ul {margin:0px;padding:0px;}
+.mega-dropdown-menu > li > ul > li {
+    list-style: none;
+    border-bottom: dashed 1px #ebebeb; 
+	line-height:24px; 
+}
+.mega-dropdown-menu > li > ul > li:last-child{border-bottom:none;}
+.mega-dropdown-menu > li > ul > li > a {
+    color: #222;
+    font-size: 12px;
+    padding: 0px 0px;
+}
+.mega-dropdown-menu > li ul > li > a:hover,
+.mega-dropdown-menu > li ul > li > a:focus {
+  text-decoration: none;
+  color: #850072;
+}
+.mega-dropdown-menu .dropdown-header {
+  font-size: 15px;
+  color: #000;
+  padding: 0px;
+  line-height: 30px;
+}
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #f6f6f6;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 40px;
+	-webkit-box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+    -moz-box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+    box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+}
+.sidenav a {
+    padding: 8px 8px 0px 0px;
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    display: block;
+    transition: 0.3s
+}
+.sidenav a:hover, .offcanvas a:focus{
+    color: #000;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: -7px;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav {padding-top: 15px;}
+  .sidenav a {font-size: 18px;}
+}
+
+.sidemenu{
+	padding: 10px 17%;
+	display: block;
+	position: relative;
+	overflow-x: auto;
+}
+.sidemenu .hdwel{
+	font-size: 24px;
+	margin-bottom: 30px;
+	font-weight: 200;
+}
+.sidenav .navbar-nav{
+	width: 100%;
+	border-bottom: dashed 1px #b159a4;
+	padding-bottom: 15px;
+	margin-bottom: 15px;
+}
+.sidenav .navbar-nav li{
+	width: 100%;
+} 
+.sidenav .navbar-nav li a{
+	width: 100%;
+	display: block;
+	font-size: 14px;
+	padding: 7px 15px;
+	text-transform: uppercase;
+}
+.sidenav .navbar-nav li a:hover{
+	color: #000;
+}
+.sidenav .navbar-nav .open .dropdown-menu {
+    position: static;
+    float: none;
+    width: auto;
+    margin-top: 0;
+    background-color: transparent;
+    border: 0;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+.nav2 li a{
+	text-transform: uppercase;
+	font-size: 14px;
+	color: #111;
+}
+.nav2 li .fa{color: #b159a4;} 
+
+.follnav li .fa{
+	color: #b159a4;
+	font-size: 24px;
+	transition: all 0.5s;
+}
+.follnav li .fa:hover{
+    -moz-transform: scale(1.4);
+    -o-transform: scale(1.4);
+    -ms-transform: scale(1.4);
+    -webkit-transform: scale(1.4);
+    transform: scale(1.4);
+}
+.sidenav2 {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    background-color: #f6f6f6;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 40px;
+	-webkit-box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+    -moz-box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+    box-shadow: 5px 0px 15px 5px rgba(131,201,194,0.2);
+}
+.sidenav2 a {
+    padding: 1px 8px 0px 0px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #333;
+    display: block;
+    transition: 0.3s
+}
+.sidenav2 a:hover, .offcanvas a:focus{color: #000;}
+.sidenav2 .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+@media screen and (max-height: 450px) {
+  .sidenav2 {padding-top: 15px;}
+  .sidenav2 a {font-size: 18px;}
+}
+
+
+.listitem{
+	width: 100%;
+	margin: 20px 0px 0px;
+	display: block;
+}
+.listitem li{
+	width: 100%;
+	display: block;
+    float: left;
+    margin-bottom: 15px;
+}
+.listitem .ttbox p{
+    font-size: 13.5px;
+    color: #000;
+    margin: 0px 0px 3px;
+}
+.listitem .ttbox span{
+	color: #000;
+	font-size: 13px;
+}
+
+
+/* Carousel slider style */
+
+.sliderpanel{
+	width: 100%;
+	height: 100%;
+	display: block;
+	position:relative;
+}
+
+.myslider{
+	display: block;
+	height: 100%;
+}
+.myslider .item {
+  height: 100vh;
+  min-height: 300px;
+  background: no-repeat center center scroll;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-position: top;
+  position:relative;
+}
+/*.sliderpanel::before{position: relative;top:0;left:0;bottom:0;right:0;overflow:hidden;border: none;padding:0;margin:0;opacity: .5;background: url(../images/02.png) center center}*/
+
+
+
